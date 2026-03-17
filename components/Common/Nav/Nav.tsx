@@ -2,12 +2,17 @@
 
 import { motion, useScroll } from 'framer-motion';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 
 export default function Navigation() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
+const router=useRouter()
 
+const Nav=()=>{
+  router.push("/resume")
+}
   useEffect(() => {
     return scrollY.on('change', (latest) => {
       setIsScrolled(latest > 50);
@@ -40,7 +45,7 @@ export default function Navigation() {
               </Link>
             ))}
           </div>
-          <button className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-bold transition-all">
+          <button onClick={Nav} className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-bold transition-all">
             View Experience
           </button>
         </div>
