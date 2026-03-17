@@ -1,266 +1,432 @@
+/* eslint-disable react/no-unescaped-entities */
 'use client';
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github, Briefcase, Target, Users, Lightbulb, Copy, Check, ExternalLink, MapPin, IndianRupee, Zap, Brain } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import {
+  Mail,
+  Linkedin,
+  Github,
+  Calendar,
+  Copy,
+  Check,
+  ArrowRight,
+  Clock,
+  ShieldCheck,
+  Loader2,
+} from 'lucide-react';
 import Navigation from '@/components/Common/Nav/Nav';
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+};
+
 export default function ContactPage() {
+  const router = useRouter();
   const [copied, setCopied] = useState(false);
-  const [chennaiTime, setChennaiTime] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
 
-  useEffect(() => {
-    const updateTime = () => {
-      const options: Intl.DateTimeFormatOptions = {
-        timeZone: 'Asia/Kolkata',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: true,
-      };
-      setChennaiTime(new Intl.DateTimeFormat('en-US', options).format(new Date()));
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    interest: '',
+    message: ''
+  });
 
   const copyEmail = () => {
-    navigator.clipboard.writeText('vk5241415@gmail.com');
+    navigator.clipboard.writeText('hello@vinodkumar.dev');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
-      },
-    },
+  const validateForm = () => {
+    const errors: Record<string, string> = {};
+
+    if (!formData.name.trim()) errors.name = 'Name is required';
+    if (!formData.email.trim()) errors.email = 'Email is required';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errors.email = 'Please enter a valid email';
+    }
+    if (!formData.interest) errors.interest = 'Please select an option';
+    if (!formData.message.trim()) errors.message = 'Please tell me about your opportunity';
+    else if (formData.message.trim().length < 20) {
+      errors.message = 'Please provide more details (at least 20 characters)';
+    }
+
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1]  as const} },
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!validateForm()) return;
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      console.log(response)
+      if (response.ok) {
+        router.push('/contact/success');
+      } else if (response.status === 429) {
+        setFormErrors({ submit: 'You can only submit once per day. Please try again tomorrow.' });
+      } else {
+        setFormErrors({ submit: 'Something went wrong. Please try again.' });
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      setFormErrors({ submit: 'Network error. Please try emailing me directly.' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <main className="min-h-screen bg-[#000000] text-white selection:bg-[#00E5CC]/30 selection:text-white relative overflow-hidden">
-      {/* Noise Texture Overlay */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] z-50"></div>
-      
+    <main className="min-h-screen bg-black text-white selection:bg-emerald-500/30 font-sans">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="min-h-[70vh] flex flex-col items-center justify-center px-6 pt-32 pb-20 relative">
+      <div className="max-w-7xl mx-auto px-6 pt-32 pb-20">
+        {/* Hero Section */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-8"
-        >
-          <div className="px-4 py-1.5 rounded-full border border-[#00E5CC]/30 bg-[#00E5CC]/5 flex items-center gap-2 shadow-[0_0_20px_rgba(0,229,204,0.2)] animate-pulse">
-            <div className="w-2 h-2 rounded-full bg-[#00E5CC] shadow-[0_0_10px_#00E5CC]"></div>
-            <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#00E5CC]">Available Now</span>
-          </div>
-        </motion.div>
-
-        <motion.h1 
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="text-[48px] md:text-[96px] font-bold tracking-[-0.02em] leading-[1.1] text-center mb-8"
-        >
-          LET&apos;S BUILD <br />
-          <span className="bg-gradient-to-r from-white to-[#00E5CC] bg-clip-text text-transparent">SOMETHING.</span>
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-neutral-400 text-sm md:text-lg tracking-wide text-center max-w-xl"
-        >
-          Currently open for opportunities in Chennai & Bengaluru
-        </motion.p>
-
-        {/* Background Grid Pattern */}
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
-      </section>
-
-      {/* Quick Stats Banner */}
-      <section className="border-y border-[#00E5CC]/20 bg-gradient-to-b from-[#00E5CC]/[0.02] to-transparent py-6 mb-[120px]">
-        <div className="max-w-[1200px] mx-auto px-6 flex flex-wrap justify-center md:justify-between items-center gap-8 md:gap-4">
-          <div className="flex items-center gap-3">
-            <MapPin className="w-4 h-4 text-white/60" />
-            <span className="text-xs font-medium uppercase tracking-widest">Chennai, India</span>
-          </div>
-          <div className="hidden md:block h-6 w-[1px] bg-white/10"></div>
-          <div className="flex items-center gap-3">
-            <IndianRupee className="w-4 h-4 text-white/60" />
-            <span className="text-xs font-medium uppercase tracking-widest">7 LPA+</span>
-          </div>
-          <div className="hidden md:block h-6 w-[1px] bg-white/10"></div>
-          <div className="flex items-center gap-3">
-            <Zap className="w-4 h-4 text-white/60" />
-            <span className="text-xs font-medium uppercase tracking-widest">Immediate</span>
-          </div>
-          <div className="hidden md:block h-6 w-[1px] bg-white/10"></div>
-          <div className="flex items-center gap-3">
-            <Brain className="w-4 h-4 text-white/60" />
-            <span className="text-xs font-medium uppercase tracking-widest">AI/ML Focus</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Grid */}
-      <section className="max-w-[1200px] mx-auto px-6 mb-[120px]">
-        <motion.div 
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          animate="visible"
+          className="mb-24 max-w-3xl"
         >
-          {/* Email Card */}
-          <motion.div variants={itemVariants} className="group p-10 rounded-lg bg-[#0F0F0F] border border-white/10 hover:border-[#00E5CC]/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_-10px_rgba(0,229,204,0.2)]">
-            <div className="mb-8 flex items-center justify-between">
-              <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center text-[#00E5CC]">
-                <Mail className="w-6 h-6" />
-              </div>
-              <span className="text-[10px] font-medium uppercase tracking-widest text-white/40">Email</span>
-            </div>
-            <h3 className="text-lg font-medium mb-8 truncate">vk5241415@gmail.com</h3>
-            <button 
-              onClick={copyEmail}
-              className="w-full py-3 rounded border border-[#00E5CC]/30 text-[12px] font-medium uppercase tracking-widest text-white hover:bg-[#00E5CC] hover:text-black transition-all duration-300 flex items-center justify-center gap-2"
-            >
-              {copied ? (
-                <>
-                  <Check className="w-4 h-4" />
-                  Copied!
-                </>
-              ) : (
-                <>
-                  <Copy className="w-4 h-4" />
-                  Copy Email
-                </>
-              )}
-            </button>
-          </motion.div>
-
-          {/* LinkedIn Card */}
-          <motion.div variants={itemVariants} className="group p-10 rounded-lg bg-[#0F0F0F] border border-white/10 hover:border-[#00E5CC]/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_-10px_rgba(0,229,204,0.2)]">
-            <div className="mb-8 flex items-center justify-between">
-              <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center text-[#00E5CC]">
-                <Linkedin className="w-6 h-6" />
-              </div>
-              <span className="text-[10px] font-medium uppercase tracking-widest text-white/40">LinkedIn</span>
-            </div>
-            <h3 className="text-lg font-medium mb-8">/vinodkumar</h3>
-            <a 
-              href="https://linkedin.com/in/vinodkumar" 
-              target="_blank"
-              className="w-full py-3 rounded border border-[#00E5CC]/30 text-[12px] font-medium uppercase tracking-widest text-white hover:bg-[#00E5CC] hover:text-black transition-all duration-300 flex items-center justify-center gap-2"
-            >
-              <ExternalLink className="w-4 h-4" />
-              View Profile
-            </a>
-          </motion.div>
-
-          {/* GitHub Card */}
-          <motion.div variants={itemVariants} className="group p-10 rounded-lg bg-[#0F0F0F] border border-white/10 hover:border-[#00E5CC]/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_-10px_rgba(0,229,204,0.2)]">
-            <div className="mb-8 flex items-center justify-between">
-              <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center text-[#00E5CC]">
-                <Github className="w-6 h-6" />
-              </div>
-              <span className="text-[10px] font-medium uppercase tracking-widest text-white/40">Code</span>
-            </div>
-            <h3 className="text-lg font-medium mb-8">/github</h3>
-            <a 
-              href="https://github.com" 
-              target="_blank"
-              className="w-full py-3 rounded border border-[#00E5CC]/30 text-[12px] font-medium uppercase tracking-widest text-white hover:bg-[#00E5CC] hover:text-black transition-all duration-300 flex items-center justify-center gap-2"
-            >
-              <Github className="w-4 h-4" />
-              Explore
-            </a>
+          <motion.div variants={itemVariants} className="space-y-6">
+            <h1 className="text-6xl md:text-7xl font-black tracking-tight leading-[1.1]">
+              Let's Work Together
+            </h1>
+            <p className="text-xl text-neutral-400 leading-relaxed max-w-2xl">
+              Whether you're looking to hire, collaborate, or discuss ideas—I'm excited to hear what you're working on. Reach out and let's explore if we're a great fit.
+            </p>
           </motion.div>
         </motion.div>
-      </section>
 
-      {/* Reach Out Topics */}
-      <section className="max-w-[1200px] mx-auto px-6 mb-[120px]">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <h2 className="text-[32px] md:text-[48px] font-bold uppercase tracking-[0.1em] mb-4">Reach Out For</h2>
-          <div className="h-1 w-20 bg-[#00E5CC]"></div>
-        </motion.div>
+        {/* Two Column Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12">
+          {/* Left Column: Quick Contact */}
+          <motion.div variants={itemVariants} initial="hidden" animate="visible">
+            <div className="space-y-8">
+              {/* Contact Info Card */}
+              <div className="bg-white/[0.02] border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+                <h3 className="text-sm font-semibold text-white mb-6 uppercase tracking-wider">
+                  Quick Contact
+                </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 border border-white/10 rounded-lg overflow-hidden">
-          <div className="group p-10 bg-[#000000] hover:bg-[#00E5CC]/[0.02] transition-all duration-500">
-            <Briefcase className="w-8 h-8 text-[#00E5CC] mb-6" />
-            <h3 className="text-xl font-bold mb-3">Full-Time Roles</h3>
-            <p className="text-neutral-500 text-sm leading-relaxed">React, Node.js, AI/ML. Looking for teams building the future of web and intelligence.</p>
-          </div>
-          <div className="group p-10 bg-[#000000] hover:bg-[#00E5CC]/[0.02] transition-all duration-500">
-            <Target className="w-8 h-8 text-[#00E5CC] mb-6" />
-            <h3 className="text-xl font-bold mb-3">Technical Discussions</h3>
-            <p className="text-neutral-500 text-sm leading-relaxed">Architecture, scaling, and system design. Always down to talk shop and solve puzzles.</p>
-          </div>
-          <div className="group p-10 bg-[#000000] hover:bg-[#00E5CC]/[0.02] transition-all duration-500">
-            <Users className="w-8 h-8 text-[#00E5CC] mb-6" />
-            <h3 className="text-xl font-bold mb-3">Open Source</h3>
-            <p className="text-neutral-500 text-sm leading-relaxed">Collaboration welcome. Let&apos;s build tools that help the developer community grow.</p>
-          </div>
-          <div className="group p-10 bg-[#000000] hover:bg-[#00E5CC]/[0.02] transition-all duration-500">
-            <Lightbulb className="w-8 h-8 text-[#00E5CC] mb-6" />
-            <h3 className="text-xl font-bold mb-3">Freelance/Contract</h3>
-            <p className="text-neutral-500 text-sm leading-relaxed">Short-term projects. Helping startups and businesses ship high-quality MVPs fast.</p>
-          </div>
+                <div className="space-y-4">
+                  {/* Email */}
+                  <button
+                    onClick={copyEmail}
+                    className="w-full flex items-center justify-between p-4 rounded-lg bg-white/[0.05] border border-white/10 hover:bg-white/[0.08] hover:border-emerald-500/30 transition-all group"
+                  >
+                    <div className="flex items-center gap-3">
+                      <Mail className="w-4 h-4 text-emerald-400" />
+                      <span className="text-sm font-medium text-neutral-300">hello@vinodkumar.dev</span>
+                    </div>
+                    {copied ? (
+                      <Check className="w-4 h-4 text-emerald-400" />
+                    ) : (
+                      <Copy className="w-4 h-4 text-neutral-500 group-hover:text-neutral-300" />
+                    )}
+                  </button>
+
+                  {/* LinkedIn & GitHub Row */}
+                  <div className="grid grid-cols-2 gap-3">
+                    <a
+                      href="https://linkedin.com/in/vinodkumar"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-4 rounded-lg bg-white/[0.05] border border-white/10 hover:bg-white/[0.08] hover:border-emerald-500/30 transition-all group"
+                    >
+                      <Linkedin className="w-4 h-4 text-neutral-500 group-hover:text-emerald-400 transition-colors" />
+                      <span className="text-xs font-medium text-neutral-400">LinkedIn</span>
+                    </a>
+                    <a
+                      href="https://github.com/vinodkumar"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-4 rounded-lg bg-white/[0.05] border border-white/10 hover:bg-white/[0.08] hover:border-emerald-500/30 transition-all group"
+                    >
+                      <Github className="w-4 h-4 text-neutral-500 group-hover:text-emerald-400 transition-colors" />
+                      <span className="text-xs font-medium text-neutral-400">GitHub</span>
+                    </a>
+                  </div>
+
+                  {/* Calendar */}
+                  <a
+                    href="https://calendly.com/vinodkumar/chat"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex items-center justify-between p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/30 hover:bg-emerald-500/20 transition-all group"
+                  >
+                    <div className="flex items-center gap-3">
+                      <Calendar className="w-4 h-4 text-emerald-400" />
+                      <span className="text-sm font-semibold text-emerald-400">Book a Call</span>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-emerald-400 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Response Time Card */}
+              <div className="bg-white/[0.02] border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+                <div className="flex items-start gap-3 mb-4">
+                  <Clock className="w-4 h-4 text-emerald-400 mt-1 flex-shrink-0" />
+                  <h4 className="text-sm font-semibold text-white uppercase tracking-wider">Response Time</h4>
+                </div>
+                <p className="text-sm text-neutral-400 leading-relaxed">
+                  Usually within <span className="text-white font-semibold">24 hours</span> for all inquiries. Weekdays 10 AM - 6 PM IST.
+                </p>
+              </div>
+
+              {/* Availability Card */}
+              <div className="bg-white/[0.02] border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+                <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">Open For</h4>
+                <ul className="space-y-3 text-sm text-neutral-400">
+                  <li className="flex items-center gap-3">
+                    <div className="w-1 h-1 rounded-full bg-emerald-400" />
+                    Full-time roles (React, Node.js, AI/ML)
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-1 h-1 rounded-full bg-emerald-400" />
+                    Technical consulting & architecture
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-1 h-1 rounded-full bg-emerald-400" />
+                    Project collaboration & partnership
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right Column: Form */}
+          <motion.div variants={itemVariants} initial="hidden" animate="visible">
+            <div className="bg-white/[0.02] border border-white/10 rounded-2xl p-8 md:p-12 backdrop-blur-sm">
+              <h2 className="text-lg font-semibold text-white mb-8">Send me a message</h2>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Name */}
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Your Name *</label>
+                  <input
+                    required
+                    type="text"
+                    placeholder="Jane Smith"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className={`w-full bg-white/[0.05] border rounded-lg px-4 py-3 text-sm text-white placeholder:text-neutral-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all ${
+                      formErrors.name ? 'border-red-500/50' : 'border-white/10 hover:border-white/20'
+                    }`}
+                  />
+                  {formErrors.name && <p className="text-xs text-red-400">{formErrors.name}</p>}
+                </div>
+
+                {/* Email */}
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Email Address *</label>
+                  <input
+                    required
+                    type="email"
+                    placeholder="jane@company.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className={`w-full bg-white/[0.05] border rounded-lg px-4 py-3 text-sm text-white placeholder:text-neutral-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all ${
+                      formErrors.email ? 'border-red-500/50' : 'border-white/10 hover:border-white/20'
+                    }`}
+                  />
+                  {formErrors.email && <p className="text-xs text-red-400">{formErrors.email}</p>}
+                </div>
+
+                {/* Company (Optional) */}
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-neutral-400">Company / Organization (Optional)</label>
+                  <input
+                    type="text"
+                    placeholder="Acme Corp or Your Startup"
+                    value={formData.company}
+                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                    className="w-full bg-white/[0.05] border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder:text-neutral-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all hover:border-white/20"
+                  />
+                </div>
+
+                {/* Interest Type */}
+                <div className="space-y-3">
+                  <label className="text-sm font-medium text-white block">What are you interested in? *</label>
+                  <div className="space-y-2">
+                    {[
+                      { id: 'hiring', label: 'I\'m hiring' },
+                      { id: 'collaborate', label: 'Let\'s collaborate' },
+                      { id: 'discussion', label: 'Technical discussion' },
+                      { id: 'other', label: 'Other' }
+                    ].map((option) => (
+                      <label
+                        key={option.id}
+                        className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all ${
+                          formData.interest === option.id
+                            ? 'bg-emerald-500/10 border-emerald-500 text-white'
+                            : 'bg-white/[0.02] border-white/10 text-neutral-400 hover:border-white/20'
+                        }`}
+                      >
+                        <input
+                          required
+                          type="radio"
+                          name="interest"
+                          value={option.id}
+                          checked={formData.interest === option.id}
+                          onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
+                          className="hidden"
+                        />
+                        <div
+                          className={`w-4 h-4 rounded-full border flex items-center justify-center transition-all ${
+                            formData.interest === option.id
+                              ? 'border-emerald-500'
+                              : 'border-neutral-500'
+                          }`}
+                        >
+                          {formData.interest === option.id && (
+                            <div className="w-2 h-2 rounded-full bg-emerald-400" />
+                          )}
+                        </div>
+                        <span className="text-sm font-medium">{option.label}</span>
+                      </label>
+                    ))}
+                  </div>
+                  {formErrors.interest && <p className="text-xs text-red-400">{formErrors.interest}</p>}
+                </div>
+
+                {/* Message */}
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Tell me about your opportunity *</label>
+                  <textarea
+                    required
+                    minLength={20}
+                    rows={6}
+                    placeholder="We're looking for a senior engineer to lead our real-time systems. Our stack is React, Node.js, PostgreSQL..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className={`w-full bg-white/[0.05] border rounded-lg px-4 py-3 text-sm text-white placeholder:text-neutral-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all resize-none ${
+                      formErrors.message ? 'border-red-500/50' : 'border-white/10 hover:border-white/20'
+                    }`}
+                  />
+                  <div className="flex items-center justify-between">
+                    {formErrors.message && <p className="text-xs text-red-400">{formErrors.message}</p>}
+                    <p className="text-xs text-neutral-500 ml-auto">{formData.message.length} characters</p>
+                  </div>
+                </div>
+
+                {/* Error message */}
+                {formErrors.submit && (
+                  <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/30 text-sm text-red-400">
+                    {formErrors.submit}
+                  </div>
+                )}
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full py-3 px-6 bg-emerald-400 hover:bg-emerald-300 text-black font-semibold rounded-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed group relative overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                  <span className="relative z-10 flex items-center gap-2">
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Message
+                        <ArrowRight className="w-4 h-4" />
+                      </>
+                    )}
+                  </span>
+                </button>
+
+                {/* Divider */}
+                <div className="relative py-6">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-white/10" />
+                  </div>
+                  <div className="relative flex justify-center text-xs">
+                    <span className="px-2 bg-black text-neutral-500">Or email me directly</span>
+                  </div>
+                </div>
+
+                <a
+                  href="mailto:hello@vinodkumar.dev"
+                  className="w-full py-3 px-6 bg-white/[0.05] hover:bg-white/[0.08] text-white border border-white/10 hover:border-white/20 font-medium rounded-lg transition-all text-center"
+                >
+                  hello@vinodkumar.dev
+                </a>
+              </form>
+            </div>
+          </motion.div>
         </div>
-      </section>
 
-      {/* Response Timeline Card */}
-      <section className="max-w-[1200px] mx-auto px-6 mb-[120px]">
+        {/* Reassurance Footer */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="max-w-[600px] mx-auto p-12 rounded-lg bg-[#0F0F0F] border border-[#00E5CC]/30 text-center relative group"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-white/10 pt-12"
         >
-          <div className="absolute inset-0 rounded-lg shadow-[0_0_30px_rgba(0,229,204,0.1)] group-hover:shadow-[0_0_50px_rgba(0,229,204,0.15)] transition-all duration-500 pointer-events-none"></div>
-          
-          <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/40 mb-8 block">Response Time</span>
-          
-          <h3 className="text-2xl font-medium mb-4">Usually within 24 hours</h3>
-          <p className="text-neutral-500 text-sm mb-12">Best reach: 10 AM - 6 PM IST</p>
-          
-          <div className="pt-8 border-t border-white/5">
-            <div className="flex flex-col items-center gap-2">
-              <span className="text-[10px] font-medium uppercase tracking-widest text-[#00E5CC]">Current Time in Chennai</span>
-              <span className="text-3xl font-bold tabular-nums tracking-tight">{chennaiTime}</span>
+          <motion.div variants={itemVariants} className="space-y-3">
+            <div className="flex items-center gap-3">
+              <ShieldCheck className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+              <h4 className="text-sm font-semibold text-white">Your Privacy Matters</h4>
             </div>
-          </div>
-        </motion.div>
-      </section>
+            <p className="text-sm text-neutral-400 leading-relaxed">
+              I respect your data. No spam, no sharing with third parties. Just genuine conversations about opportunities.
+            </p>
+          </motion.div>
 
-     
-      <footer className="max-w-[1200px] mx-auto px-6 py-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-        <p className="text-neutral-500 text-xs uppercase tracking-widest">© 2024 Vinod Kumar</p>
-        <div className="flex gap-8">
-          <a href="#" className="text-neutral-500 hover:text-[#00E5CC] text-xs uppercase tracking-widest transition-colors">Twitter</a>
-          <a href="#" className="text-neutral-500 hover:text-[#00E5CC] text-xs uppercase tracking-widest transition-colors">Instagram</a>
-          <a href="#" className="text-neutral-500 hover:text-[#00E5CC] text-xs uppercase tracking-widest transition-colors">Dribbble</a>
-        </div>
+          <motion.div variants={itemVariants} className="space-y-3">
+            <div className="flex items-center gap-3">
+              <Clock className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+              <h4 className="text-sm font-semibold text-white">What Happens Next</h4>
+            </div>
+            <p className="text-sm text-neutral-400 leading-relaxed">
+              I'll review your message, assess fit, and respond with specific ideas and next steps within 24 hours.
+            </p>
+          </motion.div>
+
+          <motion.div variants={itemVariants} className="space-y-3">
+            <div className="flex items-center gap-3">
+              <ArrowRight className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+              <h4 className="text-sm font-semibold text-white">Strategic Fit</h4>
+            </div>
+            <p className="text-sm text-neutral-400 leading-relaxed">
+              I only take on opportunities where I can deliver real value. If we're not a fit, I'll tell you directly.
+            </p>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      <footer className="max-w-7xl mx-auto px-6 py-12 border-t border-white/10 text-center">
+        <p className="text-neutral-600 text-xs font-medium tracking-wide">
+          © {new Date().getFullYear()} Vinod Kumar. All rights reserved.
+        </p>
       </footer>
     </main>
   );
