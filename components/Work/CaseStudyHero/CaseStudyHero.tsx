@@ -55,16 +55,33 @@ export default function CaseStudyHero({ project }: CaseStudyHeroProps) {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2 }}
-          className="aspect-[21/9] relative rounded-[48px] overflow-hidden border border-white/10"
+          className="aspect-[21/9] relative rounded-[48px] overflow-hidden border border-white/10 bg-white/[0.02]"
         >
-          <Image 
-            src={project.thumbnail}
-            alt={project.name}
-            fill
-            className="object-cover"
-            priority
-            referrerPolicy="no-referrer"
-          />
+          {project.thumbnail.includes('picsum.photos') ? (
+            <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(#34d39910_1px,transparent_1px)] [background-size:40px_40px]" />
+              <div className="relative z-10 text-center space-y-4">
+                <div className="w-24 h-24 rounded-full border border-emerald-500/20 flex items-center justify-center mx-auto animate-pulse">
+                  <div className="w-12 h-12 rounded-full bg-emerald-500/10" />
+                </div>
+                <p className="text-[10px] font-black text-emerald-500/50 uppercase tracking-[0.5em]">System Architecture Visualized</p>
+              </div>
+              {/* Abstract lines */}
+              <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 50 Q 25 25 50 50 T 100 50" stroke="currentColor" fill="none" className="text-emerald-500" strokeWidth="0.1" />
+                <path d="M0 70 Q 25 45 50 70 T 100 70" stroke="currentColor" fill="none" className="text-cyan-500" strokeWidth="0.1" />
+              </svg>
+            </div>
+          ) : (
+            <Image 
+              src={project.thumbnail}
+              alt={project.name}
+              fill
+              className="object-cover"
+              priority
+              referrerPolicy="no-referrer"
+            />
+          )}
         </motion.div>
       </div>
     </section>

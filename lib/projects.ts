@@ -27,7 +27,13 @@ export interface Project {
     };
     solution: {
       approach: string;
-      architecture: string; // ASCII or description
+      architecture: string;
+      visualNodes?: {
+        id: string;
+        label: string;
+        type: 'input' | 'process' | 'database' | 'output';
+        description?: string;
+      }[];
       techStack: {
         backend?: string[];
         frontend?: string[];
@@ -110,13 +116,15 @@ export const projects: Project[] = [
       },
       solution: {
         approach: 'Real-time Pipeline with ML Anomaly Detection',
-        architecture: `
-Events → Kafka → Stream Processor → ML Model
-         ↓          ↓                    ↓
-     Indexing   Processing          Alerting
-         ↓          ↓                    ↓
-   PostgreSQL   Aggregation         Dashboard
-        `,
+        architecture: 'Events → Kafka → Stream Processor → ML → PostgreSQL',
+        visualNodes: [
+          { id: '1', label: 'Event Stream', type: 'input', description: '100k+ events/sec' },
+          { id: '2', label: 'Kafka Broker', type: 'process', description: 'Message Durability' },
+          { id: '3', label: 'Stream Processor', type: 'process', description: 'Real-time Aggregation' },
+          { id: '4', label: 'ML Model', type: 'process', description: 'Anomaly Detection' },
+          { id: '5', label: 'PostgreSQL', type: 'database', description: 'Indexed Storage' },
+          { id: '6', label: 'Dashboard', type: 'output', description: 'Real-time Insights' }
+        ],
         techStack: {
           backend: ['Node.js', 'Kafka', 'Stream Processing'],
           database: ['PostgreSQL (custom indexing)'],

@@ -3,6 +3,7 @@
 import { Project } from '@/lib/projects';
 import { motion } from 'framer-motion';
 import { Cpu, Database, Layout, Server, CheckCircle2 } from 'lucide-react';
+import VisualArchitecture from '../VisualArchitecture/VisualArchitecture';
 
 interface CaseStudySolutionProps {
   project: Project;
@@ -25,18 +26,24 @@ export default function CaseStudySolution({ project }: CaseStudySolutionProps) {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-20">
-          <div className="space-y-12">
-            <div className="p-10 rounded-[48px] bg-white/[0.02] border border-white/5 space-y-8">
-              <h3 className="text-xs font-black text-neutral-500 uppercase tracking-widest">Architecture</h3>
+        <div className="space-y-12">
+          <div className="p-10 rounded-[48px] bg-white/[0.02] border border-white/5 space-y-12">
+            <h3 className="text-xs font-black text-neutral-500 uppercase tracking-widest">System Architecture</h3>
+            
+            {solution.visualNodes ? (
+              <VisualArchitecture nodes={solution.visualNodes} />
+            ) : (
               <div className="p-8 rounded-2xl bg-black/50 border border-white/5 font-mono text-xs md:text-sm text-emerald-400/80 leading-relaxed whitespace-pre overflow-x-auto">
                 {solution.architecture}
               </div>
-              <p className="text-xl font-medium text-neutral-300">
-                {solution.approach}
-              </p>
-            </div>
+            )}
+            
+            <p className="text-xl font-medium text-neutral-300 max-w-3xl">
+              {solution.approach}
+            </p>
+          </div>
 
+          <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-20">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {solution.decisions.map((d, i) => (
                 <div key={i} className="p-8 rounded-[32px] bg-white/[0.02] border border-white/5 space-y-4">

@@ -17,14 +17,26 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         whileHover={{ y: -8 }}
         className="group p-6 rounded-[32px] bg-white/[0.02] border border-white/5 hover:border-emerald-500/30 transition-all duration-500"
       >
-        <div className="aspect-[16/9] relative rounded-2xl overflow-hidden mb-8">
-          <Image 
-            src={project.thumbnail}
-            alt={project.name}
-            fill
-            className="object-cover transition-transform duration-700 group-hover:scale-110"
-            referrerPolicy="no-referrer"
-          />
+        <div className="aspect-[16/9] relative rounded-2xl overflow-hidden mb-8 bg-white/[0.02] border border-white/5">
+          {project.thumbnail.includes('picsum.photos') ? (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="absolute inset-0 bg-[radial-gradient(#34d39905_1px,transparent_1px)] [background-size:20px_20px]" />
+              <div className="text-center space-y-2">
+                <div className="w-8 h-8 rounded-full border border-emerald-500/20 flex items-center justify-center mx-auto">
+                  <div className="w-3 h-3 rounded-full bg-emerald-500/20" />
+                </div>
+                <p className="text-[8px] font-black text-emerald-500/30 uppercase tracking-[0.3em]">Technical System</p>
+              </div>
+            </div>
+          ) : (
+            <Image 
+              src={project.thumbnail}
+              alt={project.name}
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-110"
+              referrerPolicy="no-referrer"
+            />
+          )}
           <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
             <div className="w-12 h-12 rounded-full bg-emerald-500 flex items-center justify-center text-black scale-0 group-hover:scale-100 transition-transform duration-500 delay-100">
               <ArrowUpRight className="w-6 h-6" />
