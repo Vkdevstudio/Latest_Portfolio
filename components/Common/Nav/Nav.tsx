@@ -1,18 +1,26 @@
 'use client';
 
-import { motion, useScroll } from 'framer-motion';
+import {  useScroll } from 'framer-motion';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
 export default function Navigation() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
 const router=useRouter()
+const [open, setOpen] = useState(false);
 
-const Nav=()=>{
-  router.push("/resume")
-}
+
+const handleView = () => {
+  router.push('/resume');
+  setOpen(false);
+};
+
+const handleDownload = () => {
+  window.open('/Vinod_Kumar_Full_Stack.pdf', '_blank');
+  setOpen(false);
+};
   useEffect(() => {
     return scrollY.on('change', (latest) => {
       setIsScrolled(latest > 50);
@@ -45,9 +53,34 @@ const Nav=()=>{
               </Link>
             ))}
           </div>
-          <button onClick={Nav} className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-bold transition-all">
-            View Experience
-          </button>
+          <div className="relative">
+  <button
+    onClick={() => setOpen(!open)}
+    className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-bold transition-all"
+  >
+    View Experience
+  </button>
+
+  {open && (
+    <div className="absolute right-0 mt-2 w-44 bg-black/80 backdrop-blur-xl border border-white/10 rounded-lg shadow-lg overflow-hidden">
+      
+      <button
+        onClick={handleView}
+        className="w-full text-left px-4 py-2 text-sm text-neutral-300 hover:bg-white/10 transition"
+      >
+        View Page
+      </button>
+
+      <button
+        onClick={handleDownload}
+        className="w-full text-left px-4 py-2 text-sm text-neutral-300 hover:bg-white/10 transition"
+      >
+        Download PDF
+      </button>
+
+    </div>
+  )}
+</div>
         </div>
       </div>
       {!isScrolled && <div className="h-[1px] w-full bg-gradient-to-r from-emerald-500/50 via-transparent to-transparent mt-4" />}
