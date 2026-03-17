@@ -9,36 +9,36 @@ const competencies = [
     desc: 'Optimized queries: 4h → 15min (95%)',
     proven: 'Hospital, Predict-X',
     icon: Database,
-    borderStyle: 'border-l-4 border-b border-neutral-400/40',
-    accentColor: 'text-neutral-300',
-    hoverBg: 'hover:bg-neutral-900/40'
+    borderStyle: 'border-l-4 border-b border-neutral-400/50',
+    accentColor: 'text-neutral-200',
+    hoverBg: 'hover:bg-neutral-900/50'
   },
   {
     title: 'REAL-TIME SYSTEMS',
     desc: 'Built WebSocket system. Zero data loss guarantee.',
     proven: 'Hospital, Predict-X',
     icon: Network,
-    borderStyle: 'border-t-4 border-r border-neutral-400/30',
-    accentColor: 'text-neutral-300',
-    hoverBg: 'hover:bg-neutral-900/40'
+    borderStyle: 'border-t-4 border-r border-neutral-400/45',
+    accentColor: 'text-neutral-200',
+    hoverBg: 'hover:bg-neutral-900/50'
   },
   {
     title: 'FULL-STACK PRODUCT',
     desc: '5 complete products. Schema to UI. 3-month cycles.',
     proven: 'PlusUAE, Hospital, Predict-X',
     icon: Box,
-    borderStyle: 'border-2 border-neutral-400/20 rounded-none',
-    accentColor: 'text-neutral-300',
-    hoverBg: 'hover:bg-neutral-900/40'
+    borderStyle: 'border-2 border-neutral-400/35 rounded-none',
+    accentColor: 'text-neutral-200',
+    hoverBg: 'hover:bg-neutral-900/50'
   },
   {
     title: 'TEAM LEADERSHIP',
     desc: 'Mentored 3 juniors. 2 now shipping independently.',
     proven: 'Code reviews, knowledge transfer',
     icon: Users,
-    borderStyle: 'border-r-4 border-t border-neutral-400/35',
-    accentColor: 'text-neutral-300',
-    hoverBg: 'hover:bg-neutral-900/40'
+    borderStyle: 'border-r-4 border-t border-neutral-400/45',
+    accentColor: 'text-neutral-200',
+    hoverBg: 'hover:bg-neutral-900/50'
   }
 ];
 
@@ -84,11 +84,11 @@ function CompetencyCard({ c, i }: { c: typeof competencies[0], i: number }) {
         className={`relative p-8 rounded-lg ${c.borderStyle} border transition-all duration-300 ${c.hoverBg}
           bg-neutral-950/50 backdrop-blur-sm flex flex-col justify-between min-h-[300px] overflow-hidden`}
       >
-        {/* Subtle top gradient line on hover */}
+        {/* Animated top accent line on hover */}
         <motion.div
-          className="absolute top-0 left-0 h-px bg-neutral-300"
+          className="absolute top-0 left-0 h-0.5 bg-neutral-200"
           initial={{ width: "0%" }}
-          whileHover={{ width: "40%" }}
+          whileHover={{ width: "50%" }}
           transition={{ duration: 0.3 }}
         />
 
@@ -99,7 +99,7 @@ function CompetencyCard({ c, i }: { c: typeof competencies[0], i: number }) {
                 {c.title}
               </h3>
               <motion.div
-                className="w-8 h-px bg-neutral-400/50"
+                className="w-8 h-px bg-neutral-400/60"
                 initial={{ width: 0 }}
                 whileInView={{ width: 32 }}
                 transition={{ delay: i * 0.12 + 0.2, duration: 0.4 }}
@@ -107,9 +107,9 @@ function CompetencyCard({ c, i }: { c: typeof competencies[0], i: number }) {
               />
             </div>
             <motion.div
-              whileHover={{ scale: 1.15, rotate: 10 }}
+              whileHover={{ scale: 1.2, rotate: 10 }}
               transition={{ type: "spring", stiffness: 400 }}
-              className="text-neutral-400 group-hover:text-neutral-200"
+              className="text-neutral-400 group-hover:text-neutral-200 transition-colors"
             >
               <c.icon className="w-8 h-8" />
             </motion.div>
@@ -132,7 +132,7 @@ function CompetencyCard({ c, i }: { c: typeof competencies[0], i: number }) {
           whileInView={{ opacity: 1 }}
           transition={{ delay: i * 0.12 + 0.25 }}
           viewport={{ once: true }}
-          className="mt-8 pt-6 border-t border-neutral-700"
+          className="mt-8 pt-6 border-t border-neutral-700/50"
         >
           <span className="text-[11px] font-bold tracking-widest text-neutral-500 uppercase block mb-2">
             Proven At
@@ -158,7 +158,7 @@ export default function Competencies() {
           What I Solve For
         </h2>
         <motion.div
-          className="w-12 h-px bg-neutral-400/30"
+          className="w-12 h-px bg-neutral-400/40"
           initial={{ width: 0 }}
           whileInView={{ width: 48 }}
           transition={{ delay: 0.2, duration: 0.5 }}

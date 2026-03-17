@@ -53,7 +53,7 @@ interface Experience {
   year: string;
   company: string;
   role: string;
-  icon:React.ElementType;
+  icon: React.ElementType;
   desc: string;
   achievements: string[];
   skills: string;
@@ -65,18 +65,17 @@ function ExperienceCard({ exp, i, isExpanded, onToggle }: {
   isExpanded: boolean,
   onToggle: () => void
 }) {
-  const colors = ['neutral', 'neutral', 'neutral'];
   const accentBorders = [
-    'border-l-4 border-neutral-400/40',
-    'border-r-4 border-neutral-400/35',
-    'border-l-2 border-r-2 border-neutral-400/30'
+    'border-l-4 border-neutral-400/45',
+    'border-r-4 border-neutral-400/40',
+    'border-l-2 border-r-2 border-neutral-400/35'
   ];
 
   return (
     <div className="relative">
       {/* Timeline connecting line */}
       <motion.div
-        className="absolute -left-6 top-14 w-5 h-px bg-neutral-700/50"
+        className="absolute -left-6 top-14 w-5 h-px bg-neutral-700/60"
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}
         transition={{ delay: i * 0.2 + 0.2, duration: 0.4 }}
@@ -101,7 +100,7 @@ function ExperienceCard({ exp, i, isExpanded, onToggle }: {
             <div className="flex items-center gap-2 mb-3">
               <motion.div
                 whileHover={{ scale: 1.2 }}
-                className="w-4 h-4 rounded border border-neutral-400/50"
+                className="w-4 h-4 rounded border border-neutral-400/60"
               >
                 <exp.icon className="w-4 h-4 text-neutral-300" />
               </motion.div>
@@ -113,7 +112,7 @@ function ExperienceCard({ exp, i, isExpanded, onToggle }: {
               {exp.company}
             </h3>
             <motion.div
-              className="mt-3 h-px bg-neutral-600/50"
+              className="mt-3 h-px bg-neutral-600/60"
               animate={{ width: isExpanded ? "100%" : "32px" }}
               transition={{ type: "spring", stiffness: 300 }}
             />
@@ -125,8 +124,8 @@ function ExperienceCard({ exp, i, isExpanded, onToggle }: {
           <motion.div
             className={`w-full p-8 rounded-lg transition-all duration-300 border backdrop-blur-sm
               ${isExpanded 
-                ? 'border-neutral-400/40 bg-neutral-900/60' 
-                : `${accentBorders[i]} border-neutral-700/50 bg-neutral-950/40 group-hover:bg-neutral-950/60`
+                ? 'border-neutral-400/50 bg-neutral-900/60' 
+                : `${accentBorders[i]} border-neutral-700/60 bg-neutral-950/50 group-hover:bg-neutral-950/70`
             }`}
           >
             <div className="flex items-start justify-between gap-4">
@@ -136,14 +135,14 @@ function ExperienceCard({ exp, i, isExpanded, onToggle }: {
                   className="inline-block mb-3"
                 >
                   <h4 className={`text-lg font-bold uppercase tracking-tight transition-colors
-                    ${isExpanded ? 'text-neutral-200' : 'text-white group-hover:text-neutral-100'}`}>
+                    ${isExpanded ? 'text-neutral-100' : 'text-white group-hover:text-neutral-100'}`}>
                     {exp.role}
                   </h4>
                 </motion.div>
 
                 <motion.p
                   animate={{ 
-                    color: isExpanded ? 'rgb(212, 212, 212)' : 'rgb(161, 161, 170)',
+                    color: isExpanded ? 'rgb(217, 217, 217)' : 'rgb(161, 161, 170)',
                     marginTop: isExpanded ? '8px' : '0px'
                   }}
                   className="text-sm leading-relaxed transition-colors"
@@ -178,7 +177,7 @@ function ExperienceCard({ exp, i, isExpanded, onToggle }: {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.2 }}
-              className={`p-8 rounded-lg border border-neutral-700/50 bg-neutral-950/40 backdrop-blur-sm ${accentBorders[i]}`}
+              className={`p-8 rounded-lg border border-neutral-700/60 bg-neutral-950/50 backdrop-blur-sm ${accentBorders[i]}`}
             >
               {/* Achievements */}
               <div className="mb-8">
@@ -215,7 +214,7 @@ function ExperienceCard({ exp, i, isExpanded, onToggle }: {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35 }}
-                className="pt-6 border-t border-neutral-700/50"
+                className="pt-6 border-t border-neutral-700/60"
               >
                 <p className="text-xs font-bold tracking-[0.15em] text-neutral-400 uppercase mb-4">
                   Tech Stack
@@ -228,7 +227,7 @@ function ExperienceCard({ exp, i, isExpanded, onToggle }: {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.4 + j * 0.02 }}
                       whileHover={{ scale: 1.05 }}
-                      className="px-3 py-1 rounded text-xs font-semibold bg-neutral-900/60 border border-neutral-700/50 text-neutral-300 hover:bg-neutral-900/80 hover:border-neutral-600/50 transition-all"
+                      className="px-3 py-1 rounded text-xs font-semibold bg-neutral-900/70 border border-neutral-700/60 text-neutral-300 hover:bg-neutral-900/90 hover:border-neutral-600/70 transition-all"
                     >
                       {skill}
                     </motion.span>
@@ -259,7 +258,7 @@ export default function Experience() {
           Career Path
         </h2>
         <motion.div
-          className="w-12 h-px bg-neutral-400/30"
+          className="w-12 h-px bg-neutral-400/40"
           initial={{ width: 0 }}
           whileInView={{ width: 48 }}
           transition={{ delay: 0.2, duration: 0.5 }}
@@ -271,7 +270,7 @@ export default function Experience() {
       <div className="relative">
         {/* Timeline line */}
         <motion.div
-          className="absolute left-0 top-16 bottom-0 w-px bg-gradient-to-b from-neutral-400/40 via-neutral-400/20 to-transparent"
+          className="absolute left-0 top-16 bottom-0 w-px bg-gradient-to-b from-neutral-400/50 via-neutral-400/30 to-transparent"
           initial={{ height: 0 }}
           whileInView={{ height: "100%" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
