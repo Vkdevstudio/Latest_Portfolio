@@ -98,7 +98,7 @@ export default function About() {
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
           <div className="absolute bottom-8 left-8">
             <p className="text-xs font-bold tracking-widest text-cyan-400 uppercase mb-1">Based in</p>
-            <p className="text-xl font-black">Bangalore, India</p>
+            <p className="text-xl font-black">Chennai, India</p>
           </div>
         </motion.div>
 
