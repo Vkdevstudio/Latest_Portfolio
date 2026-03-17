@@ -9,40 +9,36 @@ const competencies = [
     desc: 'Optimized queries: 4h → 15min (95%)',
     proven: 'Hospital, Predict-X',
     icon: Database,
-    border: 'border-dashed border-emerald-400',
-    bg: 'bg-emerald-500/5',
-    accent: 'text-emerald-400',
-    glow: 'group-hover:shadow-[0_0_50px_-12px_rgba(52,211,153,0.5)]'
+    borderStyle: 'border-l-4 border-b border-neutral-400/40',
+    accentColor: 'text-neutral-300',
+    hoverBg: 'hover:bg-neutral-900/40'
   },
   {
     title: 'REAL-TIME SYSTEMS',
     desc: 'Built WebSocket system. Zero data loss guarantee.',
     proven: 'Hospital, Predict-X',
     icon: Network,
-    border: 'border-solid border-cyan-400',
-    bg: 'bg-cyan-500/5',
-    accent: 'text-cyan-400',
-    glow: 'group-hover:shadow-[0_0_50px_-12px_rgba(34,211,238,0.5)]'
+    borderStyle: 'border-t-4 border-r border-neutral-400/30',
+    accentColor: 'text-neutral-300',
+    hoverBg: 'hover:bg-neutral-900/40'
   },
   {
     title: 'FULL-STACK PRODUCT',
     desc: '5 complete products. Schema to UI. 3-month cycles.',
     proven: 'PlusUAE, Hospital, Predict-X',
     icon: Box,
-    border: 'border-white/10',
-    bg: 'bg-purple-500/5',
-    accent: 'text-white',
-    glow: 'group-hover:shadow-[0_0_50px_-12px_rgba(168,85,247,0.5)]'
+    borderStyle: 'border-2 border-neutral-400/20 rounded-none',
+    accentColor: 'text-neutral-300',
+    hoverBg: 'hover:bg-neutral-900/40'
   },
   {
     title: 'TEAM LEADERSHIP',
     desc: 'Mentored 3 juniors. 2 now shipping independently.',
     proven: 'Code reviews, knowledge transfer',
     icon: Users,
-    border: 'border-[4px] border-pink-500/30',
-    bg: 'bg-pink-500/5',
-    accent: 'text-pink-400',
-    glow: 'group-hover:shadow-[0_0_50px_-12px_rgba(236,72,153,0.5)]'
+    borderStyle: 'border-r-4 border-t border-neutral-400/35',
+    accentColor: 'text-neutral-300',
+    hoverBg: 'hover:bg-neutral-900/40'
   }
 ];
 
@@ -50,11 +46,11 @@ function CompetencyCard({ c, i }: { c: typeof competencies[0], i: number }) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const mouseXSpring = useSpring(x);
-  const mouseYSpring = useSpring(y);
+  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
+  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["6deg", "-6deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-6deg", "6deg"]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -77,25 +73,72 @@ function CompetencyCard({ c, i }: { c: typeof competencies[0], i: number }) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: i * 0.1 }}
-      viewport={{ once: true }}
+      transition={{ delay: i * 0.12, duration: 0.5, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-100px" }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className={`group relative p-10 rounded-2xl ${c.bg} ${c.border} border transition-all duration-500 ${c.glow} flex flex-col justify-between min-h-[320px]`}
+      className="group"
     >
-      <div style={{ transform: "translateZ(50px)" }}>
-        <div className="flex justify-between items-start">
-          <h3 className={`text-xl font-black tracking-tighter ${c.accent}`}>{c.title}</h3>
-          <c.icon className={`w-8 h-8 ${c.accent} group-hover:scale-110 transition-transform`} />
+      <div
+        className={`relative p-8 rounded-lg ${c.borderStyle} border transition-all duration-300 ${c.hoverBg}
+          bg-neutral-950/50 backdrop-blur-sm flex flex-col justify-between min-h-[300px] overflow-hidden`}
+      >
+        {/* Subtle top gradient line on hover */}
+        <motion.div
+          className="absolute top-0 left-0 h-px bg-neutral-300"
+          initial={{ width: "0%" }}
+          whileHover={{ width: "40%" }}
+          transition={{ duration: 0.3 }}
+        />
+
+        <div style={{ transform: "translateZ(40px)" }}>
+          <div className="flex justify-between items-start mb-4">
+            <div>
+              <h3 className={`text-lg font-bold tracking-tight mb-2 ${c.accentColor}`}>
+                {c.title}
+              </h3>
+              <motion.div
+                className="w-8 h-px bg-neutral-400/50"
+                initial={{ width: 0 }}
+                whileInView={{ width: 32 }}
+                transition={{ delay: i * 0.12 + 0.2, duration: 0.4 }}
+                viewport={{ once: true }}
+              />
+            </div>
+            <motion.div
+              whileHover={{ scale: 1.15, rotate: 10 }}
+              transition={{ type: "spring", stiffness: 400 }}
+              className="text-neutral-400 group-hover:text-neutral-200"
+            >
+              <c.icon className="w-8 h-8" />
+            </motion.div>
+          </div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: i * 0.12 + 0.1 }}
+            viewport={{ once: true }}
+            className="text-xl font-light leading-snug text-white mt-6"
+          >
+            {c.desc}
+          </motion.p>
         </div>
-        <div className="w-12 h-[2px] bg-white/10 my-6" />
-        <p className="text-2xl font-light leading-tight">{c.desc}</p>
-      </div>
-      
-      <div style={{ transform: "translateZ(30px)" }} className="mt-8">
-        <span className="text-[10px] font-bold tracking-widest text-neutral-500 uppercase block mb-2">Proven:</span>
-        <p className="text-sm text-neutral-400">{c.proven}</p>
+
+        <motion.div
+          style={{ transform: "translateZ(25px)" }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: i * 0.12 + 0.25 }}
+          viewport={{ once: true }}
+          className="mt-8 pt-6 border-t border-neutral-700"
+        >
+          <span className="text-[11px] font-bold tracking-widest text-neutral-500 uppercase block mb-2">
+            Proven At
+          </span>
+          <p className="text-sm text-neutral-400">{c.proven}</p>
+        </motion.div>
       </div>
     </motion.div>
   );
@@ -104,8 +147,25 @@ function CompetencyCard({ c, i }: { c: typeof competencies[0], i: number }) {
 export default function Competencies() {
   return (
     <section className="max-w-7xl mx-auto px-6 py-32">
-      <h2 className="text-sm font-black tracking-[0.3em] text-neutral-500 uppercase mb-16 text-center">What I Solve For</h2>
-      
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+        className="mb-16"
+      >
+        <h2 className="text-sm font-black tracking-[0.3em] text-neutral-500 uppercase mb-4">
+          What I Solve For
+        </h2>
+        <motion.div
+          className="w-12 h-px bg-neutral-400/30"
+          initial={{ width: 0 }}
+          whileInView={{ width: 48 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          viewport={{ once: true }}
+        />
+      </motion.div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 [perspective:1000px]">
         {competencies.map((c, i) => (
           <CompetencyCard key={i} c={c} i={i} />
