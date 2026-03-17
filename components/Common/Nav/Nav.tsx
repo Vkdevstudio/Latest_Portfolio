@@ -58,7 +58,7 @@ const handleDownload = () => {
     onClick={() => setOpen(!open)}
     className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-bold transition-all"
   >
-    View Experience
+View Resume
   </button>
 
   {open && (
@@ -66,14 +66,14 @@ const handleDownload = () => {
       
       <button
         onClick={handleView}
-        className="w-full text-left px-4 py-2 text-sm text-neutral-300 hover:bg-white/10 transition"
+        className="w-full cursor-pointer text-left px-4 py-2 text-sm text-neutral-300 hover:bg-white/10 transition"
       >
         View Page
       </button>
 
       <button
         onClick={handleDownload}
-        className="w-full text-left px-4 py-2 text-sm text-neutral-300 hover:bg-white/10 transition"
+        className="w-full text-left cursor-pointer px-4 py-2 text-sm text-neutral-300 hover:bg-white/10 transition"
       >
         Download PDF
       </button>
