@@ -53,7 +53,7 @@ interface Experience {
   year: string;
   company: string;
   role: string;
-  icon: React.ReactNode;
+  icon:React.ElementType;
   desc: string;
   achievements: string[];
   skills: string;
