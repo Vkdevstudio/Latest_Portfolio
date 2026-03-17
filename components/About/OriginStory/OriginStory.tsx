@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 import { Code2, Database, Rocket, Users, Zap } from 'lucide-react';
 
 const stories = [
@@ -42,73 +43,94 @@ const stories = [
 ];
 
 export default function OriginStory() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"]
+  });
+
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
   return (
-    <section className="max-w-7xl mx-auto px-6 py-48 relative">
+    <section ref={containerRef} className="max-w-7xl mx-auto px-6 py-48 relative overflow-hidden">
       {/* Section Header */}
-      <div className="flex flex-col items-start mb-32">
+      <div className="flex flex-col items-center text-center mb-40">
         <div className="flex items-center gap-4 mb-6">
+          <div className="h-[1px] w-12 bg-emerald-500/30" />
           <span className="text-[10px] font-black tracking-[0.4em] text-emerald-500 uppercase">01 // Evolution</span>
-          <div className="h-[1px] w-24 bg-emerald-500/30" />
+          <div className="h-[1px] w-12 bg-emerald-500/30" />
         </div>
-        <h2 className="text-5xl md:text-7xl font-black tracking-tighter max-w-3xl leading-none">
+        <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-none">
           A NARRATIVE OF <br />
-          <span className="text-neutral-500">CONSTANT GROWTH.</span>
+          <span className="text-neutral-500 italic font-serif">CONSTANT GROWTH.</span>
         </h2>
       </div>
 
-      <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-20">
-        {/* Left Side: Summary */}
-        <div className="sticky top-48 h-fit space-y-8 hidden lg:block">
-          <p className="text-xl text-neutral-400 font-serif italic leading-relaxed">
-            My journey hasn&apos;t been linear. It&apos;s been a series of deliberate shifts from &quot;how do I make this work?&quot; to &quot;how do I make this scale?&quot;
-          </p>
-          <div className="p-8 border border-white/5 bg-white/[0.02] rounded-2xl">
-            <h4 className="text-xs font-black text-emerald-400 uppercase tracking-widest mb-4">Core Realization</h4>
-            <p className="text-sm text-neutral-500 leading-relaxed">
-              Engineering is not about writing code. It&apos;s about managing complexity and making informed tradeoffs under constraints.
-            </p>
-          </div>
-        </div>
+      <div className="relative max-w-5xl mx-auto">
+        {/* Timeline Line Background */}
+        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-white/5 md:-translate-x-1/2" />
+        
+        {/* Animated Growing Line */}
+        <motion.div 
+          style={{ height: lineHeight }}
+          className="absolute left-4 md:left-1/2 top-0 w-[2px] bg-gradient-to-b from-emerald-500 via-cyan-500 to-emerald-500 md:-translate-x-1/2 z-10 origin-top"
+        />
 
-        {/* Right Side: Timeline */}
-        <div className="relative space-y-32">
-          {/* Vertical Line */}
-          <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-gradient-to-b from-emerald-500/50 via-cyan-500/50 to-transparent" />
-
+        <div className="space-y-40">
           {stories.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: i * 0.1 }}
-              className="relative pl-12 md:pl-20 group"
-            >
-              {/* Dot */}
-              <div className="absolute left-[-4px] top-0 w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.5)] group-hover:scale-150 transition-transform" />
-              
-              <div className="space-y-4">
-                <div className="flex items-center gap-4">
-                  <span className="font-mono text-xs font-bold text-emerald-400 tracking-widest">{item.year}</span>
-                  <div className="h-[1px] w-8 bg-white/10" />
-                  <span className="text-[10px] font-black text-neutral-600 uppercase tracking-widest">{item.realization}</span>
+            <div key={i} className="relative grid grid-cols-[40px_1fr] md:grid-cols-[1fr_100px_1fr] gap-8 md:gap-0 items-start">
+              {/* Year - Left (Desktop) */}
+              <div className="hidden md:flex flex-col items-end justify-center pr-12 pt-2">
+                <span className="text-xs font-black tracking-[0.3em] text-neutral-500 uppercase">{item.year}</span>
+              </div>
+
+              {/* Dot - Middle */}
+              <div className="relative flex justify-center pt-2 z-20">
+                <motion.div 
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  className="w-10 h-10 rounded-full bg-black border border-white/10 flex items-center justify-center group cursor-pointer"
+                >
+                  <div className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.8)] animate-pulse" />
+                  
+                  {/* Hover Glow */}
+                  <div className="absolute inset-0 rounded-full bg-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity blur-md" />
+                </motion.div>
+                
+                {/* Mobile Year Label */}
+                <div className="md:hidden absolute left-12 top-2 whitespace-nowrap">
+                  <span className="text-[10px] font-black tracking-widest text-neutral-500 uppercase">{item.year}</span>
                 </div>
-                
-                <h3 className="text-3xl md:text-4xl font-black tracking-tighter group-hover:text-emerald-400 transition-colors">
-                  {item.title}
-                </h3>
-                
-                <p className="text-lg text-neutral-400 leading-relaxed max-w-xl">
+              </div>
+
+              {/* Content - Right */}
+              <motion.div 
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="md:pl-12 space-y-6"
+              >
+                <div className="space-y-2">
+                  <span className="text-xs font-black tracking-widest text-emerald-400 uppercase">{item.realization}</span>
+                  <h3 className="text-3xl md:text-4xl font-black tracking-tighter leading-tight">
+                    {item.title}
+                  </h3>
+                </div>
+
+                <p className="text-neutral-400 leading-relaxed text-lg font-medium max-w-lg">
                   {item.story}
                 </p>
 
-                <div className="flex items-center gap-3 pt-4">
-                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-neutral-500 group-hover:text-emerald-400 group-hover:bg-emerald-400/10 transition-all">
+                <div className="flex items-center gap-4 pt-4">
+                  <div className="w-12 h-12 rounded-2xl bg-white/[0.03] border border-white/5 flex items-center justify-center text-neutral-500">
                     {item.icon}
                   </div>
+                  <div className="h-[1px] flex-grow bg-white/5" />
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           ))}
         </div>
       </div>

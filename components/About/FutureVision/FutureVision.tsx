@@ -1,140 +1,161 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Target, TrendingUp, Heart, Briefcase } from 'lucide-react';
+import { ArrowUpRight, Target, TrendingUp, Zap } from 'lucide-react';
+
+const horizons = [
+  {
+    title: 'HORIZON 1',
+    period: 'Next 1-2 Years',
+    role: 'Tech Lead / Senior Architect',
+    focus: 'Distributed systems & Architecture',
+    learning: 'Advanced system design, team leadership',
+    icon: <TrendingUp className="w-5 h-5" />
+  },
+  {
+    title: 'HORIZON 2',
+    period: 'Next 3-5 Years',
+    role: 'Engineering Manager / Principal',
+    focus: 'Building high-performance teams',
+    learning: 'Strategic leadership, product vision',
+    icon: <Target className="w-5 h-5" />
+  }
+];
+
+const metrics = [
+  {
+    label: 'Scale systems 1000x',
+    current: '100k events/day',
+    goal: '100M+ events/day',
+    progress: 70,
+    icon: <Zap className="w-4 h-4" />
+  },
+  {
+    label: 'Mentor 10+ engineers',
+    current: '3 mentees',
+    goal: '10+ engineers',
+    progress: 40,
+    icon: <ArrowUpRight className="w-4 h-4" />
+  },
+  {
+    label: 'Contribute to Open Source',
+    current: 'Following projects',
+    goal: 'Major contributions',
+    progress: 20,
+    icon: <Target className="w-4 h-4" />
+  }
+];
 
 export default function FutureVision() {
   return (
-    <section className="py-48 relative overflow-hidden">
+    <section className="max-w-7xl mx-auto px-6 py-48 relative overflow-hidden">
       {/* Background Atmosphere */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-500/5 blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-emerald-500/5 blur-[150px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="flex flex-col items-center text-center mb-40">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="h-[1px] w-12 bg-cyan-500/30" />
-            <span className="text-[10px] font-black tracking-[0.4em] text-cyan-500 uppercase">06 // Vision</span>
-            <div className="h-[1px] w-12 bg-cyan-500/30" />
+      <div className="flex flex-col items-end text-right mb-32">
+        <div className="flex items-center gap-4 mb-6">
+          <div className="h-[1px] w-24 bg-cyan-500/30" />
+          <span className="text-[10px] font-black tracking-[0.4em] text-cyan-500 uppercase">06 // Vision</span>
+        </div>
+        <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-none">
+          WHERE I&apos;M <br />
+          <span className="text-neutral-500 italic font-serif">HEADING.</span>
+        </h2>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-20 items-start">
+        {/* Left: Horizons */}
+        <div className="space-y-12">
+          {horizons.map((h, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: i * 0.1 }}
+              className="p-10 rounded-[32px] bg-white/[0.02] border border-white/5 relative group hover:border-cyan-500/30 transition-all"
+            >
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                  {h.icon}
+                </div>
+                <div>
+                  <h3 className="text-xs font-black tracking-[0.2em] text-cyan-400 uppercase">{h.title}</h3>
+                  <p className="text-neutral-500 text-[10px] font-bold uppercase tracking-widest">{h.period}</p>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <h4 className="text-3xl font-black tracking-tight">{h.role}</h4>
+                <div className="grid grid-cols-2 gap-8 pt-6 border-t border-white/5">
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-black text-neutral-600 uppercase tracking-widest">Focus</span>
+                    <p className="text-sm text-neutral-300 font-medium">{h.focus}</p>
+                  </div>
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-black text-neutral-600 uppercase tracking-widest">Learning</span>
+                    <p className="text-sm text-neutral-300 font-medium">{h.learning}</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+
+          <div className="p-10 rounded-[32px] bg-emerald-500/5 border border-emerald-500/20">
+            <h4 className="text-xs font-black text-emerald-400 uppercase tracking-widest mb-6">Ideal Environment</h4>
+            <ul className="grid grid-cols-2 gap-4">
+              {['Fast-growing startups', 'Hard technical problems', 'Code quality matters', 'Growth to leadership'].map((item, i) => (
+                <li key={i} className="flex items-center gap-2 text-sm font-bold text-neutral-300">
+                  <span className="text-emerald-400">✓</span> {item}
+                </li>
+              ))}
+            </ul>
           </div>
-          <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-none">
-            WHERE I&apos;M <br />
-            <span className="text-neutral-500 italic font-serif">HEADING.</span>
-          </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-start">
-          <div className="space-y-16">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative p-12 rounded-[40px] bg-white/[0.02] border border-white/5 hover:border-emerald-500/20 transition-all duration-700 group"
-            >
-              <div className="flex items-center gap-6 mb-10">
-                <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-transform">
-                  <TrendingUp className="w-6 h-6" />
+        {/* Right: Impact Metrics */}
+        <div className="space-y-16 lg:pt-12">
+          <h3 className="text-xs font-black text-neutral-500 uppercase tracking-[0.3em] mb-8">Impact Metrics & Goals</h3>
+          
+          <div className="space-y-12">
+            {metrics.map((m, i) => (
+              <div key={i} className="space-y-6">
+                <div className="flex justify-between items-end">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-cyan-400">
+                      {m.icon}
+                    </div>
+                    <span className="text-xl font-black tracking-tight">{m.label}</span>
+                  </div>
+                  <span className="text-sm font-mono text-cyan-400">{m.progress}%</span>
                 </div>
-                <div className="space-y-1">
-                  <span className="text-[10px] font-black text-neutral-500 uppercase tracking-widest">Horizon 01</span>
-                  <h3 className="text-3xl font-black tracking-tight">NEXT 1-2 YEARS</h3>
-                </div>
-              </div>
-              <ul className="space-y-6">
-                {[
-                  'Tech Lead / Senior Engineer role',
-                  'Focus: System architecture, team scaling',
-                  'Learning: Distributed systems, mega-scale design'
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-4 text-neutral-400 font-medium text-lg">
-                    <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
 
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="relative p-12 rounded-[40px] bg-white/[0.02] border border-white/5 hover:border-cyan-500/20 transition-all duration-700 group"
-            >
-              <div className="flex items-center gap-6 mb-10">
-                <div className="w-14 h-14 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
-                  <Target className="w-6 h-6" />
-                </div>
-                <div className="space-y-1">
-                  <span className="text-[10px] font-black text-neutral-500 uppercase tracking-widest">Horizon 02</span>
-                  <h3 className="text-3xl font-black tracking-tight">NEXT 3-5 YEARS</h3>
+                <div className="space-y-3">
+                  <div className="h-3 w-full bg-white/5 rounded-full overflow-hidden">
+                    <motion.div 
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${m.progress}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1.5, ease: "easeOut" }}
+                      className="h-full bg-gradient-to-r from-cyan-500 to-emerald-500"
+                    />
+                  </div>
+                  <div className="flex justify-between text-[10px] font-black uppercase tracking-widest">
+                    <span className="text-neutral-600">Current: <span className="text-neutral-400">{m.current}</span></span>
+                    <span className="text-neutral-600">Goal: <span className="text-neutral-400">{m.goal}</span></span>
+                  </div>
                 </div>
               </div>
-              <ul className="space-y-6">
-                {[
-                  'Engineering Manager or Architect role',
-                  'Focus: Building high-performing teams, mentoring',
-                  'Learning: Leadership, organizational design'
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-4 text-neutral-400 font-medium text-lg">
-                    <span className="w-1.5 h-1.5 bg-cyan-500 rounded-full" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+            ))}
           </div>
 
-          <div className="space-y-24 pt-12">
-            <div className="space-y-12">
-              <h4 className="text-[10px] font-black text-neutral-500 uppercase tracking-[0.3em] flex items-center gap-4">
-                <Heart className="w-4 h-4 text-emerald-500" /> MY IDEAL IMPACT
-              </h4>
-              <div className="space-y-12">
-                {[
-                  { label: 'Scale systems 1000x', progress: 70 },
-                  { label: 'Mentor 10+ engineers', progress: 40 },
-                  { label: 'Contribute to Open Source', progress: 20 }
-                ].map((item, i) => (
-                  <div key={i} className="space-y-4">
-                    <div className="flex justify-between items-end">
-                      <span className="text-xl font-black tracking-tight">{item.label}</span>
-                      <span className="text-sm font-mono text-neutral-500">{item.progress}%</span>
-                    </div>
-                    <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${item.progress}%` }}
-                        transition={{ duration: 2, ease: [0.16, 1, 0.3, 1], delay: i * 0.2 }}
-                        className="h-full bg-gradient-to-r from-emerald-500 to-cyan-500"
-                      />
-                    </div>
-                  </div>
-                ))}
+          <div className="pt-12">
+            <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/5 flex items-center justify-between group cursor-pointer hover:bg-white/[0.04] transition-all">
+              <div className="space-y-1">
+                <h4 className="text-sm font-black text-white">Download Vision Roadmap</h4>
+                <p className="text-xs text-neutral-500">A detailed breakdown of my 5-year technical goals</p>
               </div>
-            </div>
-
-            <div className="space-y-12">
-              <h4 className="text-[10px] font-black text-neutral-500 uppercase tracking-[0.3em] flex items-center gap-4">
-                <Briefcase className="w-4 h-4 text-cyan-500" /> THE IDEAL ENVIRONMENT
-              </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {[
-                  'Fast-growing startups',
-                  'Hard technical problems',
-                  'Code quality matters',
-                  'Growth into leadership'
-                ].map((item, i) => (
-                  <motion.div 
-                    key={i} 
-                    whileHover={{ x: 10 }}
-                    className="flex items-center gap-4 p-6 rounded-2xl bg-white/[0.02] border border-white/5 text-sm font-bold tracking-tight"
-                  >
-                    <div className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
-                    {item}
-                  </motion.div>
-                ))}
-              </div>
+              <ArrowUpRight className="w-6 h-6 text-neutral-500 group-hover:text-cyan-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
             </div>
           </div>
         </div>
