@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, useScroll } from 'framer-motion';
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 export default function Navigation() {
@@ -29,14 +30,14 @@ export default function Navigation() {
         <div className="flex items-center gap-8">
           <div className="hidden md:flex items-center gap-6">
             {['Work', 'About', 'Contact'].map((item) => (
-              <a 
+              <Link
                 key={item} 
-                href={`#${item.toLowerCase()}`}
+                href={`/${item.toLowerCase()}`}
                 className="text-sm text-neutral-400 hover:text-white transition-colors relative group"
               >
                 {item}
                 <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-emerald-400 transition-all group-hover:w-full" />
-              </a>
+              </Link>
             ))}
           </div>
           <button className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-bold transition-all">
