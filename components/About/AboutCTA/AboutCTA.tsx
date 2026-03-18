@@ -49,7 +49,7 @@ export default function AboutCTA() {
 
             <div className="flex flex-col items-center gap-8 pt-12">
               <a 
-                href="mailto:hello@vinodkumar.dev"
+                href="mailto:vk5241415@gmail.com"
                 className="group relative px-12 py-6 bg-white text-black font-black uppercase tracking-widest rounded-full hover:bg-emerald-400 transition-all duration-300 flex items-center gap-3"
               >
                 <MessageSquare className="w-5 h-5" />
@@ -58,9 +58,9 @@ export default function AboutCTA() {
               </a>
 
               <div className="flex items-center gap-8">
-                <a href="https://linkedin.com/in/vinodkumar" className="text-neutral-500 hover:text-white transition-colors"><Linkedin className="w-6 h-6" /></a>
-                <a href="https://github.com/vinodkumar" className="text-neutral-500 hover:text-white transition-colors"><Github className="w-6 h-6" /></a>
-                <a href="mailto:hello@vinodkumar.dev" className="text-neutral-500 hover:text-white transition-colors"><Mail className="w-6 h-6" /></a>
+                <a href="https://linkedin.com/in/vinod-manimaran" className="text-neutral-500 hover:text-white transition-colors"><Linkedin className="w-6 h-6" /></a>
+                {/* <a href="https://github.com/vinodkumar" className="text-neutral-500 hover:text-white transition-colors"><Github className="w-6 h-6" /></a> */}
+                <a href="mailto:vk5241415@gmail.com" className="text-neutral-500 hover:text-white transition-colors"><Mail className="w-6 h-6" /></a>
               </div>
 
               <p className="text-[10px] font-black text-neutral-600 uppercase tracking-[0.3em]">

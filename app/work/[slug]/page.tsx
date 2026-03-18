@@ -77,11 +77,12 @@ export default function CaseStudyPage() {
         </div>
       </section>
 
-      <footer className="max-w-7xl mx-auto px-6 py-12 border-t border-white/5 text-center">
-        <p className="text-neutral-400 text-sm">
-          © {new Date().getFullYear()} Vinod Kumar | Portfolio | Built with Next.js
-        </p>
-      </footer>
+         
+     <footer className="max-w-7xl mx-auto px-6 py-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[10px] font-bold text-neutral-600 uppercase tracking-[0.3em] gap-2 md:gap-0">
+  <span>© 2026 Vinod Kumar // Crafting digital experiences</span>
+  <span>Shaping ideas into interactive journeys</span>
+
+</footer>
     </main>
   );
 }
