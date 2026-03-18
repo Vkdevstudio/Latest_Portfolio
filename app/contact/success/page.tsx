@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { CheckCircle2, ArrowRight, Shield } from 'lucide-react';
 import Navigation from '@/components/Common/Nav/Nav';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -20,6 +22,23 @@ const itemVariants = {
 };
 
 export default function SuccessPage() {
+   const router = useRouter();
+   const submitted = typeof window !== 'undefined' ? sessionStorage.getItem('contact_submitted') : null;
+
+  useEffect(() => {
+    if (!submitted) {
+      router.replace('/contact');
+      return;
+    }
+
+    sessionStorage.removeItem('contact_submitted');
+  }, [submitted, router]);
+
+  // Don't render if no submission flag
+  if (!submitted) {
+    return null;
+  }
+
   return (
     <main className="min-h-screen bg-black text-white selection:bg-emerald-500/30 font-sans flex flex-col">
       <Navigation />

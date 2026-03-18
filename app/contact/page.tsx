@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Mail, Linkedin, Github, Calendar, Clock, Shield, CheckCircle2, ArrowRight, Loader2 } from 'lucide-react';
@@ -29,6 +29,25 @@ export default function ContactPage() {
     message: ''
   });
 
+    const [isValid, setIsValid] = useState(false);
+
+
+
+
+// In success page (success-page-premium-v2.tsx)
+useEffect(() => {
+  const submitted = sessionStorage.getItem('contact_submitted');
+  
+  if (!submitted) {
+    router.replace('/contact');
+    return;
+  }
+  
+  // Clear after verification
+  sessionStorage.removeItem('contact_submitted');
+  setIsValid(true);
+}, [router]);
+
   const validateForm = () => {
     const errors: Record<string, string> = {};
     if (!formData.name.trim()) errors.name = 'Name is required';
@@ -40,6 +59,8 @@ export default function ContactPage() {
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
+
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,6 +75,7 @@ export default function ContactPage() {
       });
 
       if (response.ok) {
+      sessionStorage.setItem('contact_submitted', 'true');
         router.push('/contact/success');
       } else if (response.status === 429) {
         setFormErrors({ submit: 'You can only submit once per day. Please try again tomorrow.' });
