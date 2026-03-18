@@ -12,6 +12,8 @@ export interface Project {
   
   grid: {
     role: string;
+    company:string;
+    nda:boolean
     metrics: string;
     tags: string[];
   };
@@ -122,7 +124,9 @@ export const projects: Project[] = [
     impact: 8,
     
     grid: {
-      role: 'Full Stack Developer',
+      role: 'Full Stack Owner',
+         company: 'Personal Project', 
+  nda: false, 
       metrics: '10+ modules, Frontend live, Backend 50%',
       tags: ['Next.js', 'Kafka', 'Microservices', 'MongoDB', 'Node.js'],
     },
@@ -216,8 +220,7 @@ export const projects: Project[] = [
           'Implement observability from start',
         ],
         links: {
-          github: 'https://github.com/vinodkumar/clapos',
-          demo: 'https://clapos.vercel.app',
+          demo: 'https://clapstudio.vercel.app',
         },
       },
     },
@@ -236,13 +239,15 @@ export const projects: Project[] = [
   impact: 8,
   
   grid: {
-    role: 'Full Stack Developer',
+    role: 'Full Stack Owner',
+    company: 'Freelance', 
+  nda: false,  
     metrics: '5 languages, RTL, Conversion-optimized, CRM integrated',
     tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'i18n', 'RTL', 'Zoho CRM', 'Shadcn UI'],
   },
   
   caseStudy: {
-    timeline: 'Nov 2025 - Nov 2025 (1 month sprint)',
+    timeline: 'Nov 1-7, 2025',
     team: 'Solo',
     
     problem: {
@@ -371,7 +376,7 @@ export const projects: Project[] = [
         'Test RTL with real Arabic speakers early',
       ],
       links: {
-        demo: 'https://plusuae.vercel.app',
+        demo: 'https://www.plusuae.ae',
       },
     },
     
@@ -395,13 +400,15 @@ export const projects: Project[] = [
   impact: 7,
   
   grid: {
-    role: 'Full Stack Developer',
+    role: 'Full Stack Owner',
+    company: 'Freelance', 
+  nda: false,  
     metrics: '1.5 month sprint, Multi-tenant, 3 dashboards',
     tags: ['React.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 'MongoDB', 'Multi-tenant'],
   },
   
   caseStudy: {
-    timeline: 'Nov 2025 - Present (1.5 month MVP sprint)',
+    timeline: 'Nov 2025 - Feb 2025 (1.5 month MVP sprint)',
     team: 'Solo',
     
     problem: {
@@ -521,7 +528,7 @@ export const projects: Project[] = [
     },
     
     currentStatus: {
-      launched: 'Nov 2025',
+      launched: 'Feb 2025',
       uptime: 'MVP complete',
       activeUsers: 'Local testing + client validation',
     },
@@ -535,21 +542,28 @@ export const projects: Project[] = [
     description: 'Marketing automation for agents. Custom Canva marketplace. OAuth + Passport.js auth.',
     shortDescription: 'Marketing automation with Canva integration',
     thumbnail: '/projects/wyka/images/main.png',
-    status: 'live',
+    status: 'beta',
     year: '2025',
     complexity: 8,
     impact: 7,
     
     grid: {
-      role: 'Full Stack Developer',
+      role: 'Full Stack Owner',
+      company: 'Freelance', 
+  nda: false,  
       metrics: 'Custom marketplace, Real-time sync, OAuth cross-platform',
       tags: ['Next.js', 'OAuth', 'Passport.js', 'Real-time', 'Canva'],
     },
     
     caseStudy: {
-      timeline: 'Nov 2025 - Present',
+      timeline: 'Dec 2025 - Feb 2026',
       team: 'Solo',
       
+currentStatus: {
+      launched: 'Feb 2025',
+      uptime: 'MVP complete',
+      activeUsers: 'Local testing + client validation',
+    },
       problem: {
         context: 'Marketing agents manage client data in bulk. Need design tools integrated. Switching wastes time.',
         pain: 'Agents enter data in dashboard, switch to Canva, manually recreate. Time-consuming.',
@@ -635,8 +649,9 @@ export const projects: Project[] = [
           'Test cross-platform session edge cases',
         ],
         links: {
-          demo: 'https://wyka.vercel.app',
+          demo: '',
         },
+        
       },
     },
   },
@@ -652,9 +667,10 @@ export const projects: Project[] = [
   year: '2024',
   complexity: 9,
   impact: 9,
-  
   grid: {
     role: 'Full Stack Developer',
+  company: 'Tensys', 
+  nda: true,  
     metrics: '5 clients, 100+ users/day, Figma→Production, 73% faster',
     tags: ['Next.js', 'React Router', 'React PDF', 'Performance', 'Healthcare', 'SEO'],
   },
@@ -832,19 +848,20 @@ export const projects: Project[] = [
   shortDescription: 'Multi-specialty appointment & workflow management',
   thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop',
   status: 'live',
-  year: '2024',
+  year: '2025',
   complexity: 9,
   impact: 9,
-  
   grid: {
     role: 'Full Stack Developer',
+    company: 'Tensys', 
+  nda: true,  
     metrics: 'Multi-workflow, Transactions, Earnings, Real-time',
     tags: ['Next.js', 'Performance', 'Dashboards', 'Image Compression', 'Server-side Pagination'],
   },
   
   caseStudy: {
     timeline: 'Sep 2024 - Oct 2025',
-    team: '5-person team',
+    team: '5-person  team + digital marketing team',
     
     problem: {
       context: 'Healthcare platform managing multiple specialist workflows (doctors, labs, nurses, physios) in single appointment system.',
@@ -1007,15 +1024,16 @@ export const projects: Project[] = [
   impact: 7,
   
   grid: {
-    role: 'Full Stack Frontend Developer',
+    role: 'Full Stack  Developer',
+    company: 'Tensys', 
+  nda: true,  
     metrics: 'End-to-end pages, Mobile-first, Reusable components',
     tags: ['Next.js', 'React Router DOM', 'TypeScript', 'Tailwind CSS', 'React PDF', 'JWT Auth'],
   },
   
   caseStudy: {
     timeline: 'Sep 2024 - Oct 2025 (Pair programming)',
-    team: 'Backend team + Frontend ownership',
-    
+    team: '5-person team + digital marketing team',
     problem: {
       context: 'PG owners managing multiple properties. Tenants applying online. Manual processes everywhere.',
       pain: 'Manual onboarding. Invoice generation offline. Notice tracking scattered. No unified tenant management.',
@@ -1189,6 +1207,8 @@ export const projects: Project[] = [
   
   grid: {
     role: 'MERN Stack Developer',
+    company: 'Primates', 
+  nda: true,  
     metrics: '5+ websites, 5+ clients live, JWT + RBAC',
     tags: ['React.js', 'Node.js', 'MongoDB', 'JWT', 'Healthcare', 'AWS'],
   },
@@ -1337,6 +1357,8 @@ export const projects: Project[] = [
   
   grid: {
     role: 'MERN Stack Developer',
+    company: 'Primates', 
+  nda: true,  
     metrics: 'Landing page, Admin dashboard, Leads tracking, QR capture',
     tags: ['React.js', 'Node.js', 'MongoDB', 'QR codes', 'Monolith'],
   },

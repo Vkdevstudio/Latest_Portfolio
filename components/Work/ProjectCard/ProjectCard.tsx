@@ -54,6 +54,16 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 {project.year}
               </span>
             </div>
+            <div className="flex gap-2 pt-2">
+      <span className="px-3 py-1 bg-emerald-400/10 text-emerald-400 text-[10px] font-black rounded-full uppercase tracking-widest">
+        {project.grid.company || 'Freelance'}
+      </span>
+      {project.grid.nda && (
+        <span className="px-3 py-1 bg-orange-400/10 text-orange-400 text-[10px] font-black rounded-full uppercase tracking-widest">
+          NDA
+        </span>
+      )}
+    </div>
             <div className="h-[2px] w-12 bg-emerald-500/50 group-hover:w-full transition-all duration-700" />
             <p className="text-sm text-neutral-400 font-medium italic">
               {project.shortDescription}
