@@ -18,52 +18,58 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Email template for user submission confirmation
 const userConfirmationEmail = (name: string, interest: string) => ({
-  subject: 'We received your message - Vinod Kumar',
+  subject: `Got it! Vinod here.`,
   html: `
-    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-      <h2 style="color: #000; margin-bottom: 20px;">Hi ${name},</h2>
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px; background: #000; color: #fff;">
       
-      <p style="font-size: 16px; color: #333; line-height: 1.6;">
-        Thank you for reaching out! I received your message about <strong>${interest}</strong>.
+      <h1 style="font-size: 32px; margin: 0 0 20px 0; font-weight: 900; letter-spacing: -1px;">
+        Got it! ✓
+      </h1>
+      
+      <p style="font-size: 18px; color: #a3a3a3; margin: 0 0 30px 0; line-height: 1.6;">
+        Hi ${name},
       </p>
       
-      <p style="font-size: 16px; color: #333; line-height: 1.6;">
-        I'll review your submission carefully and get back to you within <strong>24 hours</strong> with specific ideas and next steps.
+      <p style="font-size: 16px; color: #d1d5db; line-height: 1.8; margin-bottom: 20px;">
+        Your message about <span style="color: #34d399; font-weight: 600;">${interest}</span> landed in my inbox.
       </p>
-      
-      <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin: 30px 0;">
-        <p style="margin: 0; color: #666; font-size: 14px;">
-          <strong>What happens next:</strong>
+
+      <p style="font-size: 16px; color: #d1d5db; line-height: 1.8; margin-bottom: 30px;">
+        I'm reading through submissions and will get back to you within <span style="color: #34d399; font-weight: 600;">24 hours</span> with concrete ideas and next steps.
+      </p>
+
+      <div style="background: #ffffff08; border-left: 4px solid #34d399; padding: 20px; margin: 40px 0; border-radius: 4px;">
+        <p style="margin: 0 0 15px 0; font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">
+          What's Happening
         </p>
-        <ol style="color: #666; font-size: 14px; margin-top: 10px;">
-          <li>I'll read your message carefully</li>
-          <li>Assess if we're a great fit</li>
-          <li>Respond with concrete ideas and timeline</li>
-        </ol>
+        <div style="color: #a3a3a3; font-size: 14px; line-height: 1.8;">
+          <p style="margin: 0 0 8px 0;">01 // Read your opportunity in detail</p>
+          <p style="margin: 0 0 8px 0;">02 // Assess if we're aligned</p>
+          <p style="margin: 0;">03 // Respond with specific ideas</p>
+        </div>
       </div>
-      
-      <p style="font-size: 16px; color: #333; line-height: 1.6;">
-        Meanwhile, feel free to check out my <a href="https://vinod-dev.vercel.app/work" style="color: #34d399; text-decoration: none;">work</a> or <a href="https://vinod-dev.vercel.app/about" style="color: #34d399; text-decoration: none;">story</a>.
+
+      <p style="font-size: 14px; color: #888; margin-bottom: 30px;">
+        Meanwhile, you can check out my <a href="https://vinod-dev.vercel.app/work" style="color: #34d399; text-decoration: none; font-weight: 600;">work</a> or read <a href="https://vinod-dev.vercel.app/about" style="color: #34d399; text-decoration: none; font-weight: 600;">my story</a>.
       </p>
-      
-      <p style="font-size: 16px; color: #333; line-height: 1.6;">
-        Best regards,<br/>
-        <strong>Vinod Kumar</strong><br/>
-        <a href="https://vinod-dev.vercel.app" style="color: #34d399; text-decoration: none;">vinod-dev.vercel.app</a>
+
+      <p style="font-size: 14px; color: #888; line-height: 1.8;">
+        Talk soon,<br/>
+        <span style="color: #fff; font-weight: 700;">Vinod</span><br/>
+        <a href="https://vinod-dev.vercel.app" style="color: #34d399; text-decoration: none; font-size: 12px;">vinod-dev.vercel.app</a>
       </p>
-      
-      <hr style="border: none; border-top: 1px solid #ddd; margin: 30px 0;" />
-      
-      <p style="font-size: 12px; color: #999; text-align: center;">
-        This is an automated response. Your submission has been recorded in our system.
+
+      <hr style="border: none; border-top: 1px solid #ffffff08; margin: 40px 0;" />
+
+      <p style="font-size: 12px; color: #666; margin: 0;">
+        🔒 Your privacy matters. I don't share data or spam.
       </p>
+
     </div>
   `,
 });
 
-// Email template for portfolio owner
 const ownerNotificationEmail = (
   name: string,
   email: string,
@@ -71,34 +77,48 @@ const ownerNotificationEmail = (
   interest: string,
   message: string
 ) => ({
-  subject: `New Contact: ${interest} from ${name}`,
+  subject: `${name} — ${interest}`,
   html: `
-    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-      <h2 style="color: #000; margin-bottom: 20px;">New Contact Submission</h2>
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px; background: #000; color: #fff;">
       
-      <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-        <p style="margin: 0 0 10px 0;"><strong>Name:</strong> ${name}</p>
-        <p style="margin: 0 0 10px 0;"><strong>Email:</strong> <a href="mailto:${email}" style="color: #34d399;">${email}</a></p>
-        <p style="margin: 0 0 10px 0;"><strong>Company:</strong> ${company || 'Not provided'}</p>
-        <p style="margin: 0;"><strong>Interest:</strong> ${interest}</p>
+      <p style="margin: 0 0 20px 0; font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">
+        New Contact
+      </p>
+
+      <h2 style="margin: 0 0 30px 0; font-size: 28px; font-weight: 900; color: #fff; letter-spacing: -1px;">
+        ${name}
+      </h2>
+
+      <div style="margin-bottom: 30px;">
+        <p style="margin: 0 0 12px 0; font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">
+          Context
+        </p>
+        <div style="font-size: 14px; color: #d1d5db; line-height: 2;">
+          <p style="margin: 0;"><span style="color: #888;">Email:</span> <a href="mailto:${email}" style="color: #34d399; text-decoration: none;">${email}</a></p>
+          <p style="margin: 0;"><span style="color: #888;">Company:</span> ${company || '—'}</p>
+          <p style="margin: 0;"><span style="color: #888;">Interest:</span> <span style="color: #34d399; font-weight: 600;">${interest}</span></p>
+        </div>
       </div>
 
-      <div style="margin-bottom: 20px;">
-        <h3 style="color: #000; margin-bottom: 10px;">Message:</h3>
-        <p style="white-space: pre-wrap; color: #333; line-height: 1.6;">${message}</p>
-      </div>
-
-      <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;" />
-
-      <div style="background-color: #fffbf0; padding: 15px; border-radius: 8px; border-left: 4px solid #34d399;">
-        <p style="margin: 0; color: #666; font-size: 14px;">
-          <strong>Next steps:</strong> Reply to this email to respond directly to ${name}.
+      <div style="background: #ffffff08; padding: 20px; margin: 30px 0; border-radius: 4px; border: 1px solid #ffffff05;">
+        <p style="margin: 0 0 15px 0; font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">
+          Message
+        </p>
+        <p style="margin: 0; white-space: pre-wrap; font-size: 14px; color: #a3a3a3; line-height: 1.8;">
+${message}
         </p>
       </div>
-      
-      <p style="margin-top: 20px; font-size: 12px; color: #999;">
-        Submitted: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST
+
+      <div style="background: #34d39910; padding: 15px; border-left: 4px solid #34d399; border-radius: 4px; margin: 30px 0;">
+        <p style="margin: 0; font-size: 13px; color: #888;">
+          Reply to this email to respond directly to ${name}.
+        </p>
+      </div>
+
+      <p style="margin: 0; margin-top: 30px; font-size: 12px; color: #666;">
+        ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST
       </p>
+
     </div>
   `,
 });
@@ -183,7 +203,7 @@ if (count && count >= 1) {
           company: company?.trim() || null,
           interest: interest.trim(),
           message: message.trim(),
-          ip:ip,
+          ip_address:ip,
           status: 'new',
         }
       ])
