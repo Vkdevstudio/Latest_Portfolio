@@ -34,7 +34,6 @@ export default function SuccessPage() {
     sessionStorage.removeItem('contact_submitted');
   }, [submitted, router]);
 
-  // Don't render if no submission flag
   if (!submitted) {
     return null;
   }

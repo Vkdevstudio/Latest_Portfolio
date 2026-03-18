@@ -128,6 +128,8 @@ export async function POST(req: Request) {
     const body = await req.json();
     
     const ip = req.headers.get('x-forwarded-for') || 'unknown';
+    const userAgent = req.headers.get('user-agent') || 'unknown';
+
 
     const { name, email, company, interest, message } = body;
 
@@ -205,6 +207,7 @@ if (count && count >= 1) {
           message: message.trim(),
           ip_address:ip,
           status: 'new',
+          user_agent: userAgent,
         }
       ])
       .select();
