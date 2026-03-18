@@ -101,7 +101,7 @@ export default function OriginStory() {
                 </motion.div>
                 
                 {/* Mobile Year Label */}
-                <div className="md:hidden absolute left-12 top-2 whitespace-nowrap">
+                <div className="md:hidden absolute left-12 top-3 whitespace-nowrap">
                   <span className="text-[10px] font-black tracking-widest text-neutral-500 uppercase">{item.year}</span>
                 </div>
               </div>

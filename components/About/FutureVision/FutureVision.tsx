@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Target, TrendingUp, Zap } from 'lucide-react';
+import Link from 'next/link';
 
 
 
@@ -154,10 +155,12 @@ export default function FutureVision() {
           <div className="pt-12">
             <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/5 flex items-center justify-between group cursor-pointer hover:bg-white/[0.04] transition-all">
               <div className="space-y-1">
-                <h4 className="text-sm font-black text-white">Download Vision Roadmap</h4>
-                <p className="text-xs text-neutral-500">A detailed breakdown of my 5-year technical goals</p>
+               <h4 className="text-sm font-black text-white">See How I Think & Build</h4>
+<p className="text-xs text-neutral-500">From idea → system → production impact</p>
               </div>
-              <ArrowUpRight className="w-6 h-6 text-neutral-500 group-hover:text-cyan-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+              <Link href="/howiwork">
+                            <ArrowUpRight className="w-6 h-6 text-neutral-500 group-hover:text-cyan-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+              </Link>
             </div>
           </div>
         </div>

@@ -65,7 +65,7 @@ export default function TechnicalFoundation() {
             >
               {/* Background Typography */}
               <div className="absolute left-0 top-0 -translate-y-1/2 pointer-events-none select-none">
-                <span className="text-[12rem] md:text-[20rem] font-black text-white/[0.03] leading-none tracking-tighter">
+                <span className="text-[8rem] md:text-[20rem] font-black text-white/[0.03] leading-none tracking-tighter">
                   {item.year.split(' ')[1]}
                 </span>
               </div>

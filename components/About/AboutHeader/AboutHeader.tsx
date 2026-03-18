@@ -21,12 +21,12 @@ export default function AboutHero() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-8"
           >
-            <div className="flex items-center gap-4">
+            <div className="flex mt-5 md:mt-0 items-center gap-4">
               <span className="h-[1px] w-12 bg-emerald-500" />
               <span className="text-xs font-bold tracking-[0.3em] text-emerald-400 uppercase">The Narrative</span>
             </div>
             
-            <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] text-white">
+            <h1 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] text-white">
               ENGINEERING <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
                 WITH INTENT.

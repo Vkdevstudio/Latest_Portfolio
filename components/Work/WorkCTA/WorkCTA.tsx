@@ -41,7 +41,8 @@ export default function WorkCTA() {
               className="w-full sm:w-auto px-10 py-5 bg-emerald-500 text-black rounded-full font-black text-sm uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-emerald-400 transition-all group"
             >
               <MessageSquare className="w-4 h-4" />
-              Start Conversation
+              {/* Start Conversation */}
+                   Talk Now
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link 

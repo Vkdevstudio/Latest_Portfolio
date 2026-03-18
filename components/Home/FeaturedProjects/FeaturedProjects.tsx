@@ -109,7 +109,7 @@ export default function FeaturedProject({ data }: { data: Project }) {
             src={data?.media?.secondaryImage?.[selectedImageIdx]}
             alt={moduleLabels[selectedImageIdx]}
             fill
-            className="object-cover group-hover:scale-105 transition duration-300"
+            className="object-cover border   group-hover:scale-105 transition duration-300"
           />
           <div className="absolute top-4 left-4 px-3 py-1 bg-emerald-400/90 text-black text-[10px] font-black uppercase tracking-widest rounded">
             {moduleLabels[selectedImageIdx]}
