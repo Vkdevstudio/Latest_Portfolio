@@ -73,7 +73,6 @@ export default function Hero() {
            I build fast, reliable apps. You focus on your product.
           </span>
         </motion.h1>
-
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -81,7 +80,7 @@ export default function Hero() {
           className="mt-12 space-y-4"
         >
           <h2 className="text-xl md:text-2xl font-light text-neutral-300 max-w-2xl mx-auto leading-relaxed">
-  Full Stack Engineer with <span className="text-white font-bold">2 years shipping production systems</span>.
+  Full Stack Developer with <span className="text-white font-bold">2 years shipping production systems</span>.
   Built Healthcare SaaS applications using <span className="text-emerald-400 font-bold">event-driven architectures</span>,
   solving real-world problems with real user traffic.
 </h2>
