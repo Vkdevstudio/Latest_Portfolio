@@ -70,7 +70,7 @@ export default function Hero() {
           className="text-6xl md:text-9xl font-black tracking-tighter leading-[0.85]"
         >
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 bg-[length:200%_auto] animate-gradient">
-            I build systems that scale. You build products that matter.
+           I build fast, reliable apps. You focus on your product.
           </span>
         </motion.h1>
 

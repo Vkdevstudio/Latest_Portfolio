@@ -8,14 +8,12 @@ import { moduleLabels, Project } from '@/lib/featureset';
 import { 
   Zap, 
   Activity, 
-  Terminal, 
   Layers, 
   ChevronRight, 
   ExternalLink, 
   Github, 
   Cpu, 
   ShieldCheck,
-  Layout
 } from 'lucide-react';
 
 const SystemLabel = ({ children, icon: Icon }: { children: React.ReactNode, icon?: any }) => (
