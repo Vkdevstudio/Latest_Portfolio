@@ -59,7 +59,7 @@ export default function Hero() {
           className="mb-8 inline-block"
         >
           <span className="px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-bold tracking-widest uppercase">
-            Available for Tech Lead Roles
+            Available for Tech  Roles
           </span>
         </motion.div>
 
