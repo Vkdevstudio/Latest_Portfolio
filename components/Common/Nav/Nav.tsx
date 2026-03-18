@@ -32,13 +32,16 @@ const handleDownload = () => {
       isScrolled ? 'bg-black/50 backdrop-blur-xl border-b border-emerald-500/20 py-4' : 'bg-transparent py-8'
     }`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-end">
-        <div className="flex flex-col">
+        <Link href={'/'}>
+         <div className="flex flex-col">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 bg-emerald-400 rounded-sm flex items-center justify-center text-black font-black text-[10px]">V</div>
-            <span className="text-white font-bold tracking-tighter">Vinod</span>
+            <span className="text-white font-bold tracking-tighter">Vinod Kumar</span>
           </div>
-          <span className="text-[10px] text-neutral-500 font-bold tracking-widest mt-1 uppercase">Engineer</span>
+          <span className="text-[10px] text-neutral-500 font-bold tracking-widest mt-1 uppercase">Full Stack Developer</span>
         </div>
+        </Link>
+       
         
         <div className="flex items-center gap-8">
           <div className="hidden md:flex items-center gap-6">
@@ -56,7 +59,7 @@ const handleDownload = () => {
           <div className="relative">
   <button
     onClick={() => setOpen(!open)}
-    className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-bold transition-all"
+    className="px-4 py-2 cursor-pointer bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-bold transition-all"
   >
 View Resume
   </button>

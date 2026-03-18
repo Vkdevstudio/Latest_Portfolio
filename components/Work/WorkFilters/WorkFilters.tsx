@@ -3,6 +3,7 @@
 
 import { ChevronDown, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 
 interface WorkFiltersProps {
   allTech: string[];
@@ -29,6 +30,17 @@ export default function WorkFilters({
   clearFilters,
   count
 }: WorkFiltersProps) {
+
+  const DEFAULT_VISIBLE = 8;
+
+const [showAllTech, setShowAllTech] = useState(false);
+
+const visibleTech = showAllTech 
+  ? allTech 
+  : allTech.slice(0, DEFAULT_VISIBLE);
+
+const remainingCount = allTech.length - DEFAULT_VISIBLE;
+
   const toggleTech = (tech: string) => {
     if (selectedTech.includes(tech)) {
       setSelectedTech(selectedTech.filter(t => t !== tech));
@@ -46,19 +58,37 @@ export default function WorkFilters({
         <div className="space-y-6">
           <h3 className="text-[10px] font-black text-neutral-500 uppercase tracking-[0.3em]">Filter by Tech</h3>
           <div className="flex flex-wrap gap-3">
-            {allTech.map((tech) => (
-              <button
-                key={tech}
-                onClick={() => toggleTech(tech)}
-                className={`px-4 py-2 rounded-full text-xs font-bold transition-all border ${
-                  selectedTech.includes(tech)
-                    ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400'
-                    : 'bg-white/5 border-transparent text-neutral-400 hover:bg-white/10'
-                }`}
-              >
-                {tech}
-              </button>
-            ))}
+            <AnimatePresence>
+     {visibleTech.map((tech) => (
+      <button
+        key={tech}
+        onClick={() => toggleTech(tech)}
+        className={`px-4 py-2 rounded-full text-xs font-bold transition-all border ${
+          selectedTech.includes(tech)
+            ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400'
+            : 'bg-white/5 border-transparent text-neutral-400 hover:bg-white/10'
+        }`}
+      >
+        {tech}
+      </button>
+    ))}
+
+            </AnimatePresence>
+      
+     {allTech.length > DEFAULT_VISIBLE && (
+      <button
+        onClick={() => setShowAllTech(!showAllTech)}
+        className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold border border-white/10 bg-white/5 hover:bg-white/10 transition-all text-neutral-400"
+      >
+        {showAllTech ? 'Show Less' : `View All +${remainingCount}`}
+        
+        <ChevronDown
+          className={`w-3 h-3 transition-transform ${
+            showAllTech ? 'rotate-180' : ''
+          }`}
+        />
+      </button>
+    )}
           </div>
         </div>
 
@@ -72,9 +102,9 @@ export default function WorkFilters({
                 onChange={(e) => setSortBy(e.target.value as any)}
                 className="appearance-none bg-white/5 border border-white/10 rounded-xl px-6 py-3 pr-12 text-sm font-bold text-white cursor-pointer hover:bg-white/10 transition-all outline-none"
               >
-                <option value="recent">Recent</option>
-                <option value="complexity">Complexity</option>
-                <option value="impact">Impact</option>
+                 <option className="bg-black text-white" value="recent">Recent</option>
+  <option className="bg-black text-white" value="complexity">Complexity</option>
+  <option className="bg-black text-white" value="impact">Impact</option>
               </select>
               <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500 pointer-events-none group-hover:text-white transition-all" />
             </div>
