@@ -10,7 +10,7 @@ interface CaseStudyOutcomeProps {
 }
 
 export default function CaseStudyOutcome({ project }: CaseStudyOutcomeProps) {
-  const { outcome } = project.caseStudy;
+  const { outcome,currentStatus } = project.caseStudy;
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-32">
@@ -54,7 +54,7 @@ export default function CaseStudyOutcome({ project }: CaseStudyOutcomeProps) {
 
         <div className="space-y-12">
           <div className="p-10 rounded-[48px] bg-emerald-500/5 border border-emerald-500/20 space-y-12">
-            <h3 className="text-xs font-black text-emerald-400 uppercase tracking-widest">Project Links & Proof</h3>
+            <h3 className="text-xs font-black text-emerald-400 uppercase tracking-widest">Proof of Work</h3>
             
             <div className="space-y-6">
               {outcome.links.demo && (
@@ -90,23 +90,27 @@ export default function CaseStudyOutcome({ project }: CaseStudyOutcomeProps) {
               )}
             </div>
 
-            <div className="pt-8 border-t border-emerald-500/20 space-y-6">
-              <h4 className="text-[10px] font-black text-emerald-400 uppercase tracking-widest">Current Status</h4>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center text-sm">
-                  <span className="text-neutral-500 font-bold">Launched</span>
-                  <span className="text-white font-black">Jan 2024</span>
-                </div>
-                <div className="flex justify-between items-center text-sm">
-                  <span className="text-neutral-500 font-bold">Uptime</span>
-                  <span className="text-emerald-400 font-black">99.9%</span>
-                </div>
-                <div className="flex justify-between items-center text-sm">
-                  <span className="text-neutral-500 font-bold">Users</span>
-                  <span className="text-white font-black">500+ Active</span>
-                </div>
-              </div>
-            </div>
+            {currentStatus && (
+  <div className="pt-8 border-t border-emerald-500/20 space-y-6">
+    <h4 className="text-[10px] font-black text-emerald-400 uppercase tracking-widest">
+      Current Status
+    </h4>
+    <div className="space-y-4">
+      <div className="flex justify-between items-center text-sm">
+        <span className="text-neutral-500 font-bold">Launched</span>
+        <span className="text-white font-black">{currentStatus?.launched}</span>
+      </div>
+      <div className="flex justify-between items-center text-sm">
+        <span className="text-neutral-500 font-bold">Uptime</span>
+        <span className="text-emerald-400 font-black">{currentStatus?.uptime}</span>
+      </div>
+      <div className="flex justify-between items-center text-sm">
+        <span className="text-neutral-500 font-bold">Users</span>
+        <span className="text-white font-black">{currentStatus?.activeUsers}</span>
+      </div>
+    </div>
+  </div>
+)}
           </div>
         </div>
       </div>

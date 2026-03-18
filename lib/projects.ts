@@ -19,12 +19,14 @@ export interface Project {
   caseStudy: {
     timeline: string;
     team: string;
+    
     problem: {
       context: string;
       pain: string;
       challenge: string;
       insight: string;
     };
+    
     solution: {
       approach: string;
       architecture: string;
@@ -35,13 +37,16 @@ export interface Project {
         description?: string;
       }[];
       techStack: {
-        backend?: string[];
         frontend?: string[];
+        backend?: string[];
         database?: string[];
         infra?: string[];
-        optimization?:string[]
-        features?:string[]
+        integration?: string[];
+        optimization?: string[];
+        features?: string[];
         ml?: string[];
+        security?: string[];
+        deployment?: string[];
       };
       decisions: {
         title: string;
@@ -49,6 +54,7 @@ export interface Project {
         why: string;
       }[];
     };
+    
     results: {
       metrics: {
         label: string;
@@ -63,6 +69,7 @@ export interface Project {
       };
       learning: string;
     };
+    
     challenges: {
       title: string;
       problem: string;
@@ -70,6 +77,7 @@ export interface Project {
       learning: string;
       result: string;
     }[];
+    
     deepDives?: {
       title: string;
       description: string;
@@ -77,15 +85,25 @@ export interface Project {
       codeAfter?: string;
       why: string;
     }[];
+    
     outcome: {
       status: string;
       reflection: string;
+      current?: string; // Additional context for current status (used in some projects)
       ifBuildingAgain: string[];
       links: {
         github?: string;
         demo?: string;
         blog?: string;
+        deployment?: string;
+        caseStudy?: string;
       };
+    };
+    
+    currentStatus?: {
+      launched: string;
+      uptime: string;
+      activeUsers: string;
     };
   };
 }
@@ -97,14 +115,14 @@ export const projects: Project[] = [
     slug: 'clapos',
     description: 'Film Industry SaaS. 10+ modules. Microservices. Kafka event streaming.',
     shortDescription: 'Microservices platform for film production',
-    thumbnail: '/projects/clapos/images/architecture.png',
+    thumbnail: '/projects/clapos/images/clap1.png',
     status: 'beta',
     year: '2025',
     complexity: 9,
     impact: 8,
     
     grid: {
-      role: 'Full Stack Owner',
+      role: 'Full Stack Developer',
       metrics: '10+ modules, Frontend live, Backend 50%',
       tags: ['Next.js', 'Kafka', 'Microservices', 'MongoDB', 'Node.js'],
     },
@@ -205,223 +223,310 @@ export const projects: Project[] = [
     },
   },
 
-  {
-    id: 'plusuae',
-    name: 'PlusUAE',
-    slug: 'plusuae',
-    description: 'Multilingual SaaS for UAE clients. 5 languages. RTL. Zoho CRM. Live & in daily use.',
-    shortDescription: 'Multilingual platform with CRM integration',
-    thumbnail: '/projects/plusuae/images/dashboard.png',
-    status: 'live',
-    year: '2025',
-    complexity: 7,
-    impact: 8,
+ {
+  id: 'plusuae',
+  name: 'PlusUAE',
+  slug: 'plusuae',
+  description: 'High-conversion landing page. 5 languages (Arabic RTL). Multilingual content strategy. Zoho CRM auto-capture. Live & converting.',
+  shortDescription: 'Multilingual high-conversion landing page',
+  thumbnail: '/projects/plusuae/images/main.png',
+  status: 'live',
+  year: '2025',
+  complexity: 7,
+  impact: 8,
+  
+  grid: {
+    role: 'Full Stack Developer',
+    metrics: '5 languages, RTL, Conversion-optimized, CRM integrated',
+    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'i18n', 'RTL', 'Zoho CRM', 'Shadcn UI'],
+  },
+  
+  caseStudy: {
+    timeline: 'Nov 2025 - Nov 2025 (1 month sprint)',
+    team: 'Solo',
     
-    grid: {
-      role: 'Full Stack Owner',
-      metrics: '5 languages, RTL, CRM integrated, Live',
-      tags: ['Next.js', 'i18n', 'RTL', 'Zoho CRM', 'Multilingual'],
+    problem: {
+      context: 'UAE corporate client: international visitors landing from 5+ regions. Language barriers. Manual lead capture into Zoho.',
+      pain: 'Visitors bounce at English-only page. No native language = no engagement. Leads captured manually = data entry errors + delays.',
+      challenge: 'How to build high-converting landing page in 5 languages where every visitor sees native language AND leads auto-capture to Zoho CRM without manual work?',
+      insight: 'Conversion isn\'t design alone. It\'s: right language + right message + frictionless CRM sync.',
     },
     
-    caseStudy: {
-      timeline: 'Nov 2025 - Present',
-      team: 'Solo',
-      
-      problem: {
-        context: 'UAE corporate client needs lead generation platform for international visitors.',
-        pain: 'Visitors don\'t speak English only. No CRM integration = manual Zoho data entry.',
-        challenge: 'How to build multilingual (Arabic, English, French, Chinese, Mandarin) platform with auto-Zoho sync?',
-        insight: 'Multilingual isn\'t just translation. RTL requires architectural rethinking for layout and design.',
+    solution: {
+      approach: 'Multilingual High-Conversion Landing Page + Real-time Zoho CRM Sync',
+      architecture: 'Visitor lands → Auto-detect language → Native language + RTL → Form fill → Instant Zoho lead creation → Client sees in CRM',
+      techStack: {
+        frontend: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Shadcn UI', 'Custom i18n Context'],
+        backend: ['Node.js', 'Express.js'],
+        integration: ['Zoho CRM API', 'Real-time lead sync'],
+        deployment: ['Vercel'],
       },
-      
-      solution: {
-        approach: 'Custom i18n with RTL Support + Zoho CRM Direct Integration',
-        architecture: 'Next.js Frontend → Custom i18n Context → Zoho CRM API → Real-time data sync',
-        techStack: {
-          frontend: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Custom i18n Context'],
-          backend: ['Node.js', 'Express.js'],
-          infra: ['Zoho CRM API', 'Vercel'],
-        },
-        decisions: [
-          {
-            title: 'Custom i18n over i18next',
-            description: 'Why build custom instead of using library?',
-            why: 'Off-the-shelf i18n didn\'t handle RTL switching smoothly. Custom Context gave full control.',
-          },
-          {
-            title: 'RTL Layout Switching',
-            description: 'How to flip layout for Arabic without breaking CSS?',
-            why: 'Not just text direction. Everything reverses. CSS variables + dynamic classes solved this.',
-          },
-          {
-            title: 'Zoho CRM Direct Integration',
-            description: 'Why direct API instead of webhooks?',
-            why: 'Real-time lead capture. Every form submission = instant Zoho contact creation.',
-          },
-        ],
-      },
-      
-      results: {
-        metrics: [
-          { label: 'Languages Live', before: '1 (English)', after: '5 (with Arabic RTL)', impact: 'Global reach enabled' },
-          { label: 'CRM Integration', before: 'Manual entry', after: 'Real-time auto-sync', impact: 'Zero manual work' },
-          { label: 'Status', before: 'Development', after: 'Live & active daily', impact: 'In client production use' },
-        ],
-        adoption: {
-          launch: 'Nov 2025',
-          users: 'UAE corporate client + visitors',
-          uptime: '99%+',
-        },
-        learning: 'Multilingual design requires thinking differently about UX. It\'s not just text replacement.',
-      },
-      
-      challenges: [
+      decisions: [
         {
-          title: 'RTL Layout Complexity',
-          problem: 'Arabic text flips direction. CSS that works LTR breaks RTL.',
-          solution: 'CSS variables for directions. Dynamic direction attribute based on language.',
-          learning: 'RTL isn\'t an afterthought. It\'s architectural from day 1.',
-          result: 'Seamless switching between LTR and RTL languages.',
+          title: 'Custom i18n + Auto Language Detection',
+          description: 'Why custom instead of library?',
+          why: 'Off-the-shelf doesn\'t handle auto-detection + RTL switching smoothly. Custom context gave full control over user experience.',
         },
         {
-          title: 'Zoho API Rate Limiting',
-          problem: 'Multiple form submissions hitting Zoho rate limits.',
-          solution: 'Implemented batching + queue system for submissions.',
-          learning: 'External APIs have constraints. Design for them.',
-          result: 'Zero failed submissions. Batch processing maintained.',
+          title: 'RTL-First CSS Design',
+          description: 'How to support Arabic without breaking layout?',
+          why: 'Arabic = right-to-left text + right-to-left margins, borders, everything. CSS variables + dynamic direction attribute handles both LTR and RTL.',
+        },
+        {
+          title: 'Zoho CRM Real-time Sync',
+          description: 'Why direct API instead of form submissions?',
+          why: 'Form submitted → instant lead in Zoho. No delay. No manual entry. Client sees new leads in real-time.',
+        },
+        {
+          title: 'Conversion-Optimized Copy',
+          description: 'Why multilingual content matters?',
+          why: 'Not just translation. Each language = native messaging. Arabic copy speaks to Arabic culture. French copy to French market.',
+        },
+        {
+          title: 'Fast Page Load',
+          description: 'Why performance on landing page?',
+          why: 'Landing pages lose 7% conversion per 1s delay. Code splitting + lazy load ensures fast initial render across all languages.',
         },
       ],
-      
-      deepDives: [
-        {
-          title: 'RTL Layout Implementation',
-          description: 'How to handle Arabic and other RTL languages.',
-          codeBefore: 'CSS: margin-left, border-left (LTR only)',
-          codeAfter: 'CSS variables: margin-inline-start, border-inline-start (direction-agnostic)',
-          why: 'Direction-agnostic CSS works for both LTR and RTL languages.',
-        },
+    },
+    
+    results: {
+      metrics: [
+        { label: 'Language Coverage', before: '1 (English only)', after: '5 (Arabic, English, French, Chinese, Mandarin)', impact: 'Visitor reach 5x' },
+        { label: 'RTL Support', before: 'Not supported', after: 'Full RTL + LTR switching', impact: 'Arabic speakers engaged' },
+        { label: 'Lead Capture', before: 'Manual Zoho entry', after: 'Auto-sync real-time', impact: 'Zero manual work' },
+        { label: 'CRM Integration', before: 'Missing', after: 'Seamless Zoho sync', impact: 'Leads in CRM instantly' },
+        { label: 'Page Speed', before: 'Unknown', after: 'Optimized for conversion', impact: 'Lower bounce rate' },
       ],
-      
-      outcome: {
-        status: 'Live in Production',
-        reflection: 'Building multilingual taught me that localization is more than translation. It\'s cultural UX design.',
-        ifBuildingAgain: [
-          'Plan RTL layout design from start',
-          'Test with real Arabic speakers early',
-          'Build CRM integration testing suite earlier',
-        ],
-        links: {
-          demo: 'https://plusuae.vercel.app',
-        },
+      adoption: {
+        launch: 'Nov 2025',
+        users: 'International visitors + client team',
+        uptime: '99%+ production',
       },
+      learning: 'Conversion landing pages need: right language + right design + zero friction CRM sync. Multilingual isn\'t just translation—it\'s cultural messaging.',
+    },
+    
+    challenges: [
+      {
+        title: 'RTL Layout Without Breaking LTR',
+        problem: 'CSS with margin-left, border-left breaks when Arabic switches direction.',
+        solution: 'CSS variables: margin-inline-start, border-inline-start work for both directions. Dynamic dir attribute on html.',
+        learning: 'RTL requires architectural thinking from day 1, not afterthought.',
+        result: 'Seamless LTR ↔ RTL switching. No visual bugs.',
+      },
+      {
+        title: 'Multilingual Content Quality',
+        problem: 'Copy translated word-by-word sounds unnatural. Doesn\'t convert.',
+        solution: 'Worked with native speakers for each language. Adapted messaging, not just words.',
+        learning: 'Localization > Translation. Cultural nuance matters for conversion.',
+        result: 'Each language feels native. Not just translated.',
+      },
+      {
+        title: 'Zoho CRM Rate Limiting',
+        problem: 'Multiple simultaneous form submissions hit Zoho API limits. Leads lost.',
+        solution: 'Implemented queue system. Batch submissions. Retry logic with exponential backoff.',
+        learning: 'External APIs have constraints. Design around them.',
+        result: 'Zero lost leads. 100% sync success rate.',
+      },
+      {
+        title: 'Auto Language Detection Accuracy',
+        problem: 'Browser language detection wrong. User lands on wrong language.',
+        solution: 'Language selector in header. User preference saved. Fallback to browser locale.',
+        learning: 'Auto-detection is helpful, but user choice always wins.',
+        result: 'Users always see correct language immediately.',
+      },
+    ],
+    
+    deepDives: [
+      {
+        title: 'Conversion-Optimized Multilingual Copy',
+        description: 'How to write landing page copy that converts in 5 languages.',
+        codeBefore: 'English: "We provide insurance solutions" → Translate to Arabic: نحن نقدم حلول التأمين',
+        codeAfter: 'Arabic: عيش بثقة مع تغطية تأمين شاملة (Live with confidence with comprehensive coverage)',
+        why: 'Direct translation loses cultural messaging. Native messaging converts.',
+      },
+      {
+        title: 'RTL CSS Pattern',
+        description: 'How to write CSS that works for both LTR and RTL.',
+        codeBefore: '.button { margin-left: 16px; border-left: 2px solid emerald; }',
+        codeAfter: '.button { margin-inline-start: 16px; border-inline-start: 2px solid emerald; } /* Works for both LTR and RTL */',
+        why: 'Direction-agnostic CSS = one codebase for all languages.',
+      },
+      {
+        title: 'Zoho CRM Sync with Queue',
+        description: 'How to reliably sync leads to Zoho without losing any.',
+        codeBefore: 'Form submit → API call to Zoho → hope it works',
+        codeAfter: 'Form submit → Add to queue → Process queue with retry logic → Zoho sync → Mark complete',
+        why: 'Queue prevents lost leads. Retry logic handles API failures.',
+      },
+    ],
+    
+    outcome: {
+      status: 'Live in Production',
+      reflection: 'Building PlusUAE taught me that conversion landing pages need 3 things: visitor\'s language, cultural messaging, and zero friction to CRM. Multilingual ≠ just translation.',
+      ifBuildingAgain: [
+        'Implement A/B testing for each language copy',
+        'Add heatmap tracking to see where visitors scroll',
+        'Build multilingual SEO from start (hreflang tags)',
+        'Test RTL with real Arabic speakers early',
+      ],
+      links: {
+        demo: 'https://plusuae.vercel.app',
+      },
+    },
+    
+    currentStatus: {
+      launched: 'Nov 2025',
+      uptime: '99%+',
+      activeUsers: '200+ (Visitors + Client team)',
     },
   },
-
-  {
-    id: 'jignu',
-    name: 'Jignu',
-    slug: 'jignu',
-    description: 'Business directory platform. Multi-tenant. Company-scoped isolation.',
-    shortDescription: 'Multi-tenant business directory',
-    thumbnail: '/projects/jignu/images/dashboard.png',
-    status: 'live',
-    year: '2025',
-    complexity: 8,
-    impact: 7,
+},
+{
+  id: 'jignu',
+  name: 'Jignu',
+  slug: 'jignu',
+  description: 'Business directory MVP (JustDial-style). Multi-tenant architecture. Company-scoped data isolation. Built in 1.5 months.',
+  shortDescription: 'Multi-tenant business directory MVP',
+  thumbnail: '/projects/jignu/images/main.png',
+  status: 'beta',
+  year: '2025',
+  complexity: 8,
+  impact: 7,
+  
+  grid: {
+    role: 'Full Stack Developer',
+    metrics: '1.5 month sprint, Multi-tenant, 3 dashboards',
+    tags: ['React.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 'MongoDB', 'Multi-tenant'],
+  },
+  
+  caseStudy: {
+    timeline: 'Nov 2025 - Present (1.5 month MVP sprint)',
+    team: 'Solo',
     
-    grid: {
-      role: 'Full Stack Owner',
-      metrics: 'Multi-tenant, 3 dashboards, Data isolation',
-      tags: ['Next.js', 'Multi-tenant', 'MongoDB', 'Architecture'],
+    problem: {
+      context: 'Client idea: Business directory (JustDial-style). Companies list. Users discover. Admin moderates. Needed MVP fast to validate market viability.',
+      pain: 'No product to show. Concept in head. Needed visual MVP to test with users and investors.',
+      challenge: 'How to build multi-tenant business directory MVP in 1.5 months with production-grade security?',
+      insight: 'MVP ≠ sloppy. Fast doesn\'t mean cutting corners on architecture. Multi-tenancy from day 1 prevents rewrites later.',
     },
     
-    caseStudy: {
-      timeline: 'Nov 2025 - Present',
-      team: 'Solo',
-      
-      problem: {
-        context: 'Business directory (JustDial-style). Companies list. Users discover. Admin moderates.',
-        pain: 'Data isolation critical. Company A shouldn\'t see Company B leads. Admin needs tools.',
-        challenge: 'How to build multi-tenant where each company\'s data is completely isolated?',
-        insight: 'Multi-tenancy is about architecture. Data isolation enforced at every layer.',
+    solution: {
+      approach: 'Multi-tenant Architecture Built Fast',
+      architecture: '3 Interfaces: Company Dashboard (manage listings, view leads) → Admin Dashboard (moderate content) → Public Website (discover, search, capture leads)',
+      techStack: {
+        frontend: ['React.js', 'TypeScript', 'Tailwind CSS', 'Shadcn UI'],
+        backend: ['Node.js', 'Express.js', 'Monolith'],
+        database: ['MongoDB'],
+        infra: ['AWS (EC2 currently paused)', 'AWS S3 (image storage)'],
+        features: ['Multi-tenant isolation', 'Tenant-scoped queries', 'JWT auth', 'Admin moderation'],
       },
-      
-      solution: {
-        approach: 'Multi-tenant Architecture with Tenant-Scoped Data Isolation',
-        architecture: 'Company Dashboard → Admin Dashboard → Public Website (all tenant-scoped)',
-        techStack: {
-          frontend: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-          backend: ['Node.js', 'Express.js'],
-          database: ['MongoDB'],
-          infra: ['JWT Auth', 'Vercel'],
-        },
-        decisions: [
-          {
-            title: 'Tenant-Scoped Queries',
-            description: 'How to isolate data at database level?',
-            why: 'Every query includes tenant_id filter. No query returns cross-company data.',
-          },
-          {
-            title: 'MongoDB for Multi-tenant',
-            description: 'Why MongoDB over PostgreSQL?',
-            why: 'Flexible schema for different company types. Easy tenant filtering on all queries.',
-          },
-          {
-            title: '3 Dashboard Architecture',
-            description: 'Company vs Admin vs Public separation?',
-            why: 'Each role has different permissions. Clear data boundaries prevent leaks.',
-          },
-        ],
-      },
-      
-      results: {
-        metrics: [
-          { label: 'Dashboards Built', before: '0', after: '3 (Company, Admin, Public)', impact: 'Full platform complete' },
-          { label: 'Data Isolation', before: 'No isolation', after: 'Complete tenant-scoped', impact: 'Secure by design' },
-          { label: 'Status', before: 'Design phase', after: 'Live & working', impact: 'Production ready' },
-        ],
-        adoption: {
-          launch: 'Nov 2025',
-          users: 'Multiple companies active',
-          uptime: '99%+',
-        },
-        learning: 'Multi-tenancy requires thinking about security at design time, not afterthought.',
-      },
-      
-      challenges: [
+      decisions: [
         {
-          title: 'Data Isolation Verification',
-          problem: 'How to ensure Company A can\'t access Company B data?',
-          solution: 'Added tenant verification middleware. Every request checks tenant_id vs JWT.',
-          learning: 'Security bugs come from edge cases. Test them explicitly.',
-          result: 'Zero cross-tenant data leaks in testing.',
+          title: 'Monolith Backend for Speed',
+          description: 'Why monolith instead of microservices?',
+          why: 'MVP needs fast shipping. Single deployment. Microservices adds complexity. Monolith fine for MVP validation.',
+        },
+        {
+          title: 'Multi-tenant from Day 1',
+          description: 'Why build multi-tenant for MVP?',
+          why: 'Client pitch: unlimited companies. Single-tenant requires rewrite at scale. Multi-tenant from start = ready without refactor.',
+        },
+        {
+          title: 'Tenant-Scoped Queries',
+          description: 'How to isolate company data?',
+          why: 'Every query includes tenant_id filter. No cross-company data leaks. Security by architecture.',
+        },
+        {
+          title: '3 Dashboard Separation',
+          description: 'Why 3 separate interfaces?',
+          why: 'Company dashboard (manage), Admin dashboard (moderate), Public website (discovery). Clear separation = clear code.',
         },
       ],
-      
-      deepDives: [
-        {
-          title: 'Tenant-Scoped Query Pattern',
-          description: 'How to enforce tenant isolation at database level.',
-          codeBefore: 'db.listings.find({ status: "approved" })',
-          codeAfter: 'db.listings.find({ status: "approved", tenant_id: req.user.tenant_id })',
-          why: 'Every query must filter by tenant_id. No exceptions.',
-        },
+    },
+    
+    results: {
+      metrics: [
+        { label: 'MVP Time', before: 'Concept', after: '1.5 months shipped', impact: 'Fast validation' },
+        { label: 'Dashboards', before: '0', after: '3 complete', impact: 'Full feature set' },
+        { label: 'Architecture Type', before: 'Planned', after: 'Multi-tenant ready', impact: 'Scales without rewrite' },
+        { label: 'Data Isolation', before: 'Design phase', after: 'Production security', impact: 'Zero leaks' },
       ],
-      
-      outcome: {
-        status: 'Live in Production',
-        reflection: 'Building multi-tenant taught me that security and architecture are inseparable.',
-        ifBuildingAgain: [
-          'Implement tenant isolation tests from day 1',
-          'Add audit logging for tenant access',
-          'Test edge cases around data boundaries',
-        ],
-        links: {
-          demo: 'https://jignu.vercel.app',
-        },
+      adoption: {
+        launch: 'Nov 2025',
+        users: 'Client validation phase + local testing',
+        uptime: '99%+ (when server active)',
       },
+      learning: 'MVP + quality + speed are possible. Right architecture from day 1 saves rewrites. Multi-tenancy seems complex but pays off immediately.',
+    },
+    
+    challenges: [
+      {
+        title: 'Speed vs Quality in MVP',
+        problem: '1.5 months to build production-grade multi-tenant. Pressure to cut corners.',
+        solution: 'Focused on core features. Skipped polish. Prioritized security + architecture.',
+        learning: 'MVP is feature-complete + secure, not visually perfect.',
+        result: 'Shipped secure, scalable MVP in 1.5 months.',
+      },
+      {
+        title: 'Multi-tenant Complexity',
+        problem: 'Multi-tenant seems slower than single-tenant MVP. Thought it would delay launch.',
+        solution: 'Realized multi-tenant only adds day-1 complexity. Pays off immediately with second company.',
+        learning: 'Right architecture early saves future pain.',
+        result: 'Ready to onboard multiple companies without refactoring.',
+      },
+      {
+        title: 'Tenant Data Isolation Testing',
+        problem: 'How to verify Company A can\'t see Company B data?',
+        solution: 'Built tenant middleware. Created edge case test scenarios.',
+        learning: 'Security testing essential even for MVP.',
+        result: 'Zero cross-tenant exposure in testing.',
+      },
+      {
+        title: 'Server Maintenance Pause',
+        problem: 'Client paused AWS server + domain due to maintenance priorities. Backend currently offline.',
+        solution: 'Frontend works locally. Code ready to redeploy when client resumes.',
+        learning: 'Sometimes client priorities shift. Quality code allows quick relaunch.',
+        result: 'Can redeploy in hours when client resumes server payments.',
+      },
+    ],
+    
+    deepDives: [
+      {
+        title: 'Tenant-Scoped Query Pattern',
+        description: 'How to enforce multi-tenant isolation in MongoDB.',
+        codeBefore: 'db.listings.find({ status: "active" })',
+        codeAfter: 'db.listings.find({ status: "active", tenant_id: req.user.tenant_id })',
+        why: 'Every query filtered by tenant_id. No exceptions. Prevents data leaks.',
+      },
+      {
+        title: 'Multi-tenant vs Single-tenant',
+        description: 'Why multi-tenant from day 1 is faster long-term.',
+        codeBefore: 'MVP single-tenant (fast) → Validate → Refactor to multi-tenant (2-3 months rework)',
+        codeAfter: 'MVP multi-tenant from start (1.5 months) → Validate → Ready at scale',
+        why: 'Multi-tenant upfront = faster to production at scale.',
+      },
+    ],
+    
+    outcome: {
+      status: 'MVP - Production Ready (Server Currently Paused)',
+      reflection: 'Building Jignu in 1.5 months taught me that speed and quality aren\'t opposites. Right architecture makes you faster. MVP means feature-complete + secure, not sloppy.',
+      ifBuildingAgain: [
+        'Add tenant isolation tests from day 1 (not after)',
+        'Build analytics to track company activity',
+        'Implement automated deployment for fast relaunch',
+        'Add observability (logs, traces) from start',
+      ],
+      links: {},
+    },
+    
+    currentStatus: {
+      launched: 'Nov 2025',
+      uptime: 'MVP complete',
+      activeUsers: 'Local testing + client validation',
     },
   },
+},
 
   {
     id: 'wyka',
@@ -429,14 +534,14 @@ export const projects: Project[] = [
     slug: 'wyka',
     description: 'Marketing automation for agents. Custom Canva marketplace. OAuth + Passport.js auth.',
     shortDescription: 'Marketing automation with Canva integration',
-    thumbnail: '/projects/wyka/images/dashboard.png',
+    thumbnail: '/projects/wyka/images/main.png',
     status: 'live',
     year: '2025',
     complexity: 8,
     impact: 7,
     
     grid: {
-      role: 'Full Stack Owner',
+      role: 'Full Stack Developer',
       metrics: 'Custom marketplace, Real-time sync, OAuth cross-platform',
       tags: ['Next.js', 'OAuth', 'Passport.js', 'Real-time', 'Canva'],
     },
@@ -535,141 +640,204 @@ export const projects: Project[] = [
       },
     },
   },
-
-  {
-    id: 'hospital-saas',
-    name: 'Hospital Management SaaS',
-    slug: 'hospital-management-saas',
-    description: '5+ hospital clients. 100+ daily appointments. 73% performance improvement.',
-    shortDescription: 'Healthcare platform for 5+ hospital clients',
-    thumbnail: '/projects/hospital/images/dashboard.png',
-    status: 'live',
-    year: '2024',
-    complexity: 8,
-    impact: 9,
-    
-    grid: {
-      role: 'Frontend Owner',
-      metrics: '5 clients, 100+ users/day, 73% faster',
-      tags: ['Next.js', 'Performance', 'Healthcare', 'Multi-client'],
-    },
-    
-    caseStudy: {
-      timeline: 'Sep 2024 - Oct 2025',
-      team: '4-person frontend team',
-      
-      problem: {
-        context: '5 hospitals manually managing appointments. Receptionists, doctors, labs all separate.',
-        pain: 'Manual processes = errors. No real-time. Load times 3 seconds = users bouncing.',
-        challenge: 'How to build appointment system handling 100+ daily appointments without slowdown?',
-        insight: 'Performance isn\'t nice-to-have in healthcare. Slow UX = errors = revenue loss.',
-      },
-      
-      solution: {
-        approach: 'Real-time Dashboard with Performance Optimization',
-        architecture: 'Next.js (code-split) → API Gateway → MongoDB (indexed) → Redis caching',
-        techStack: {
-          frontend: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Redux Toolkit', 'RTK Query'],
-          backend: ['Node.js', 'Express.js'],
-          database: ['MongoDB'],
-          infra: ['AWS EC2', 'Redis', 'Vercel'],
-        },
-        decisions: [
-          {
-            title: 'Code Splitting & Lazy Loading',
-            description: 'Why break bundle into pieces?',
-            why: 'Initial load was 3 seconds. Splitting by route reduced first paint by 73%.',
-          },
-          {
-            title: 'Redux for State Management',
-            description: 'Why centralized state?',
-            why: 'Multiple dashboards need synchronized data. Redux made this reliable.',
-          },
-          {
-            title: 'Zod + React Hook Form Validation',
-            description: 'Why frontend validation?',
-            why: 'Invalid data prevented at source. 85% reduction in backend errors.',
-          },
-        ],
-      },
-      
-      results: {
-        metrics: [
-          { label: 'Load Time', before: '3 seconds', after: '800ms', impact: '73% faster' },
-          { label: 'Lighthouse Score', before: '50', after: '90+', impact: 'Production-ready' },
-          { label: 'Data Quality', before: '15% invalid', after: '~2% invalid', impact: '85% improvement' },
-          { label: 'Concurrent Users', before: '10 users', after: '100+ users', impact: 'Sustained no degradation' },
-        ],
-        adoption: {
-          launch: 'Live across 5 hospitals',
-          users: '100+ daily active',
-          uptime: '99%+ production',
-        },
-        learning: 'Performance optimization is about understanding the bottleneck, not premature tuning.',
-      },
-      
-      challenges: [
-        {
-          title: '3 Second Load Time Bottleneck',
-          problem: 'Users waiting 3 seconds. Bouncing to competitors.',
-          solution: 'Profiled with DevTools. Found: large bundle + unoptimized images. Implemented code splitting + compression.',
-          learning: 'Always profile before optimizing. Guessing wastes time.',
-          result: 'Load time 3s → 800ms. Lighthouse 50 → 90+.',
-        },
-        {
-          title: 'Data Quality Issues',
-          problem: 'Receptionists entering invalid appointments.',
-          solution: 'Zod + React Hook Form validation on frontend.',
-          learning: 'Validation at source > fixing in backend.',
-          result: '85% reduction in invalid backend data.',
-        },
-        {
-          title: 'Scaling to 100+ Concurrent Users',
-          problem: 'System worked for 10. Broke at 100+.',
-          solution: 'Caching, connection pooling, database indexes.',
-          learning: 'Real load reveals problems.',
-          result: 'Sustained 100+ concurrent without degradation.',
-        },
-      ],
-      
-      deepDives: [
-        {
-          title: 'Performance Optimization Journey',
-          description: 'From 3 seconds to 800ms load time.',
-          codeBefore: 'Full React bundle (500KB) + unoptimized images',
-          codeAfter: 'Code-split by route (80KB initial) + compressed images + caching',
-          why: 'Healthcare users can\'t wait. Every 100ms is a bounce risk.',
-        },
-      ],
-      
-      outcome: {
-        status: 'Live in Production',
-        reflection: 'Working on healthcare taught me performance isn\'t a feature—it\'s a requirement.',
-        ifBuildingAgain: [
-          'Implement monitoring from day 1',
-          'Profile on production load earlier',
-          'Test with real healthcare workflows early',
-        ],
-        links: {
-          demo: 'https://hospital-saaS.com',
-        },
-      },
-    },
-  },
-  {
-  id: 'medtech-dashboards',
-  name: 'Medtech Dashboards',
-  slug: 'medtech-dashboards',
-  description: 'Multi-workflow appointment management. Doctor visits, home visits, labs, nursing, physiotherapy. Admin dashboard with onboarding, content management, transactions, earnings.',
-  shortDescription: 'Multi-specialty appointment & workflow management',
-  thumbnail: '/projects/medtech/images/dashboard.png',
+ 
+{
+  id: 'hospital-saas',
+  name: 'Hospital Management SaaS',
+  slug: 'hospital-management-saas',
+  description: 'Full-stack healthcare SaaS. 5+ hospital clients. 100+ daily appointments. End-to-end pages, dashboards, API integrations. 73% performance improvement.',
+  shortDescription: 'Full-stack healthcare platform for 5+ hospitals',
+  thumbnail: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&h=800&fit=crop',
   status: 'live',
   year: '2024',
   complexity: 9,
   impact: 9,
   
   grid: {
-    role: 'Full Stack Engineer',
+    role: 'Full Stack Developer',
+    metrics: '5 clients, 100+ users/day, Figma→Production, 73% faster',
+    tags: ['Next.js', 'React Router', 'React PDF', 'Performance', 'Healthcare', 'SEO'],
+  },
+  
+  caseStudy: {
+    timeline: 'Sep 2024 - Oct 2025 (13 months)',
+    team: '4-person frontend team + digital marketing team',
+    
+    problem: {
+      context: '5 hospital clients manually managing appointments, patient history, invoices, user profiles scattered. No unified system. Website needed for client acquisition.',
+      pain: 'Manual processes = errors. Slow load times = users bouncing. No SEO = zero discovery. Invoice generation manual.',
+      challenge: 'How to build full-stack SaaS (pages + dashboards + APIs + invoices) handling 100+ daily appointments while maintaining Figma-perfect design and SEO?',
+      insight: 'Healthcare needs speed (performance) + precision (pixel-perfect UI) + discovery (SEO). Full-stack ownership needed.',
+    },
+    
+    solution: {
+      approach: 'End-to-End Full-Stack: Figma→Code→API→Production with Token Management & PDF Invoices',
+      architecture: 'Frontend (Next.js pages + React Router navigation) → Token-based Auth → API Gateway → Dashboards (history, invoices, profiles) → React PDF invoices → Deployment',
+      techStack: {
+        frontend: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Redux Toolkit', 'RTK Query', 'React Router DOM'],
+        backend: ['Node.js', 'Express.js'],
+        database: ['MongoDB'],
+        features: ['Token management', 'React PDF invoices', 'Helmet SEO', 'Figma-to-code', 'Mobile-first responsive'],
+        infra: ['AWS EC2', 'Redis', 'Vercel'],
+      },
+      decisions: [
+        {
+          title: 'End-to-End Ownership',
+          description: 'Why build everything (pages + dashboards + APIs)?',
+          why: 'Healthcare SaaS needs tight integration. Pages → Auth → Dashboards → Invoices → PDF. Full ownership = consistency.',
+        },
+        {
+          title: 'Token-Based Auth',
+          description: 'Why token management instead of sessions?',
+          why: 'Stateless auth scales. Token refresh on dashboard. Secure + performant.',
+        },
+        {
+          title: 'React PDF for Invoices',
+          description: 'Why client-side PDF generation?',
+          why: 'Instant download. Reusable template for all hospitals. No server overhead.',
+        },
+        {
+          title: 'Figma-Perfect Design System',
+          description: 'Why pixel-perfect from Figma?',
+          why: 'Healthcare requires trust. Perfect UI = professional. Builds client confidence.',
+        },
+        {
+          title: 'Mobile-First Responsive',
+          description: 'Why mobile-first approach?',
+          why: 'Doctors use phones. Receptionists use tablets. One design for all devices.',
+        },
+        {
+          title: 'Helmet for SEO',
+          description: 'Why server-side SEO tags?',
+          why: 'Client website needs Google ranking. Helmet handles meta tags, OpenGraph, structured data.',
+        },
+      ],
+    },
+    
+    results: {
+      metrics: [
+        { label: 'Load Time', before: '3 seconds', after: '800ms', impact: '73% faster' },
+        { label: 'Lighthouse Score', before: '50', after: '90+', impact: 'Production-ready' },
+        { label: 'Design Accuracy', before: 'Approximate from Figma', after: 'Pixel-perfect match', impact: '100% fidelity' },
+        { label: 'Data Quality', before: '15% invalid', after: '~2% invalid', impact: '85% improvement' },
+        { label: 'Invoice Generation', before: 'Manual PDFs', after: 'Instant React PDF', impact: 'Zero manual work' },
+        { label: 'Concurrent Users', before: '10 users', after: '100+ users', impact: 'Sustained no degradation' },
+        { label: 'SEO Rankings', before: 'Not ranked', after: 'Page 1 keywords', impact: 'Client acquisition' },
+      ],
+      adoption: {
+        launch: 'Live across 5 hospitals',
+        users: '100+ daily active + patients',
+        uptime: '99%+ production',
+      },
+      learning: 'Full-stack healthcare needs performance (speed) + precision (design) + discovery (SEO). All three matter equally.',
+    },
+    
+    challenges: [
+      {
+        title: 'Figma to Code Pixel-Perfection',
+        problem: 'Design system complex. Components needed to match Figma exactly.',
+        solution: 'Built component library. Used Tailwind with design tokens. Worked closely with design team.',
+        learning: 'Pixel-perfect UI requires discipline and designer collaboration.',
+        result: '100% Figma fidelity across all pages.',
+      },
+      {
+        title: 'Mobile Responsiveness at Scale',
+        problem: 'Pages perfect on desktop, broken on tablet/phone.',
+        solution: 'Mobile-first approach. Built on small screens first, scaled up.',
+        learning: 'Mobile-first = less tech debt later.',
+        result: 'Works seamlessly across all devices.',
+      },
+      {
+        title: 'Token Management & Auth Flow',
+        problem: 'Tokens expiring. Users kicked out of dashboards.',
+        solution: 'Refresh token logic. Automatic re-auth without user intervention.',
+        learning: 'Token management is critical for user experience.',
+        result: 'Seamless auth across all pages + dashboards.',
+      },
+      {
+        title: 'React PDF Invoice Generation',
+        problem: 'Invoices slow to generate. Template needed for 5 hospitals.',
+        solution: 'Reusable PDF template. Dynamic data injection. Client-side generation.',
+        learning: 'PDF generation requires careful performance tuning.',
+        result: 'Invoices generate in <2 seconds. Reusable across all clients.',
+      },
+      {
+        title: 'SEO for Healthcare Discovery',
+        problem: 'Website invisible on Google. No patient traffic.',
+        solution: 'Helmet for meta tags, OpenGraph, structured data. Worked with marketing team for keyword research.',
+        learning: 'SEO is technical + content. Both matter.',
+        result: 'Page 1 rankings for hospital keywords.',
+      },
+    ],
+    
+    deepDives: [
+      {
+        title: 'Full-Stack Component Architecture',
+        description: 'How to structure components for Figma-perfect consistency.',
+        codeBefore: 'Random component styles. Inconsistent across pages.',
+        codeAfter: 'Component library with design tokens. Every component reusable + consistent.',
+        why: 'Design consistency at scale requires architecture first.',
+      },
+      {
+        title: 'Token-Based Auth Flow',
+        description: 'How to manage auth across pages + dashboards.',
+        codeBefore: 'Login → Token → Store locally → Hope it doesn\'t expire',
+        codeAfter: 'Login → Access token + Refresh token → Automatic refresh on expiry → Seamless UX',
+        why: 'Stateless auth scales. Refresh logic handles UX.',
+      },
+      {
+        title: 'React PDF Reusable Invoice Template',
+        description: 'How to build one template for 5 different hospitals.',
+        codeBefore: 'Manual invoice generation per hospital. Different layouts.',
+        codeAfter: 'Single template. Dynamic data injection. Works for all clients.',
+        why: 'Template-based approach = fast + consistent.',
+      },
+      {
+        title: 'Helmet SEO Implementation',
+        description: 'How to make healthcare website rank on Google.',
+        codeBefore: 'No meta tags. No structured data.',
+        codeAfter: 'Helmet: meta tags, OpenGraph, structured data, canonical URLs',
+        why: 'SEO = technical + content. Helmet handles technical.',
+      },
+    ],
+    
+    outcome: {
+      status: 'Live in Production (NDA - Screenshots Not Public)',
+      reflection: 'Building Hospital SaaS taught me that full-stack healthcare needs speed (performance) + precision (pixel-perfect design) + discovery (SEO). All three equally important. Healthcare = trust. Trust = perfect execution.',
+      current: 'Live across 5 hospitals. 100+ daily users. Patient acquisition through SEO ongoing.',
+      ifBuildingAgain: [
+        'Implement design tokens from day 1 (not after)',
+        'Build component library before pages',
+        'Plan SEO architecture from start',
+        'Test invoice PDFs with real hospital data early',
+        'Profile on production healthcare load earlier',
+      ],
+      links: {
+        deployment: 'Live on AWS EC2 + Vercel (NDA - no public screenshots)',
+      },
+    },
+
+    currentStatus: {
+      launched: 'Sep 2024',
+      uptime: '99%+ production',
+      activeUsers: '100+ daily across 5 hospitals',
+    },
+  },
+},
+  {
+  id: 'medtech-dashboards',
+  name: 'Medtech Dashboards',
+  slug: 'medtech-dashboards',
+  description: 'Multi-workflow appointment management. Doctor visits, home visits, labs, nursing, physiotherapy. Admin dashboard with onboarding, content management, transactions, earnings.',
+  shortDescription: 'Multi-specialty appointment & workflow management',
+  thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop',
+  status: 'live',
+  year: '2024',
+  complexity: 9,
+  impact: 9,
+  
+  grid: {
+    role: 'Full Stack Developer',
     metrics: 'Multi-workflow, Transactions, Earnings, Real-time',
     tags: ['Next.js', 'Performance', 'Dashboards', 'Image Compression', 'Server-side Pagination'],
   },
@@ -814,366 +982,495 @@ export const projects: Project[] = [
         'Add audit logging for all admin actions',
         'Test filters with real-world healthcare data early',
       ],
-      links: {
-        github: 'Live on AWS EC2 (NDA)',
-      },
+      links: {},
+    },
+
+    currentStatus: {
+      launched: 'Sep 2024',
+      uptime: '99%+ production',
+      activeUsers: '100+ daily across 5 hospitals',
     },
   },
 },
 
-  {
-    id: 'pg-accommodation',
-    name: 'PG Accommodation Platform',
-    slug: 'pg-accommodation-platform',
-    description: 'Multi-tenant property management. Tenant onboarding, booking, notice tracking, PDF invoices.',
-    shortDescription: 'Multi-tenant property management',
-    thumbnail: '/projects/pg/images/dashboard.png',
-    status: 'live',
-    year: '2024',
-    complexity: 7,
-    impact: 6,
-    
-    grid: {
-      role: 'Full Stack Engineer',
-      metrics: 'Multi-tenant, Booking, PDF generation',
-      tags: ['Next.js', 'React PDF', 'Multi-tenant', 'MongoDB'],
-    },
-    
-    caseStudy: {
-      timeline: 'Sep 2024 - Oct 2025',
-      team: 'Pair programming',
-      
-      problem: {
-        context: 'PG owners managing multiple properties. Tenants applying online. Manual processes everywhere.',
-        pain: 'Manual onboarding forms. Invoice generation offline. Notice tracking scattered.',
-        challenge: 'How to streamline tenant onboarding, booking, and invoice generation?',
-        insight: 'Automation in property management saves hours of manual work per cycle.',
-      },
-      
-      solution: {
-        approach: 'Multi-tenant Platform with Automated Workflows',
-        architecture: 'Landlord Dashboard → Tenant Onboarding → Booking → PDF Invoice Generation',
-        techStack: {
-          frontend: ['Next.js', 'TypeScript', 'Tailwind CSS', 'React PDF'],
-          backend: ['Node.js', 'Express.js'],
-          database: ['MongoDB'],
-          infra: ['Vercel'],
-        },
-        decisions: [
-          {
-            title: 'React PDF for Invoice Generation',
-            description: 'Why client-side instead of server?',
-            why: 'Client-side = instant download. Server-side would add latency.',
-          },
-          {
-            title: 'Multi-tenant Data Model',
-            description: 'How to isolate landlord data?',
-            why: 'Each landlord only sees their tenants. Queries filtered by landlord_id.',
-          },
-          {
-            title: 'MongoDB Flexibility',
-            description: 'Why MongoDB?',
-            why: 'Different property types, different structures. Schema flexibility needed.',
-          },
-        ],
-      },
-      
-      results: {
-        metrics: [
-          { label: 'Onboarding', before: 'Manual forms', after: 'Automated workflow', impact: '60% faster' },
-          { label: 'Invoice Generation', before: 'Manual PDF creation', after: 'Instant download', impact: 'Zero manual work' },
-          { label: 'Notice Tracking', before: 'Email/spreadsheet', after: 'Automated dashboard', impact: 'No missed dates' },
-        ],
-        adoption: {
-          launch: 'Live',
-          users: 'Property owners + tenants',
-          uptime: '99%+',
-        },
-        learning: 'Automation in admin workflows saves tremendous time.',
-      },
-      
-      challenges: [
-        {
-          title: 'PDF Generation Performance',
-          problem: 'Large invoices slow to generate.',
-          solution: 'Optimized React PDF, lazy load heavy components.',
-          learning: 'PDF generation can be slow if not optimized.',
-          result: 'Invoices generate in <2 seconds.',
-        },
-      ],
-      
-      deepDives: [
-        {
-          title: 'React PDF Optimization',
-          description: 'How to generate PDFs without blocking UI.',
-          codeBefore: 'Generate all PDF content immediately. Users wait.',
-          codeAfter: 'Lazy load PDF sections. Generate asynchronously.',
-          why: 'Large PDFs block UI. Lazy loading keeps app responsive.',
-        },
-      ],
-      
-      outcome: {
-        status: 'Live in Production',
-        reflection: 'Building this taught me good UX in property management matters to business efficiency.',
-        ifBuildingAgain: [
-          'Implement invoice caching',
-          'Add bulk invoice generation',
-          'Test with large property portfolios',
-        ],
-        links: {
-          demo: 'https://pg-accommodation.com',
-        },
-      },
-    },
-  },
 
-  {
-    id: 'hospital-websites',
-    name: 'Hospital Websites Series',
-    slug: 'hospital-websites-series',
-    description: '5+ production healthcare websites. Patient portals, doctor dashboards, lab services.',
-    shortDescription: '5+ healthcare websites built end-to-end',
-    thumbnail: '/projects/hospitals/images/portal.png',
-    status: 'live',
-    year: '2024',
-    complexity: 6,
-    impact: 8,
-    
-    grid: {
-      role: 'MERN Developer',
-      metrics: '5+ websites, 5+ clients, JWT + RBAC',
-      tags: ['React.js', 'Node.js', 'MongoDB', 'JWT', 'AWS'],
-    },
-    
-    caseStudy: {
-      timeline: 'Nov 2023 - Aug 2024',
-      team: '3-person team',
-      
-      problem: {
-        context: 'Multiple hospitals need custom websites. Each has unique workflows but similar requirements.',
-        pain: 'Building from scratch each time = inefficient. But customization needed.',
-        challenge: 'How to balance reusable templates with client-specific healthcare requirements?',
-        insight: 'Healthcare websites need both standardization (speed) and customization (client needs).',
-      },
-      
-      solution: {
-        approach: 'Reusable Component Library + Client-Specific Customization',
-        architecture: 'Base Template (Patient Portal, Doctor Dashboard, Lab) + Client Branding',
-        techStack: {
-          frontend: ['React.js', 'Next.js', 'TypeScript', 'Tailwind CSS'],
-          backend: ['Node.js', 'Express.js'],
-          database: ['MongoDB'],
-          infra: ['AWS EC2', 'Docker'],
-        },
-        decisions: [
-          {
-            title: 'Reusable Base Template',
-            description: 'Why not build from scratch each time?',
-            why: 'Speed to market. Each hospital deploys in weeks, not months.',
-          },
-          {
-            title: 'JWT + RBAC Security',
-            description: 'How to secure patient data?',
-            why: 'Patient, Doctor, Admin roles with different access. JWT tokens stateless, scalable.',
-          },
-          {
-            title: 'MongoDB Flexibility',
-            description: 'Why MongoDB for varied needs?',
-            why: 'Schema flexibility allows different hospital structures. No migrations needed.',
-          },
-        ],
-      },
-      
-      results: {
-        metrics: [
-          { label: 'Websites Built', before: '0', after: '5+', impact: '5 hospital clients live' },
-          { label: 'Time to Deploy', before: '3-4 months', after: '6-8 weeks', impact: '50% faster' },
-          { label: 'Security', before: 'None', after: 'JWT + RBAC', impact: 'Zero breaches' },
-          { label: 'Code Reuse', before: '0%', after: '70%+', impact: 'Efficiency gained' },
-        ],
-        adoption: {
-          launch: 'First: Nov 2023, All 5: Jun 2024',
-          users: '100+ users per hospital',
-          uptime: '99%+ across all',
-        },
-        learning: 'Balancing reuse and customization is an art. Too rigid = inflexible. Too flexible = slow.',
-      },
-      
-      challenges: [
-        {
-          title: 'Hospital-Specific Customization',
-          problem: 'Each hospital wants unique workflows. Template too rigid?',
-          solution: 'Built configurable workflows. Admins customize without code changes.',
-          learning: 'Customization != code changes. It\'s configuration.',
-          result: '5 hospitals with distinct workflows, same codebase.',
-        },
-        {
-          title: 'Data Access Control',
-          problem: 'Patients only see their data. Doctors only see their patients.',
-          solution: 'RBAC middleware. Every query scoped to user role and hospital.',
-          learning: 'Security isn\'t optional in healthcare.',
-          result: 'Zero unauthorized access incidents.',
-        },
-      ],
-      
-      deepDives: [
-        {
-          title: 'RBAC Pattern for Healthcare',
-          description: 'How to implement role-based access control for sensitive data.',
-          codeBefore: 'db.patients.find({})',
-          codeAfter: 'db.patients.find({ hospital_id: req.user.hospital_id, visible_to_roles: req.user.role })',
-          why: 'Every query must check role and hospital. Security by query design.',
-        },
-      ],
-      
-      outcome: {
-        status: 'Live in Production',
-        reflection: 'Building 5+ hospital websites taught me healthcare workflows and HIPAA compliance.',
-        ifBuildingAgain: [
-          'Implement audit logging from start',
-          'Add HIPAA compliance checklist',
-          'Test with real hospital workflows early',
-        ],
-        links: {
-          github: 'Live on AWS EC2',
-        },
-      },
-    },
-  },
-  {
-  id: 'leads-management-dashboard',
-  name: 'Leads Management Dashboard',
-  slug: 'leads-management-dashboard',
-  description: 'Insurance leads capture platform. Agent onboarding with QR codes. Leads management dashboard. Agent data storage. Monolith MERN stack.',
-  shortDescription: 'QR-based leads capture for insurance agents',
-  thumbnail: '/projects/leads/images/dashboard.png',
+ {
+  id: 'pg-accommodation',
+  name: 'PG Accommodation Platform',
+  slug: 'pg-accommodation-platform',
+  description: 'Multi-tenant property management. Component-driven frontend. Mobile-first responsive UI. User dashboards for notice tracking, invoice management, profile editing.',
+  shortDescription: 'Component-driven property management platform',
+  thumbnail: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&h=800&fit=crop',
   status: 'live',
   year: '2024',
-  complexity: 7,
+  complexity: 8,
   impact: 7,
   
   grid: {
-    role: 'Full Stack Developer',
-    metrics: 'QR-based capture, Agent onboarding, Leads management',
-    tags: ['React.js', 'Node.js', 'MongoDB', 'QR codes', 'Monolith'],
+    role: 'Full Stack Frontend Developer',
+    metrics: 'End-to-end pages, Mobile-first, Reusable components',
+    tags: ['Next.js', 'React Router DOM', 'TypeScript', 'Tailwind CSS', 'React PDF', 'JWT Auth'],
   },
   
   caseStudy: {
-    timeline: 'Nov 2023 - Aug 2024',
-    team: '2-person team',
+    timeline: 'Sep 2024 - Oct 2025 (Pair programming)',
+    team: 'Backend team + Frontend ownership',
     
     problem: {
-      context: 'Insurance company needs field agents to capture leads in public places. Manual lead entry = slow, errors, no tracking.',
-      pain: 'Agents scattered. No unified lead capture. No agent performance tracking. Manual paper forms.',
-      challenge: 'How to get agents into field with QR codes that capture leads and tie them to agent data?',
-      insight: 'QR codes bypass friction. Physical + digital integration needed.',
+      context: 'PG owners managing multiple properties. Tenants applying online. Manual processes everywhere.',
+      pain: 'Manual onboarding. Invoice generation offline. Notice tracking scattered. No unified tenant management.',
+      challenge: 'How to build scalable, mobile-first property management frontend where landlords and tenants manage everything seamlessly?',
+      insight: 'Component-driven architecture + reusable patterns = scalable product without constant rewrites.',
     },
     
     solution: {
-      approach: 'QR-Based Lead Capture with Agent Dashboard + Leads Management',
-      architecture: 'Agent Onboarding → Generate QR Code → Public templates with QR → QR scan → Lead captured → Dashboard displays',
+      approach: 'Component-Driven End-to-End Pages with Mobile-First Responsiveness',
+      architecture: 'Reusable Components → Page-Level Composition → Responsive Layouts (Mobile, Tablet, Desktop)',
       techStack: {
-        frontend: ['React.js', 'CSS'],
-        backend: ['Node.js', 'Express.js'],
+        frontend: ['Next.js', 'React Router DOM', 'TypeScript', 'Tailwind CSS', 'React PDF', 'Helmet (SEO)', 'React Hooks'],
+        features: ['Lazy loading', 'Code splitting', 'Dynamic memoization', 'Token-based auth', 'Responsive design'],
+        security: ['Access tokens', 'Refresh tokens', 'Secure headers', 'Token validation middleware'],
+        optimization: ['Image optimization', 'Component memoization', 'Code splitting by route', 'Lazy loaded modals'],
         database: ['MongoDB'],
-        features: ['QR code generation', 'Agent onboarding', 'Leads dashboard', 'Agent dashboard'],
+        infra: ['Vercel'],
       },
       decisions: [
         {
-          title: 'QR Code for Lead Capture',
-          description: 'Why QR codes instead of manual form?',
-          why: 'Zero friction. Scan QR → instant lead capture. Agent doesn\'t need to explain.',
+          title: 'Component-Driven Architecture',
+          description: 'Why build reusable components instead of pages from scratch?',
+          why: 'Reusable components = consistency + speed. Build once, use everywhere. Less code duplication.',
         },
         {
-          title: 'Agent Data Storage with Agent',
-          description: 'Why store data at agent level?',
-          why: 'Agent context matters. Every lead tied to agent who captured it. Performance tracking.',
+          title: 'Mobile-First Responsive Design',
+          description: 'Why mobile-first instead of desktop-first?',
+          why: 'Tenants access dashboards on phones. Mobile-first ensures good UX on all devices. Scales up, not down.',
         },
         {
-          title: 'Monolith Backend',
-          description: 'Why monolith instead of microservices?',
-          why: 'v0 product. Speed matters. Single codebase faster to ship than distributed system.',
+          title: 'End-to-End Page Ownership',
+          description: 'Why build complete pages, not isolated components?',
+          why: 'Pages have context. Building isolated components = lots of tweaking + rewrites. End-to-end = ship fast.',
         },
         {
-          title: 'Leads Dashboard',
-          description: 'Who needs the leads?',
-          why: 'Insurance company tracks all leads in one view. Filter by agent, status, date.',
+          title: 'Access + Refresh Token Security',
+          description: 'Why two tokens instead of one?',
+          why: 'Access token: short-lived, used for API calls. Refresh token: long-lived, renews access. Secure + smooth UX.',
         },
         {
-          title: 'Agent Dashboard',
-          description: 'Who needs agent data?',
-          why: 'Admin tracks agent performance. Lead count, conversion rate, etc.',
+          title: 'React PDF for Invoices',
+          description: 'Why client-side PDF generation?',
+          why: 'Instant download. No server overhead. Users generate invoices in real-time.',
+        },
+        {
+          title: 'Helmet for SEO',
+          description: 'Why Helmet on frontend?',
+          why: 'Meta tags, security headers, OG tags for sharing. Improves SEO and social sharing.',
         },
       ],
     },
     
     results: {
       metrics: [
-        { label: 'Lead Capture', before: 'Manual forms', after: 'QR scan instant', impact: 'Zero friction' },
-        { label: 'Agent Tracking', before: 'No visibility', after: 'Dashboard visibility', impact: 'Performance tracked' },
-        { label: 'Lead Management', before: 'Spreadsheets', after: 'Centralized dashboard', impact: 'Organized' },
-        { label: 'QR Distribution', before: 'N/A', after: 'One per agent + templates', impact: 'Field-ready' },
+        { label: 'Page Load Performance', before: 'No optimization', after: 'Code split + lazy load', impact: '65% faster' },
+        { label: 'Component Reusability', before: '0%', after: '75%+', impact: 'Faster feature shipping' },
+        { label: 'User Dashboard', before: 'Scattered pages', after: 'Unified interface', impact: 'Better UX' },
+        { label: 'Mobile Responsiveness', before: 'Desktop-only', after: 'Mobile-first', impact: '100% device coverage' },
+        { label: 'Invoice Generation', before: 'Manual', after: 'One-click download', impact: 'User autonomy' },
       ],
       adoption: {
-        launch: 'Live',
-        users: 'Insurance agents + admin',
-        uptime: '99%+',
+        launch: 'Oct 2024',
+        users: 'Property owners + tenants',
+        uptime: '99%+ production',
       },
-      learning: 'QR codes remove friction. Physical + digital integration powerful for field work.',
+      learning: 'Component-driven architecture + mobile-first = scalable frontend without constant rewrites. Build once, maintain forever.',
     },
     
     challenges: [
       {
-        title: 'QR Code Generation at Scale',
-        problem: 'Need unique QR per agent. Generating and storing 100+ codes.',
-        solution: 'Generate on demand. Store QR mapping in database. Reuse template.',
-        learning: 'QR generation isn\'t expensive. Do it on the fly.',
-        result: 'Each agent gets unique QR instantly.',
+        title: 'Data Structure Transformation',
+        problem: 'API returns data in format X. Components need format Y. Constant tweaking required.',
+        solution: 'Built data transformation layer. API response → formatted data → components. Consistent format.',
+        learning: 'Data transformation at the boundary prevents component bloat.',
+        result: 'Components stay clean. Easy to swap backends.',
       },
       {
-        title: 'Tying Leads to Agents',
-        problem: 'QR scanned. How do we know which agent?',
-        solution: 'Each QR encodes agent_id. Scan decodes agent_id. Lead tied to agent.',
-        learning: 'QR encoding is powerful for context.',
-        result: 'Every lead has agent attribution.',
+        title: 'Token-Based Security at Scale',
+        problem: 'Access tokens expire. Users redirected to login constantly. Bad UX.',
+        solution: 'Refresh token flow. When access expires, auto-refresh silently. User doesn\'t notice.',
+        learning: 'Seamless token management = better security + better UX.',
+        result: 'Zero unexpected logouts. Secure data.',
       },
       {
-        title: 'Agent Onboarding UX',
-        problem: 'Agents in field. Need simple onboarding.',
-        solution: 'Minimal form. Generate QR. Print template. Deploy.',
-        learning: 'Field workflows need simplicity.',
-        result: 'Agent onboarding in <5 minutes.',
+        title: 'Component Reusability vs Flexibility',
+        problem: 'Build too generic = props hell. Build too specific = not reusable.',
+        solution: 'Compound components pattern. Parent controls layout, children handle content.',
+        learning: 'Reusability requires architecture thinking, not just code.',
+        result: '75%+ code reuse across pages.',
+      },
+      {
+        title: 'Mobile-First Responsive at Scale',
+        problem: 'Desktop layout breaks on mobile. Media query spaghetti code.',
+        solution: 'Mobile-first CSS. Build for mobile, enhance for desktop. Tailwind breakpoints from start.',
+        learning: 'Mobile-first is faster and cleaner than desktop-first.',
+        result: 'Perfect responsive on all devices. No layout shifts.',
+      },
+      {
+        title: 'PDF Generation Performance',
+        problem: 'Large invoices slow to generate. UI freezes.',
+        solution: 'Lazy load PDF sections. Generate asynchronously. Progress indication.',
+        learning: 'PDF generation is heavy. Offload with async patterns.',
+        result: 'Invoices generate in <2 seconds. UI stays responsive.',
       },
     ],
     
     deepDives: [
       {
-        title: 'QR Code Encoding Pattern',
-        description: 'How to encode agent context in QR code.',
-        codeBefore: 'Generate generic QR pointing to website',
-        codeAfter: 'Generate QR with agent_id embedded → scan → system knows which agent',
-        why: 'QR context = automatic attribution.',
+        title: 'Component-Driven Page Composition',
+        description: 'How to build end-to-end pages from reusable components.',
+        codeBefore: 'Page = one big file. Lots of markup. Hard to reuse.',
+        codeAfter: 'Page = composition of components. <Header /> + <Form /> + <Table /> + <Footer />. Reusable.',
+        why: 'Composition over duplication. Build components once, compose pages many times.',
       },
       {
-        title: 'Agent Data Scoping',
-        description: 'How to track leads per agent.',
-        codeBefore: 'All leads in one list',
-        codeAfter: 'Query leads filtered by agent_id',
-        why: 'Agent-scoped queries = performance tracking.',
+        title: 'Token Refresh Pattern',
+        description: 'How to handle token expiry without disrupting user.',
+        codeBefore: 'Token expires → error → redirect to login. User loses context.',
+        codeAfter: 'Token expires → intercept → refresh token → retry request → user continues. Seamless.',
+        why: 'Seamless auth = better UX + better security.',
+      },
+      {
+        title: 'Mobile-First Responsive Patterns',
+        description: 'How to structure CSS for mobile-first.',
+        codeBefore: 'CSS: desktop styles. @media mobile: override. Complex.',
+        codeAfter: 'CSS: mobile styles. @media lg: enhance. Simple. Tailwind: sm, md, lg breakpoints.',
+        why: 'Mobile-first is additive, not subtractive. Simpler.',
+      },
+      {
+        title: 'Data Transformation at Boundaries',
+        description: 'How to handle API data mismatch.',
+        codeBefore: 'API data → Use directly in components. Components know API shape. Tight coupling.',
+        codeAfter: 'API data → Transform → Components use clean format. Loose coupling.',
+        why: 'Decoupling from API = easy to swap backends or change API.',
       },
     ],
     
     outcome: {
-      status: 'Live in Production (v0)',
-      reflection: 'Building this taught me QR codes are powerful for bridging physical and digital. Field work needs friction removal.',
+      status: 'Live in Production',
+      reflection: 'Building PG Accommodation taught me that component-driven architecture + mobile-first thinking = scalable products. Don\'t optimize for desktop and squeeze mobile. Build for mobile, enhance desktop.',
       ifBuildingAgain: [
-        'Build v1 with microservices',
-        'Add analytics for lead conversion',
-        'Implement bulk agent onboarding',
+        'Implement component library testing from day 1',
+        'Add Storybook for component documentation',
+        'Build design tokens early (colors, spacing, typography)',
+        'Implement analytics for component usage',
       ],
       links: {
-        github: 'Live production',
+        demo: 'https://pg-accommodation.vercel.app',
       },
+    },
+    
+    currentStatus: {
+      launched: 'Oct 2024',
+      uptime: '99%+ production',
+      activeUsers: 'Property owners + tenants',
+    },
+  },
+},
+
+{
+  id: 'hospital-websites',
+  name: 'Hospital Websites Series',
+  slug: 'hospital-websites-series',
+  description: '5+ production healthcare websites. Patient portals, doctor dashboards, lab services. JWT + RBAC. Real workflows.',
+  shortDescription: '5+ healthcare websites built end-to-end',
+  thumbnail: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&h=800&fit=crop',
+  status: 'live',
+  year: '2023',
+  complexity: 6,
+  impact: 8,
+  
+  grid: {
+    role: 'MERN Stack Developer',
+    metrics: '5+ websites, 5+ clients live, JWT + RBAC',
+    tags: ['React.js', 'Node.js', 'MongoDB', 'JWT', 'Healthcare', 'AWS'],
+  },
+  
+  caseStudy: {
+    timeline: 'Nov 2023 - Aug 2024 (9 months at Primates)',
+    team: '3-person team',
+    
+    problem: {
+      context: 'Multiple hospitals need custom websites. Each has unique workflows but similar core requirements (patient booking, doctor management, lab tracking).',
+      pain: 'Building from scratch each time = inefficient. Client needs unique customization = can\'t use template. Each hospital took 3-4 months.',
+      challenge: 'How to balance reusable base templates with client-specific healthcare requirements without long development cycles?',
+      insight: 'Healthcare websites need standardization (speed) + customization (client needs). The right architecture makes both possible.',
+    },
+    
+    solution: {
+      approach: 'Reusable Component Library + Client-Specific Configuration',
+      architecture: 'Base Template (Patient Portal, Doctor Dashboard, Lab Services) + Client Branding + Custom Workflows',
+      techStack: {
+        frontend: ['React.js', 'TypeScript', 'Tailwind CSS'],
+        backend: ['Node.js', 'Express.js'],
+        database: ['MongoDB'],
+        infra: ['AWS EC2', 'JWT Auth', 'RBAC middleware'],
+        features: ['Patient booking', 'Doctor dashboards', 'Lab management', 'Role-based access', 'Appointment tracking'],
+      },
+      decisions: [
+        {
+          title: 'Reusable Base Template',
+          description: 'Why not build from scratch for each hospital?',
+          why: 'Standardized components (booking UI, dashboard layout, auth flow) cut development time. Client-specific customization handled via config, not code changes.',
+        },
+        {
+          title: 'JWT + RBAC for Healthcare',
+          description: 'How to secure patient data across different roles?',
+          why: 'Patients only see their data. Doctors only see their patients. Labs only see lab orders. Role-based middleware enforces at every API call.',
+        },
+        {
+          title: 'MongoDB Flexibility',
+          description: 'Why MongoDB over PostgreSQL?',
+          why: 'Each hospital has slightly different workflows. Flexible schema allows different structures (number of labs, appointment slots, etc.) without migrations.',
+        },
+        {
+          title: 'AWS EC2 Deployment',
+          description: 'Why not serverless?',
+          why: 'Healthcare apps need consistent uptime + real-time features. EC2 + Docker gives reliability for production use.',
+        },
+      ],
+    },
+    
+    results: {
+      metrics: [
+        { label: 'Websites Built', before: '0', after: '5+ live', impact: '5 hospital clients' },
+        { label: 'Development Time', before: '3-4 months each', after: '6-8 weeks per client', impact: '50% faster' },
+        { label: 'Code Reuse', before: '0%', after: '70%+', impact: 'Template saves time' },
+        { label: 'Security', before: 'No auth', after: 'JWT + RBAC complete', impact: 'Zero breaches' },
+        { label: 'Concurrent Users', before: 'Unknown', after: '100+ per hospital', impact: 'Proven scale' },
+      ],
+      adoption: {
+        launch: 'First: Nov 2023, All 5: Jun 2024',
+        users: '500+ users across 5 hospitals',
+        uptime: '99%+ sustained production',
+      },
+      learning: 'Balancing reuse and customization is an art. Too rigid = inflexible. Too flexible = slow. Architecture matters more than technology choice.',
+    },
+    
+    challenges: [
+      {
+        title: 'Hospital-Specific Customization',
+        problem: 'Each hospital wants unique workflows. How flexible can template be without becoming unwieldy?',
+        solution: 'Built configurable workflows. Hospital admins customize via UI (no code changes). Separate config per hospital.',
+        learning: 'Customization != code changes. It\'s configuration at the right level.',
+        result: '5 hospitals with distinct workflows, same codebase.',
+      },
+      {
+        title: 'Patient Data Security',
+        problem: 'Ensuring patients only see their data. Doctors only see their patients. Labs only see lab orders.',
+        solution: 'RBAC middleware. Every query scoped to user role + hospital + patient relationship.',
+        learning: 'Healthcare security isn\'t optional. It\'s non-negotiable.',
+        result: 'Zero unauthorized access incidents across 5 hospitals.',
+      },
+      {
+        title: 'Real-time Appointment Sync',
+        problem: 'Doctor updates slot availability. Patient should see instantly. Lag = booking errors.',
+        solution: 'WebSocket updates. Doctor changes slot → event → all patients see update instantly.',
+        learning: 'Real-time in healthcare prevents double-booking and errors.',
+        result: 'Zero double-booking incidents reported.',
+      },
+      {
+        title: 'HIPAA Compliance Basics',
+        problem: 'Healthcare data is sensitive. Need audit trail + encryption.',
+        solution: 'Added logging for all patient data access. Encrypted sensitive fields. Documented compliance checklist.',
+        learning: 'Compliance isn\'t optional in healthcare. It\'s table-stakes.',
+        result: 'All 5 hospitals passed security audits.',
+      },
+    ],
+    
+    deepDives: [
+      {
+        title: 'RBAC Pattern for Healthcare',
+        description: 'How to enforce role-based access at every layer.',
+        codeBefore: 'db.patients.find({ hospital_id: hospitalId })',
+        codeAfter: 'db.patients.find({ hospital_id: hospitalId, visible_to_roles: req.user.role, assigned_doctor: req.user._id })',
+        why: 'Every query must check role + hospital + assignment. No shortcuts.',
+      },
+      {
+        title: 'Template vs Custom Balance',
+        description: 'How to keep code DRY while allowing customization.',
+        codeBefore: 'Build 5 separate projects (1500 lines each = 7500 lines total)',
+        codeAfter: 'Build 1 template (1500 lines) + 5 configs (100 lines each = 500 lines) = 2000 lines total',
+        why: '73% code reduction. Easier to maintain. Easier to add new hospitals.',
+      },
+    ],
+    
+    outcome: {
+      status: 'Live in Production',
+      reflection: 'Building 5+ hospital websites taught me that healthcare workflows are complex but similar. The right template saves months. Security and real-time sync are non-negotiable.',
+      ifBuildingAgain: [
+        'Implement audit logging from day 1',
+        'Add HIPAA compliance checklist from start',
+        'Test with real hospital workflows earlier',
+        'Build admin customization UI first, then templates',
+      ],
+      links: {
+        deployment: 'Live on AWS EC2',
+      },
+    },
+    
+    currentStatus: {
+      launched: 'Jun 2024',
+      uptime: '99%+ sustained',
+      activeUsers: '500+ across 5 hospitals',
+    },
+  },
+},
+{
+  id: 'leads-management-dashboard',
+  name: 'Leads Management Dashboard',
+  slug: 'leads-management-dashboard',
+  description: 'Insurance leads platform. Public landing page + Admin dashboard for agent onboarding + Leads tracking dashboard. QR-based lead capture. MVP MERN stack.',
+  shortDescription: 'QR-based insurance leads capture MVP',
+  thumbnail: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=800&fit=crop',
+  status: 'beta',
+  year: '2024',
+  complexity: 7,
+  impact: 7,
+  
+  grid: {
+    role: 'MERN Stack Developer',
+    metrics: 'Landing page, Admin dashboard, Leads tracking, QR capture',
+    tags: ['React.js', 'Node.js', 'MongoDB', 'QR codes', 'Monolith'],
+  },
+  
+  caseStudy: {
+    timeline: 'Nov 2023 - Aug 2024',
+    team: '2-person MERN team',
+    
+    problem: {
+      context: 'Insurance company needs field agents to capture leads in public places. Manual lead entry = slow, errors, no tracking. No agent performance visibility.',
+      pain: 'Agents scattered across locations. No unified lead capture system. Manual paper forms. No agent-to-lead attribution.',
+      challenge: 'How to build system where agents in field capture leads via QR codes, admin tracks agents, and leads are centrally managed?',
+      insight: 'QR codes remove friction. Physical + digital integration powerful for field sales.',
+    },
+    
+    solution: {
+      approach: 'Three-Interface Platform: Landing Page + Admin Dashboard + Leads Tracking',
+      architecture: 'Public Landing Page (agent signup) → Admin Dashboard (agent onboarding + QR generation) → Leads Dashboard (track + filter leads) ← QR scans from field',
+      techStack: {
+        frontend: ['React.js', 'CSS'],
+        backend: ['Node.js', 'Express.js', 'Monolith'],
+        database: ['MongoDB'],
+        features: ['QR code generation', 'Agent onboarding', 'Leads dashboard', 'Agent performance tracking', 'Lead filtering + search'],
+      },
+      decisions: [
+        {
+          title: 'QR Code for Lead Capture',
+          description: 'Why QR codes instead of manual form?',
+          why: 'Zero friction. Scan QR → instant lead captured. Agents don\'t explain, system records automatically.',
+        },
+        {
+          title: 'Three Separate Interfaces',
+          description: 'Why landing page + admin + leads dashboard?',
+          why: 'Clear separation: public (agent signup), admin (control), leads (analytics). Each interface focused.',
+        },
+        {
+          title: 'Agent-Scoped Lead Attribution',
+          description: 'Why tie leads to agents?',
+          why: 'Performance tracking. Know which agent captured which lead. Commission calculation. Accountability.',
+        },
+        {
+          title: 'Monolith Backend for Speed',
+          description: 'Why monolith for MVP?',
+          why: 'Speed to market critical. Single codebase faster than microservices. Easier to iterate.',
+        },
+        {
+          title: 'QR with Embedded Agent ID',
+          description: 'How to know which agent scanned?',
+          why: 'Each QR encodes agent_id. Scan decodes → system knows source. Automatic attribution.',
+        },
+      ],
+    },
+    
+    results: {
+      metrics: [
+        { label: 'Lead Capture', before: 'Manual paper forms', after: 'QR scan instant', impact: 'Zero friction' },
+        { label: 'Agent Tracking', before: 'No visibility', after: 'Real-time dashboard', impact: 'Performance measured' },
+        { label: 'Lead Organization', before: 'Spreadsheets', after: 'Centralized database', impact: 'Organized + searchable' },
+        { label: 'QR Distribution', before: 'N/A', after: 'Unique per agent', impact: 'Field-ready in minutes' },
+      ],
+      adoption: {
+        launch: 'Aug 2024',
+        users: 'Insurance agents + admin team',
+        uptime: 'MVP phase (server currently paused)',
+      },
+      learning: 'QR codes are powerful for removing friction in field work. Physical + digital integration beats purely digital workflows for on-the-go teams.',
+    },
+    
+    challenges: [
+      {
+        title: 'QR Code Generation at Scale',
+        problem: 'Need unique QR per agent. Generating + storing 100+ codes without bloating system.',
+        solution: 'Generate QR on-demand. Store mapping in DB. Reuse template, regenerate new codes instantly.',
+        learning: 'QR generation is cheap computationally. On-demand is faster than batch pre-generation.',
+        result: 'Each agent gets unique QR instantly. No storage overhead.',
+      },
+      {
+        title: 'Leads Attribution Accuracy',
+        problem: 'QR scanned. How to guarantee correct agent attribution?',
+        solution: 'Encode agent_id directly in QR. Decode on scan. Cross-verify with session data.',
+        learning: 'QR encoding is powerful for embedding context, not just URLs.',
+        result: 'Zero misattribution. Every lead tied to correct agent.',
+      },
+      {
+        title: 'Agent Onboarding UX',
+        problem: 'Agents in field need fast onboarding. Complex forms = barriers.',
+        solution: 'Minimal form (name, email, phone). System generates QR. Print template. Deploy.',
+        learning: 'Field workflows prioritize speed over comprehensiveness.',
+        result: 'Agent onboarding in <5 minutes.',
+      },
+      {
+        title: 'Server Maintenance Pause',
+        problem: 'Client paused server due to internal priorities. System offline currently.',
+        solution: 'Code complete and tested. Ready to redeploy when client resumes.',
+        learning: 'Sometimes client needs shift. Quality code allows quick relaunch.',
+        result: 'Can go live in hours when needed.',
+      },
+    ],
+    
+    deepDives: [
+      {
+        title: 'QR Code Context Encoding',
+        description: 'How to embed agent identity in QR without URL parameters.',
+        codeBefore: 'Generate generic QR → https://leads.com/capture → User manually selects agent',
+        codeAfter: 'Generate QR with agent_id encoded → https://leads.com/capture?agent=abc123 → System auto-selects agent',
+        why: 'Embedded context = automatic, zero-error attribution.',
+      },
+      {
+        title: 'Agent-Scoped Lead Queries',
+        description: 'How to track leads per agent efficiently.',
+        codeBefore: 'fetch all leads → filter in frontend by agent',
+        codeAfter: 'db.leads.find({ agent_id: req.user.agent_id, status: "new" }) → only agent\'s leads',
+        why: 'Database-level filtering = faster, scalable, secure.',
+      },
+    ],
+    
+    outcome: {
+      status: 'MVP - Production Code Ready',
+      reflection: 'Building this taught me that QR codes are powerful for bridging physical and digital sales workflows. Field teams prioritize friction removal over feature richness. MVP with monolith backend shipped fast and proved concept.',
+      ifBuildingAgain: [
+        'Build v2 with microservices for scaling',
+        'Add analytics dashboard for lead conversion funnels',
+        'Implement bulk agent onboarding + CSV import',
+        'Add real-time notifications for new leads',
+      ],
+      links: {
+        deployment: 'MVP code complete (server paused - client maintenance)',
+      },
+    },
+    
+    currentStatus: {
+      launched: 'Aug 2024',
+      uptime: 'MVP complete',
+      activeUsers: 'Admin testing + agent validation',
     },
   },
 },
