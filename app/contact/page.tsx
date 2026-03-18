@@ -166,8 +166,8 @@ useEffect(() => {
             <div className="space-y-3 pt-6 border-t border-white/10">
               <h3 className="text-xs font-mono font-bold text-neutral-500 uppercase tracking-wider">What I Bring</h3>
               <p className="text-sm text-neutral-400 leading-relaxed">
-                3+ years scaling systems to 100k+ daily events. Proven ability to optimize performance (95% improvements), 
-                build reliable architectures (99.9% uptime), and mentor teams.
+               Full Stack Developer building applications that help teams manage data, workflows, and day-to-day operations.
+               Worked on dashboards, admin systems, and SaaS tools, handling everything from frontend development to backend logic and deployment.
               </p>
             </div>
           </motion.div>
@@ -287,8 +287,8 @@ useEffect(() => {
                 <p className="text-[10px] text-neutral-600 text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black px-3">Or email directly</p>
               </div>
 
-              <a href="mailto:hello@vinodkumar.dev" className="w-full py-3 px-6 bg-white/[0.05] hover:bg-white/[0.08] border border-white/10 text-white rounded-lg text-center font-medium transition">
-                hello@vinodkumar.dev
+              <a href="mailto:vk5241415@gmail.com" className="w-full py-3 px-6 bg-white/[0.05] hover:bg-white/[0.08] border border-white/10 text-white rounded-lg text-center font-medium transition">
+                vk5241415@gmail.com
               </a>
 
               {formErrors.submit && (

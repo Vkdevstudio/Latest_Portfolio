@@ -100,7 +100,7 @@ export default function CTA() {
               </p>
               
               <a href="/resume" target="_blank"  className="inline-block">
-                <button className="text-sm font-black text-white border-b-2 border-emerald-400 pb-1 hover:text-emerald-400 transition-colors">
+                <button className="text-sm cursor-pointer font-black text-white border-b-2 border-emerald-400 pb-1 hover:text-emerald-400 transition-colors">
                   View Resume
                 </button>
               </a>

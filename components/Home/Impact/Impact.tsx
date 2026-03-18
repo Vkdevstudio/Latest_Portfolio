@@ -178,9 +178,9 @@ export default function Impact() {
             <p className="text-[10px] text-neutral-600 uppercase tracking-widest">
               Performance metrics
             </p>
-            <button className="text-xs font-bold text-emerald-400 hover:text-emerald-300 transition-colors">
+            {/* <button className="text-xs font-bold text-emerald-400 hover:text-emerald-300 transition-colors">
               View all →
-            </button>
+            </button> */}
           </div>
 
           {metrics.map((metric, i) => (
