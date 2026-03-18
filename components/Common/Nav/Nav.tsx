@@ -3,13 +3,14 @@
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, FileText, ArrowRight } from 'lucide-react';
+import { X, FileText, ArrowRight, Grid3X3Icon } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 export default function Navigation() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-
+const pathname = usePathname();
   useEffect(() => {
     return scrollY.on('change', (latest) => {
       setIsScrolled(latest > 50);
@@ -116,17 +117,30 @@ export default function Navigation() {
           <div className="flex items-center gap-12">
             {/* Desktop Nav - Technical Styling */}
             <div className="hidden lg:flex items-center gap-10">
-              {navItems.map((item, idx) => (
-                <Link 
-                  key={item.name} 
-                  href={item.href}
-                  className="text-[11px] font-mono uppercase tracking-[0.2em] text-neutral-500 hover:text-emerald-400 transition-all relative group py-2"
-                >
-                  <span className="mr-2 text-emerald-500/30 group-hover:text-emerald-500 transition-colors">0{idx + 1}</span>
-                  {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-emerald-500/50 transition-all duration-500 group-hover:w-full shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
-                </Link>
-              ))}
+             {navItems.map((item, idx) => {
+const isActive = pathname.startsWith(item.href);
+  return (
+    <Link 
+      key={item.name} 
+      href={item.href}
+      className={`text-[11px] font-mono uppercase tracking-[0.2em] transition-all relative group py-2
+        ${isActive ? 'text-emerald-400' : 'text-neutral-500 hover:text-emerald-400'}
+      `}
+    >
+      <span className={`mr-2 transition-colors ${
+        isActive ? 'text-emerald-500' : 'text-emerald-500/30 group-hover:text-emerald-500'
+      }`}>
+        0{idx + 1}
+      </span>
+
+      {item.name}
+
+      <span className={`absolute -bottom-1 left-0 h-[1px] bg-emerald-500/50 transition-all duration-500
+        ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}
+      `} />
+    </Link>
+  );
+})}
             </div>
             
             <div className="hidden lg:flex items-center gap-6">
@@ -160,11 +174,7 @@ export default function Navigation() {
               {isOpen ? (
                 <X className="w-5 h-5 text-emerald-500" />
               ) : (
-                <div className="flex flex-col gap-1 items-end">
-                  <div className="w-5 h-[1px] bg-white group-hover:bg-emerald-400 transition-colors" />
-                  <div className="w-3 h-[1px] bg-emerald-500" />
-                  <div className="w-5 h-[1px] bg-white group-hover:bg-emerald-400 transition-colors" />
-                </div>
+                <Grid3X3Icon/>
               )}
             </button>
           </div>
