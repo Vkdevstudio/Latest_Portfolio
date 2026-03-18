@@ -3,36 +3,39 @@
 import { motion } from 'framer-motion';
 import { Rocket, Mountain, Users, Network } from 'lucide-react';
 
+
+
+
 const values = [
   {
-    title: 'SHIPPING OVER PERFECTION',
-    quote: 'Done and learning beats perfect and stuck',
-    desc: 'Got 5 products live by prioritizing delivery and iterative learning.',
-    icon: <Rocket className="w-6 h-6" />,
+    title: 'SHIPPED OVER PERFECT',
+    quote: 'Done in 2 months > perfect in 6 months',
+    desc: '9 products shipped in 2 years. Iteration beats analysis paralysis.',
+    icon:  <Rocket className='w-5 h-5'/>,
     accent: 'emerald',
     borderStyle: 'border-dashed'
   },
   {
-    title: 'DEPTH OVER BREADTH',
-    quote: 'Master one thing deeply, not everything shallowly',
-    desc: 'Expert in database optimization with proven 95% performance improvements.',
-    icon: <Mountain className="w-6 h-6" />,
+    title: 'SCALE OVER SIMPLICITY',
+    quote: 'Choose architecture that handles 100x growth, not today\'s load',
+    desc: 'Hospital SaaS handles 100+ concurrent. ClapOS designed for 100k+ events. Think ahead.',
+    icon:  <Mountain className='w-5 h-5'/>,
     accent: 'cyan',
     borderStyle: 'border-solid border-2'
   },
   {
-    title: 'PEOPLE OVER PROCESS',
-    quote: 'Mentoring juniors > following frameworks',
-    desc: '3 juniors I mentored are now shipping independently and leading their own tracks.',
-    icon: <Users className="w-6 h-6" />,
+    title: 'OWNERSHIP OVER DELEGATION',
+    quote: 'Full-stack: design → code → deploy → optimize',
+    desc: 'Every project I touch, I own end-to-end. Frontend, backend, infrastructure, performance.',
+    icon: <Users className='w-5 h-5'/>,
     accent: 'purple',
     borderStyle: 'border-solid'
   },
   {
-    title: 'SYSTEMS THINKING',
-    quote: 'Understand the whole, optimize the parts',
-    desc: 'Architecture decisions shaped my 5+ products to handle 100k+ daily events.',
-    icon: <Network className="w-6 h-6" />,
+    title: 'PROBLEMS OVER FRAMEWORKS',
+    quote: 'Understand the problem first. Pick tools second.',
+    desc: 'Why use Kafka? Because eventually-consistent events scale. Why MongoDB? Because flexible schema fits healthcare variations.',
+    icon: < Network className='w-5 h-5' />,
     accent: 'pink',
     borderStyle: 'border-dotted border-2'
   }

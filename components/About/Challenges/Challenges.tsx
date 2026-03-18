@@ -2,43 +2,55 @@
 
 import { motion } from 'framer-motion';
 
+
 const challenges = [
   {
     id: '01',
-    title: 'PERFECTION PARALYSIS',
-    problem: 'Built apps that never shipped because I was obsessed with "perfect" architecture.',
-    realization: 'Done > Perfect',
-    changed: 'Set strict shipping deadlines and focused on MVP first.',
-    result: '5 products shipped in 12 months.',
-    progress: 60,
+    title: 'THE 3-SECOND BOTTLENECK',
+    problem: 'Hospital SaaS loaded in 3 seconds. Users bounced. I didn\'t know why.',
+    realization: 'Profile before optimizing',
+    changed: 'Spent a week with DevTools. Found: large bundle, unoptimized images, no code splitting.',
+    result: '73% improvement (3s → 800ms). Lighthouse 50 → 90+.',
+    progress: 95,
     accent: 'emerald'
   },
   {
     id: '02',
-    title: 'DATABASE BLINDNESS',
-    problem: 'Systems broke at 100 users because I ignored query optimization.',
-    realization: 'Fundamentals Matter',
-    changed: 'Deep study of database internals and indexing strategies.',
-    result: '95% improvement in query performance.',
-    progress: 80,
+    title: 'DATA QUALITY CRISIS',
+    problem: '15% of backend data was invalid. Receptionist typos, validation gaps.',
+    realization: 'Validate early, fix late',
+    changed: 'Implemented Zod + React Hook Form. Real-time validation. User feedback instant.',
+    result: '85% reduction in invalid data. Clean database.',
+    progress: 90,
     accent: 'cyan'
   },
   {
     id: '03',
-    title: 'COMMUNICATION GAP',
-    problem: 'Wrote good code but nobody understood the "why" behind it.',
-    realization: 'Communication is Code',
-    changed: 'Started writing documentation and teaching juniors.',
-    result: '3 mentees now shipping independently.',
-    progress: 90,
+    title: 'MULTI-TENANT DATA LEAKS',
+    problem: 'Built multi-tenant wrong. Potential cross-tenant data visibility.',
+    realization: 'Security is architecture, not afterthought',
+    changed: 'Every query now scoped to tenant_id. Middleware verification. Audit logging.',
+    result: 'Zero cross-tenant leaks. Secure by design.',
+    progress: 100,
     accent: 'purple'
+  },
+  {
+    id: '04',
+    title: 'MICROSERVICES COUPLING',
+    problem: 'ClapOS services calling each other directly. Tight coupling. Cascading failures.',
+    realization: 'Events > REST calls',
+    changed: 'Switched to Kafka event streaming. Services emit events, others listen. Decoupled.',
+    result: 'One service down doesn\'t break others. Independent scaling.',
+    progress: 60,
+    accent: 'pink'
   }
 ];
 
 const learningTracks = [
-  { name: 'Distributed Systems', progress: 40 },
-  { name: 'ML Integration', progress: 70 },
-  { name: 'Mega-scale Design', progress: 20 }
+  { name: 'Kafka & Event Streaming', progress: 50, status: 'ClapOS in production' },
+  { name: 'Distributed Systems Design', progress: 35, status: 'Learning Raft, consensus' },
+  { name: 'AI/LLM Integration', progress: 30, status: 'Gemini API exploration' },
+  { name: 'Kubernetes & Docker', progress: 25, status: 'Planning AWS EKS migration' }
 ];
 
 export default function Challenges() {

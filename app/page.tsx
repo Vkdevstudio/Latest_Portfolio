@@ -8,6 +8,7 @@ import Hero from '@/components/Home/Hero/Hero'
 import Impact from '@/components/Home/Impact/Impact'
 import Learning from '@/components/Home/Learning/Learning'
 import TechnicalDepth from '@/components/Home/TechnicalDepth/TechnicalDepth'
+import { project } from '@/lib/featureset'
 import React from 'react'
 
 const page = () => {
@@ -17,7 +18,7 @@ const page = () => {
       <Hero />
       <About />
       <Competencies />
-      <FeaturedProject />
+      <FeaturedProject data={project} />
       <Experience />
       <TechnicalDepth />
       <Learning />

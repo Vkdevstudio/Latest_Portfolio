@@ -2,45 +2,44 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Globe, Zap, Users, ShieldCheck } from 'lucide-react';
+import { Globe, Zap, Users, ShieldCheck, TrendingUp } from 'lucide-react';
 
 
 const signalPills = [
   { label: 'MVPs Shipped', value: '5+' },
-  { label: 'Client Projects', value: '3+' },
-  { label: 'Tech Stack', value: 'Full-Stack' },
+  { label: 'Clients Served', value: '10+' },
+  { label: 'Daily Users', value: '100+' },
   { label: 'Learning', value: 'AI & Kafka' },
-  { label: 'Ownership', value: 'E2E' },
+  { label: 'Approach', value: 'End-to-End' },
 ];
 
 const cards = [
-  { label: 'Products Delivered', value: '5+', icon: Globe },
-  { label: 'Client Retention', value: '100%', icon: ShieldCheck },
-  { label: 'Dashboards Built', value: '10+', icon: Users },
-  { label: 'MVPs in Prod', value: '5+', icon: Zap },
+  { label: 'Production Systems', value: '5+', icon: Globe },
+  { label: 'Healthcare Clients', value: '5+', icon: ShieldCheck },
+  { label: 'Load Time Improvement', value: '73%', icon: Zap },
+  { label: 'Data Quality Boost', value: '85%', icon: TrendingUp },
 ];
-
 
 const metrics = [
   {
-    label: 'Database Optimization',
-    value: 95,
-    context: 'Improved query performance 3x via indexing & aggregation optimizations.',
+    label: 'Performance Optimization',
+    value: 73,
+    context: 'Cut load times 3s → 800ms across Hospital SaaS. Lighthouse 50 → 90+.',
   },
   {
-    label: 'System Reliability',
-    value: 99,
-    context: 'Maintained uptime across all deployed MVPs and client projects.',
+    label: 'Data Quality',
+    value: 85,
+    context: 'Reduced invalid backend data by 85% with Zod + React Hook Form validation.',
   },
   {
-    label: 'Feature Delivery Rate',
+    label: 'System Scalability',
     value: 90,
-    context: 'Delivered production features consistently across multiple B2C/B2B MVPs.',
+    context: 'Hospital SaaS handles 100+ daily appointments across 5+ clients without degradation.',
   },
   {
     label: 'AI Integration Progress',
-    value: 60,
-    context: 'Built and tested LLM-powered prototypes in 2 MVPs for smarter user experiences.',
+    value: 30,
+    context: 'Learning Gemini API for ClapOS supervision layer. Prototyping complete in Q2.',
   },
 ];
 

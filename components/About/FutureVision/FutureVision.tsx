@@ -3,46 +3,48 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Target, TrendingUp, Zap } from 'lucide-react';
 
+
+
 const horizons = [
   {
     title: 'HORIZON 1',
     period: 'Next 1-2 Years',
-    role: 'Tech Lead / Senior Architect',
-    focus: 'Distributed systems & Architecture',
-    learning: 'Advanced system design, team leadership',
-    icon: <TrendingUp className="w-5 h-5" />
+    role: 'Tech Lead / Senior Systems Architect',
+    focus: 'Distributed systems, production infrastructure',
+    learning: 'Kubernetes, advanced system design, team collaboration',
+    icon: <TrendingUp className='w-5 h-5' />
   },
   {
     title: 'HORIZON 2',
     period: 'Next 3-5 Years',
-    role: 'Engineering Manager / Principal',
-    focus: 'Building high-performance teams',
-    learning: 'Strategic leadership, product vision',
-    icon: <Target className="w-5 h-5" />
+    role: 'Principal Architect / CTO-track',
+    focus: 'Architecture decisions, scaling problems',
+    learning: 'Strategic product thinking, team leadership',
+    icon: < Target className='w-5 h-5' />
   }
 ];
 
 const metrics = [
   {
-    label: 'Scale systems 1000x',
-    current: '100k events/day',
-    goal: '100M+ events/day',
-    progress: 70,
-    icon: <Zap className="w-4 h-4" />
+    label: 'Products Shipped',
+    current: '9 live',
+    goal: '20+ production systems',
+    progress: 45,
+    icon: <Zap className='w-5 h-5' />
   },
   {
-    label: 'Mentor 10+ engineers',
-    current: '3 mentees',
-    goal: '10+ engineers',
-    progress: 40,
-    icon: <ArrowUpRight className="w-4 h-4" />
+    label: 'System Scale',
+    current: '100+ daily users',
+    goal: '100k+ concurrent',
+    progress: 30,
+    icon: < ArrowUpRight className='w-5 h-5' />
   },
   {
-    label: 'Contribute to Open Source',
-    current: 'Following projects',
-    goal: 'Major contributions',
-    progress: 20,
-    icon: <Target className="w-4 h-4" />
+    label: 'Architecture Mastery',
+    current: 'Multi-tenant, Event-driven',
+    goal: 'Distributed systems expert',
+    progress: 50,
+    icon: < Target className='w-5 h-5' />
   }
 ];
 

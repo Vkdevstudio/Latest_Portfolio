@@ -4,34 +4,36 @@ import { motion } from 'framer-motion';
 
 const foundation = [
   {
-    year: 'YEAR 1',
-    level: 'JUNIOR',
-    learned: ['HTML/CSS/JavaScript basics', 'Portfolio & Todo apps', 'Weather projects'],
-    realized: 'Code quality matters more than just "working"',
+    year: 'EARLY 2023',
+    level: 'MERN BASICS',
+    learned: ['React, Node.js, MongoDB', 'JWT + RBAC', 'Basic AWS EC2'],
+    realized: 'Building features is easy. Scaling systems is hard.',
     confidence: 3
   },
   {
-    year: 'YEAR 2',
-    level: 'MID-LEVEL',
-    learned: ['React, Node.js, databases', '10+ MERN products', 'Freelance shipping'],
-    realized: 'Databases are the bottleneck, not the UI',
+    year: 'MID 2023',
+    level: 'PRODUCTION EXPERIENCE',
+    learned: ['5+ hospital websites', 'Real healthcare workflows', 'Patient data security'],
+    realized: 'Spreadsheets → dashboards = real business value',
     confidence: 5
   },
   {
-    year: 'YEAR 3',
-    level: 'SENIOR-TRACK',
-    learned: ['System design, optimization', 'Architecture & Tradeoffs', 'Products at scale (100k events/day)'],
-    realized: 'Understanding tradeoffs > knowing all languages',
+    year: 'LATE 2024',
+    level: 'SYSTEMS AT SCALE',
+    learned: ['Performance optimization (3s → 800ms)', 'Multi-tenant architecture', 'Event-driven thinking'],
+    realized: 'Databases are the bottleneck. Query optimization > adding servers.',
     confidence: 7
   },
   {
-    year: 'YEAR 4',
-    level: 'CURRENT',
-    learned: ['Event-driven systems', 'ML & LLM integration', 'Distributed design'],
-    realized: 'Teaching others reveals gaps in your own knowledge',
+    year: 'PRESENT',
+    level: 'ARCHITECTURE THINKING',
+    learned: ['Microservices + Kafka', 'Distributed systems', 'ML integration (learning)'],
+    realized: 'Tradeoffs > silver bullets. Every decision has cost.',
     confidence: 8
   }
 ];
+
+
 
 export default function TechnicalFoundation() {
   return (

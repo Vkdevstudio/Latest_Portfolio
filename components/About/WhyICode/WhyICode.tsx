@@ -4,23 +4,23 @@ import { motion } from 'framer-motion';
 
 const reasons = [
   {
-    title: 'THE PROBLEM-SOLVING RUSH',
-    quote: 'That moment when something broken suddenly works—it\'s like solving a puzzle with infinite possibilities.',
+    title: 'THE PROBLEM-SOLVING HIGH',
+    quote: 'That moment when a 3-second load time becomes 800ms—or when a system handling 10 users suddenly handles 100 without breaking. That\'s the rush.',
     accent: 'emerald'
   },
   {
-    title: 'IMPACT THROUGH CODE',
-    quote: '5 products I built are used by 500+ people. That\'s impact I can measure and feel every single day.',
+    title: 'REAL IMPACT THROUGH CODE',
+    quote: '9 products shipped. 100+ daily users. 5+ hospital clients live. I can measure and feel the impact every day.',
     accent: 'cyan'
   },
   {
-    title: 'LEARNING BY TEACHING',
-    quote: 'Teaching juniors forced me to articulate WHY things work. In explaining, I discovered optimizations I didn\'t know existed.',
+    title: 'SYSTEMS THINKING',
+    quote: 'Understanding why a database query is slow teaches you more than knowing every framework. Architecture matters.',
     accent: 'emerald'
   },
   {
-    title: 'THE CRAFT',
-    quote: 'Well-architected code is beautiful. It\'s like poetry—elegant, concise, and purposeful.',
+    title: 'FULL-STACK OWNERSHIP',
+    quote: 'From design to deployment. Frontend, backend, infrastructure. I own the full problem, not just one piece.',
     accent: 'cyan'
   }
 ];

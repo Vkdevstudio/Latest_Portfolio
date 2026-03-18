@@ -69,7 +69,7 @@ export default function AboutHero() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
             <div className="absolute bottom-10 left-10">
               <div className="w-16 h-[2px] bg-emerald-400 mb-4" />
-              <p className="text-xs font-bold tracking-[0.2em] text-emerald-400 uppercase mb-1">Lead Systems Engineer</p>
+              <p className="text-xs font-bold tracking-[0.2em] text-emerald-400 uppercase mb-1">Full Stack Developer</p>
               <p className="text-2xl font-black tracking-tight">Vinod Kumar</p>
             </div>
           </motion.div>

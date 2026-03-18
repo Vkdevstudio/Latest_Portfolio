@@ -46,9 +46,9 @@ export default function ResumePage() {
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-8 text-sm text-neutral-400 pt-4 border-t border-white/10">
-            <span>8+ years experience</span>
-            <span>15+ products shipped</span>
-            <span>500k+ users impacted</span>
+          <span>2+ years shipping</span>
+<span>10+ clients served</span>
+<span>Production systems at scale</span>
           </motion.div>
         </motion.div>
 
@@ -202,7 +202,7 @@ export default function ResumePage() {
           </div>
         </motion.div>
 
-        {/* Certifications */}
+        {/* Certifications
         <motion.div variants={containerVariants} initial="hidden" animate="visible" className="mb-32 space-y-8">
           <motion.div variants={itemVariants} className="space-y-2">
             <h2 className="text-4xl font-black tracking-tight">Certifications</h2>
@@ -220,7 +220,7 @@ export default function ResumePage() {
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* CTA Section */}
         <motion.div variants={containerVariants} initial="hidden" animate="visible" className="border-t border-white/10 pt-12 space-y-8">
@@ -232,7 +232,7 @@ export default function ResumePage() {
 
             <div className="flex flex-col md:flex-row gap-4 justify-center">
               <a
-                href="mailto:hello@vinodkumar.dev"
+                href="mailto:vk5241415@gmail.com"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 hover:border-emerald-500/50 rounded-lg font-medium text-emerald-400 transition-all group"
               >
                 <Mail className="w-4 h-4" />

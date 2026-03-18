@@ -6,46 +6,47 @@ import { Briefcase, Building2, ChevronDown } from 'lucide-react';
 
 export const experiences = [
   {
-    year: '2025-Present',
-    company: 'FREELANCE',
-    role: 'FULL STACK ENGINEER',
+    year: 'Nov 2025 - Present',
+    company: 'Freelance',
+    role: 'Building at Scale',
     icon: Briefcase,
-    desc: 'Built 4+ production projects end-to-end including ClapOS (film industry SaaS), PlusUAE (live UAE client platform), Hospital Management System, and a Business Directory — each with role-based dashboards and real client usage.',
+    desc: 'Full-stack ownership of production systems. Multi-tenant platforms, real-time integrations, secure auth at scale. Microservices + event-driven architecture.',
     achievements: [
-      'Built ClapOS — a film industry SaaS with 10+ operational modules (vendor management, auditions, call sheets, talent onboarding) on a microservices architecture with Apache Kafka',
-      'Delivered PlusUAE for a UAE corporate client — multilingual platform supporting 5+ languages including Arabic and Chinese with RTL layout, live and in daily use',
-      'Built Hospital Management System with role-based dashboards for doctors, admins, receptionists and lab staff — proximity-based appointment assignment reducing scheduling overhead',
-      'Built Jignu Business Directory with multi-tenant architecture, Twilio SMS verification, and AWS S3 asset management'
+      'ClapOS: Film industry SaaS with 10+ operational modules (vendor, auditions, call sheets, talent, media vault). Microservices + Kafka event streaming. Frontend live, backend 50% complete.',
+      'PlusUAE: Multilingual platform for UAE corporate client. 5 languages (Arabic, French, Chinese, English, Mandarin), full RTL layout, Zoho CRM integration. Live & in daily use.',
+      'Jignu: Business directory platform (JustDial-style). Multi-tenant with 3 dashboards: Company (listings, jobs, applications, events, analytics), Admin (user management, approvals, moderation), Public website (discovery, lead capture). Company-scoped data isolation.',
+      'Wyka: Marketing automation for agents. Agent dashboard for bulk client data management. Custom Canva marketplace integration — agent data auto-populated into design interface. OAuth + Passport.js auth across platforms. Real-time data sync between dashboard and Canva app.'
     ],
-    skills: 'Next.js, TypeScript, TailwindCSS, Node.js, MongoDB, Apache Kafka, AWS S3, NextAuth, Twilio, Microservices'
+    skills: 'Next.js • TypeScript • Tailwind • React.js • Node.js • MongoDB • Apache Kafka • OAuth • Passport.js • Multi-tenant Architecture • Microservices • AWS S3 • Vercel'
   },
   {
-    year: '2024-2025',
-    company: 'TENSYS',
-    role: 'FULL STACK DEVELOPER',
+    year: 'Sep 2024 - Oct 2025',
+    company: 'Tensys',
+    role: 'Full Stack Engineer (Promoted from Primates)',
     icon: Building2,
-    desc: 'Promoted to client payroll from Primates after consistent delivery. Owned frontend architecture, role-based dashboards, and API integrations across 5+ hospital clients supporting 100+ daily appointments.',
+    desc: 'Promoted after consistent shipping. Owned frontend architecture for medtech SaaS platforms. 5+ healthcare clients. 100+ daily users. Cut load times 3s → 800ms.',
     achievements: [
-      'Owned appointment booking UI and role-based dashboards for admins, receptionists and lab staff across 5+ hospital clients handling 100+ daily appointments',
-      'Identified and resolved a site-wide performance problem — cut load time from 3 seconds to under 800ms and pushed Lighthouse scores from 50 to 90+ across all deployments',
-      'Replaced unvalidated intake forms with Zod and React Hook Form, reducing invalid data reaching the backend by 85%',
-      'Deployed and maintained applications on AWS (EC2, S3) and Vercel across multiple client environments'
+      'Hospital Management System: Built appointment booking UI + role-based dashboards (admins, receptionists, lab staff) for 5+ hospital clients managing 100+ daily appointments without degradation.',
+      'Performance optimization: Identified site-wide bottleneck. Cut load times from 3 seconds to 800ms (73% improvement). Lighthouse scores 50 → 90+. Difference between users staying or bouncing.',
+      'Workflow dashboards: Built complex role-based dashboards for doctors, admins, lab staff. Proximity-based batch appointment assignment. Dynamic time slot generation. Real-time status tracking.',
+      'PG Accommodation Platform: Multi-tenant property management system. Tenant onboarding, booking workflows, notice period tracking, PDF invoice generation with React PDF.',
+      'Form validation & data quality: Replaced unvalidated forms with Zod + React Hook Form. Reduced invalid backend data by 85%. Quality over speed.'
     ],
-    skills: 'Next.js, TypeScript, TailwindCSS, Redux Toolkit, Node.js, MongoDB, AWS, Vercel, Zod, React Hook Form'
+    skills: 'Next.js • TypeScript • Tailwind • Redux Toolkit • RTK Query • Node.js • MongoDB • AWS EC2/S3 • Zod • React Hook Form • React PDF • Vercel'
   },
   {
-    year: '2023-2024',
-    company: 'PRIMATES',
-    role: 'MERN STACK DEVELOPER',
+    year: 'Nov 2023 - Aug 2024',
+    company: 'Primates Development',
+    role: 'MERN Stack Developer',
     icon: Building2,
-    desc: 'Built and delivered 5+ hospital websites with patient, doctor and admin workflows using React.js and Node.js. Transitioned to Tensys on client payroll after consistent performance.',
+    desc: 'Built production websites and platforms from scratch. Healthcare workflows, patient/doctor/admin portals. End-to-end full-stack ownership.',
     achievements: [
-      'Built 5+ hospital websites with patient and doctor workflows — balancing reusable base templates with client-specific requirements across multiple healthcare clients',
-      'Implemented JWT authentication and role-based access control securing data access for doctors, admins and patients across all platforms',
-      'Replaced spreadsheet-based lead pipeline with a searchable filterable dashboard — delivered QR-based onboarding within the same sprint',
-      'Managed backend APIs and MongoDB services on AWS EC2, documented endpoints for cross-team clarity and contributed to sprint planning in Agile environment'
+      '5+ production healthcare websites: Built patient portals, doctor dashboards, appointment systems, lab services. Balanced reusable base templates with client-specific healthcare requirements.',
+      'Authentication & Authorization: Implemented JWT + role-based access control (RBAC). Secured patient, doctor, and admin data access. Zero unauthorized access incidents.',
+      'Lead management system: Replaced spreadsheet pipeline with searchable/filterable dashboard. Added QR-based client onboarding. Shipped within same sprint.',
+      'Backend & infrastructure: Managed Node.js APIs, MongoDB schemas, deployed on AWS EC2. Documented all endpoints for team clarity. Agile sprint contributor.'
     ],
-    skills: 'React.js, Next.js, TypeScript, TailwindCSS, Node.js, MongoDB, AWS EC2, JWT, Agile, Performance Optimization'
+    skills: 'React.js • Next.js • TypeScript • Tailwind • Node.js • MongoDB • AWS EC2 • JWT • RBAC • Agile'
   }
 ];
 

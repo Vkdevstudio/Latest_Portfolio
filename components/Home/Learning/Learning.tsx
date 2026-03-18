@@ -6,48 +6,48 @@ import { Database, Cpu, Zap, ChevronDown } from 'lucide-react';
 
 const learningItems = [
   {
-    title: 'Deep Diving: Kafka & Event Sourcing',
-    why: 'Need for 100k+ event scale',
-    status: 'Building production application',
-    progress: 40,
-    next: 'Deploy Q1',
-    icon: Database,
+    title: 'AI Integration: Gemini for Context & Supervision',
+    why: 'Build intelligent supervision layer across all ClapOS modules',
+    status: 'Learning & prototyping',
+    progress: 30,
+    next: 'Integrate into ClapOS by Q2',
+    icon: Cpu,
     color: 'text-emerald-400',
     details: [
-      'Reading: Kafka definitive guide',
-      'Experimenting: Event sourcing patterns',
-      'Building: Real-time notification system',
-      'Blogging: Lessons learned (coming soon)'
+      'Learning: Gemini API capabilities, context capture patterns',
+      'Experimenting: User action context analysis',
+      'Goal: Script analysis, real-time supervision, smart suggestions',
+      'Security: End-to-end encryption, data privacy'
     ]
   },
   {
-    title: 'Integrating: LLMs for Anomaly Detection',
-    why: 'Predict-X needs smart filtering',
-    status: 'Beta integration in progress',
-    progress: 70,
-    next: 'Release Predict-X v2',
-    icon: Cpu,
+    title: 'Deep Dive: Event-Driven Architecture at Scale',
+    why: 'Master Kafka patterns for 100k+ events/day systems',
+    status: 'Building production with ClapOS',
+    progress: 50,
+    next: 'Production deployment Q2',
+    icon: Database,
     color: 'text-cyan-400',
     details: [
-      'Built: Initial LLM integration',
-      'Result: 20% fewer false positives',
-      'Testing: Against 100k sample events',
-      'Timeline: 4 weeks to production'
+      'Building: ClapOS backend microservices with Kafka',
+      'Learning: Event sourcing, saga patterns, dead letter queues',
+      'Implementing: Real-time sync across 10+ modules',
+      'Target: Zero data loss, guaranteed delivery'
     ]
   },
   {
-    title: 'Expanding: Distributed System Design',
-    why: 'Want deep technical foundation',
-    status: 'Designing side project',
-    progress: 20,
-    next: 'Build prototype',
+    title: 'Docker & Container Orchestration',
+    why: 'Prepare microservices for Kubernetes on AWS EKS',
+    status: 'Learning & implementing',
+    progress: 35,
+    next: 'Deploy to EKS Q2',
     icon: Zap,
     color: 'text-white',
     details: [
-      'Study: Consensus algorithms',
-      'Goal: Understand Raft/PBFT',
-      'Project: Distributed cache',
-      'Timeline: 3 months research'
+      'Learning: Docker fundamentals, image optimization, multi-stage builds',
+      'Building: Dockerfiles for each ClapOS microservice',
+      'Goal: Kubernetes-ready containers, CI/CD pipeline',
+      'Next: AWS EKS deployment, auto-scaling setup'
     ]
   }
 ];

@@ -1,8 +1,20 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 export default function Hero() {
+  const router=useRouter()
+
+  const Nav=(link:string)=>{
+   router.push(`/${link}`)
+  }
+
+
+
+  const openInNewTab = (link: string) => {
+  window.open(`/${link}`, '_blank', 'noopener,noreferrer');
+};
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 py-48 overflow-hidden">
       {/* Background Video Overlay - More prominent */}
@@ -14,7 +26,7 @@ export default function Hero() {
           playsInline 
           className="w-full h-full object-cover grayscale contrast-125"
         >
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-world-map-with-data-points-24659-preview.mp4" type="video/mp4" />
+          <source src="/home_0.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
       </div>
@@ -58,7 +70,7 @@ export default function Hero() {
           className="text-6xl md:text-9xl font-black tracking-tighter leading-[0.85]"
         >
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 bg-[length:200%_auto] animate-gradient">
-            I ARCHITECT SYSTEMS THAT SCALE 100X
+            I build systems that scale. You build products that matter.
           </span>
         </motion.h1>
 
@@ -69,9 +81,10 @@ export default function Hero() {
           className="mt-12 space-y-4"
         >
           <h2 className="text-xl md:text-2xl font-light text-neutral-300 max-w-2xl mx-auto leading-relaxed">
-            Built production systems handling <span className="text-white font-bold">100k+ daily events</span>.
-            Database optimization expert (<span className="text-emerald-400 font-bold">95% improvements</span> proven).
-          </h2>
+  Full Stack Engineer with <span className="text-white font-bold">2 years shipping production systems</span>.
+  Built Healthcare SaaS applications using <span className="text-emerald-400 font-bold">event-driven architectures</span>,
+  solving real-world problems with real user traffic.
+</h2>
         </motion.div>
 
         <motion.div 
@@ -80,14 +93,11 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mt-16 flex flex-wrap justify-center gap-4"
         >
-          <button className="px-8 py-4 bg-emerald-400 text-black font-black rounded-xl hover:scale-105 transition-transform shadow-[0_0_30px_rgba(52,211,153,0.3)]">
+          <button onClick={()=>Nav("work")} className="px-8 py-4 cursor-pointer bg-emerald-400 text-black font-black rounded-xl hover:scale-105 transition-transform shadow-[0_0_30px_rgba(52,211,153,0.3)]">
             View My Work
           </button>
-          <button className="px-8 py-4 bg-white/5 border border-white/10 font-bold rounded-xl hover:bg-white/10 transition-all">
+          <button onClick={()=>openInNewTab("www.linkedin.com/in/vinod-manimaran")} className="px-8 py-4 bg-white/5 border border-white/10 font-bold rounded-xl hover:bg-white/10 transition-all">
             LinkedIn
-          </button>
-          <button className="px-8 py-4 bg-white/5 border border-white/10 font-bold rounded-xl hover:bg-white/10 transition-all">
-            GitHub
           </button>
         </motion.div>
       </div>

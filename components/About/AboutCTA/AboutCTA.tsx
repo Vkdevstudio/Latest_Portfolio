@@ -40,7 +40,7 @@ export default function AboutCTA() {
               <div className="space-y-6">
                 <h3 className="text-xs font-black text-neutral-500 uppercase tracking-widest">I&apos;m looking for:</h3>
                 <ul className="space-y-3 text-lg font-bold">
-                  <li className="flex items-center gap-3"><span className="text-emerald-400">✓</span> Tech lead roles at ambitious startups</li>
+                  <li className="flex items-center gap-3"><span className="text-emerald-400">✓</span> Tech  roles at ambitious startups</li>
                   <li className="flex items-center gap-3"><span className="text-emerald-400">✓</span> Hard technical problems</li>
                   <li className="flex items-center gap-3"><span className="text-emerald-400">✓</span> Mentorship & growth environments</li>
                 </ul>

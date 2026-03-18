@@ -3,9 +3,9 @@
 import { motion } from 'framer-motion';
 
 const metrics = [
-  { label: 'Projects Delivered', value: '5+' },
-  { label: 'Daily Events Handled', value: '100k+' },
-  { label: 'Users Impacted', value: '500+' }
+  { label: 'Production Systems', value: '5+' },
+  { label: 'Performance Improvement', value: '73%' },
+  { label: 'Data Quality Boost', value: '85%' }
 ];
 
 export default function WorkHero() {

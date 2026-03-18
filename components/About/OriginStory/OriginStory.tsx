@@ -2,43 +2,45 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { Code2, Database, Rocket, Users, Zap } from 'lucide-react';
+import { Code2, Database, Network, Rocket, Users, Zap } from 'lucide-react';
+
+
 
 const stories = [
   {
-    year: '2021',
-    title: 'THE FIRST COMMIT',
-    icon: <Code2 className="w-5 h-5" />,
-    story: 'Started coding learning JavaScript on YouTube. Built a weather app—terrible code, but it shipped. That moment of "it works!" was addictive.',
-    realization: 'Shipping > Perfection'
+    year: 'Nov 2023',
+    title: 'FIRST PRODUCTION CODE',
+    icon: <Code2 className='w-5 h-5'/>,
+    story: 'Started at Primates building MERN stack. Launched 5 hospital websites in 9 months. Terrible code, but it shipped. Patients used it. That was real.',
+    realization: 'Shipped > Perfect'
   },
   {
-    year: '2022',
-    title: 'THE FIRST REAL PROJECT',
-    icon: <Zap className="w-5 h-5" />,
-    story: 'Spent the year building anything I could. Learned more from broken projects than working ones. Realized that code is just a tool to solve problems.',
-    realization: 'Broken projects are the best teachers'
+    year: 'Mar 2024',
+    title: 'THE SCALING CRISIS',
+    icon: <Zap className='w-5 h-5'/>,
+    story: 'Hospital SaaS worked for 10 users. Broke at 100+. Spent a month digging into database queries. Found: missing indexes, N+1 queries, no pagination.',
+    realization: 'Fundamentals matter more than frameworks'
   },
   {
-    year: '2023',
-    title: 'THE "CLICK" MOMENT',
-    icon: <Database className="w-5 h-5" />,
-    story: 'Built systems that worked at 100 users but broke at 1000. That is when I realized: databases and architecture are the real challenges.',
-    realization: 'Architecture > Speed'
+    year: 'Jun 2024',
+    title: 'PERFORMANCE BREAKTHROUGH',
+    icon: <Database className='w-5 h-5'/>,
+    story: 'Optimized Hospital SaaS: cut load times 3s → 800ms (73% improvement). Lighthouse 50 → 90+. Users stopped bouncing.',
+    realization: 'Every 100ms is a user retention battle'
   },
   {
-    year: '2024',
-    title: 'SCALING & SYSTEMS',
-    icon: <Rocket className="w-5 h-5" />,
-    story: 'Deep dived into system design and optimization. Shipped 5 products handling 100k+ daily events with 95% query improvements.',
-    realization: 'Tradeoffs are the core of engineering'
+    year: 'Oct 2024',
+    title: 'COMPLEXITY EXPANSION',
+    icon: <Network className='w-5 h-5'/>,
+    story: 'At Tensys, built Medtech Dashboards: 5+ specialist workflows in one system. Multi-tenant isolation. Real-time sync. Security-first.',
+    realization: 'Architecture decisions compound over time'
   },
   {
-    year: 'PRESENT',
-    title: 'TEACHING & IMPACT',
-    icon: <Users className="w-5 h-5" />,
-    story: 'Mentoring 3 juniors and seeing them ship independently. Realized that teaching others solidifies your own knowledge.',
-    realization: 'Impact compounds through people'
+    year: 'Nov 2025',
+    title: 'SYSTEMS OWNERSHIP',
+    icon: < Rocket className='w-5 h-5'/>,
+    story: 'Freelance. Built ClapOS: microservices + Kafka. Learned event-driven architecture. Frontend live, backend 50% complete. Learning infrastructure.',
+    realization: 'True ownership: design → deploy → scale'
   }
 ];
 

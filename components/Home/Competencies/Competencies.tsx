@@ -5,36 +5,36 @@ import { Database, Network, Box, Users } from 'lucide-react';
 
 const competencies = [
   {
-    title: 'DATABASE ARCHITECTURE',
-    desc: 'Optimized queries: 4h → 15min (95%)',
-    proven: 'Hospital, Predict-X',
+    title: 'SYSTEMS THAT HANDLE REAL TRAFFIC',
+    desc: 'Users bounce on slow pages. I cut load times 3s → 800ms. They stayed. That\'s the difference.',
+    proven: '5+ hospital clients, 100+ appointments/day without breaking',
     icon: Database,
     borderStyle: 'border-l-4 border-b border-neutral-400/50',
     accentColor: 'text-neutral-200',
     hoverBg: 'hover:bg-neutral-900/50'
   },
   {
-    title: 'REAL-TIME SYSTEMS',
-    desc: 'Built WebSocket system. Zero data loss guarantee.',
-    proven: 'Hospital, Predict-X',
+    title: 'ARCHITECTURE THAT SCALES WITHOUT CHAOS',
+    desc: 'Event-driven systems aren\'t just buzzwords. Kafka handles thousands of events without coupling. When one service breaks, others keep working.',
+    proven: 'ClapOS — 10+ modules talking through events, zero data loss',
     icon: Network,
     borderStyle: 'border-t-4 border-r border-neutral-400/45',
     accentColor: 'text-neutral-200',
     hoverBg: 'hover:bg-neutral-900/50'
   },
   {
-    title: 'FULL-STACK PRODUCT',
-    desc: '5 complete products. Schema to UI. 3-month cycles.',
-    proven: 'PlusUAE, Hospital, Predict-X',
+    title: 'PRODUCTS THAT WORK GLOBALLY',
+    desc: 'RTL languages, currency conversion, timezone logic — complex. But users in Dubai don\'t care about complexity. They care that it works.',
+    proven: 'PlusUAE — 5 languages, RTL, CRM-integrated, in production daily',
     icon: Box,
     borderStyle: 'border-2 border-neutral-400/35 rounded-none',
     accentColor: 'text-neutral-200',
     hoverBg: 'hover:bg-neutral-900/50'
   },
   {
-    title: 'TEAM LEADERSHIP',
-    desc: 'Mentored 3 juniors. 2 now shipping independently.',
-    proven: 'Code reviews, knowledge transfer',
+    title: 'SHIP FAST WITHOUT BREAKING THINGS',
+    desc: 'I don\'t hand off half-finished features. Every product I shipped handles real users on day one. That\'s the discipline.',
+    proven: '5+ products from zero to production. 2-3 month cycles. Still running.',
     icon: Users,
     borderStyle: 'border-r-4 border-t border-neutral-400/45',
     accentColor: 'text-neutral-200',
