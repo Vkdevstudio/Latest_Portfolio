@@ -50,8 +50,8 @@ export interface ResumeSection {
 export interface Resume {
   // Header
   fullName: string;
-  title: string; // "Full Stack Engineer" or similar
-  summary: string; // 2-3 sentence professional summary
+  title: string; 
+  summary: string;
   location: string;
 
   // Contact
@@ -93,7 +93,7 @@ export const resumeData: Resume = {
     {
       id: "1",
       company: "Freelance",
-      role: "Full Stack Engineer",
+      role: "Full Stack Developer",
       duration: {
         start: "Nov 2025",
         end: "Present",
@@ -113,7 +113,7 @@ export const resumeData: Resume = {
     {
       id: "2",
       company: "Tensys",
-      role: "Full Stack Engineer (Promoted from Primates)",
+      role: "Full Stack Developer (Promoted from Primates)",
       duration: {
         start: "Sep 2024",
         end: "Oct 2025",

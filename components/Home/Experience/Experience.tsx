@@ -22,7 +22,7 @@ export const experiences = [
   {
     year: 'Sep 2024 - Oct 2025',
     company: 'Tensys',
-    role: 'Full Stack Engineer (Promoted from Primates)',
+    role: 'Full Stack Developer (Promoted from Primates)',
     icon: Building2,
     desc: 'Promoted after consistent shipping. Owned frontend architecture for medtech SaaS platforms. 5+ healthcare clients. 100+ daily users. Cut load times 3s → 800ms.',
     achievements: [
