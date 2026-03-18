@@ -60,7 +60,7 @@ export default function AboutHero() {
             className="relative aspect-[4/5] rounded-[32px] overflow-hidden border border-white/10 group shadow-2xl shadow-emerald-500/10"
           >
             <Image
-              src="https://picsum.photos/seed/vinod-about/800/1000"
+              src="/profile.jpg"
               alt="Vinod Kumar"
               fill
               className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100"
