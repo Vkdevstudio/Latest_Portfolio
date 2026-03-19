@@ -7,9 +7,10 @@ export interface Project {
   thumbnail: string;
   status: 'live' | 'beta' | 'archived';
   year: string;
-  complexity: number; // 1-10
-  impact: number; // 1-10
-  
+  complexity: number; 
+  impact: number; 
+  company?: 'Freelance' | 'Tensys' | 'Primates' | 'Personal';
+  type?: 'SaaS' | 'Healthcare' | 'Full-Stack' | 'Performance' | 'Marketplace';
   grid: {
     role: string;
     company:string;
@@ -121,6 +122,8 @@ export const projects: Project[] = [
     thumbnail: '/projects/clapos/images/clap1.png',
     status: 'beta',
     year: '2025',
+    company: 'Personal',  
+    type: 'SaaS',                 
     complexity: 9,
     impact: 8,
     
@@ -238,6 +241,8 @@ export const projects: Project[] = [
     status: 'live',
     year: '2025',
     complexity: 7,
+    type:"Full-Stack",
+    company:"Freelance",
     impact: 8,
     
     grid: {
@@ -374,6 +379,8 @@ export const projects: Project[] = [
     status: 'beta',
     year: '2025',
     complexity: 8,
+    type:"SaaS",
+    company:"Freelance",
     impact: 7,
     
     grid: {
@@ -488,6 +495,8 @@ export const projects: Project[] = [
     shortDescription: 'Cross-platform integration with real-time sync',
     thumbnail: '/projects/wyka/images/main.png',
     status: 'beta',
+    type:"SaaS",
+    company:"Freelance",
     year: '2025',
     complexity: 8,
     impact: 7,
@@ -603,6 +612,8 @@ export const projects: Project[] = [
     thumbnail: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&h=800&fit=crop',
     status: 'live',
     year: '2024',
+    type:"Healthcare",
+    company:"Tensys",
     complexity: 9,
     impact: 9,
     grid: {
@@ -756,6 +767,8 @@ export const projects: Project[] = [
     status: 'live',
     year: '2025',
     complexity: 9,
+    type:"Healthcare",
+    company:"Tensys",
     impact: 9,
     grid: {
       role: 'Full Stack Developer',
@@ -892,7 +905,8 @@ export const projects: Project[] = [
     year: '2024',
     complexity: 8,
     impact: 7,
-    
+    type:"Marketplace",
+    company:"Tensys",
     grid: {
       role: 'Full Stack Developer',
       company: 'Tensys', 
@@ -1029,7 +1043,8 @@ export const projects: Project[] = [
     year: '2023',
     complexity: 6,
     impact: 8,
-    
+    type:"Performance",
+    company:"Primates",
     grid: {
       role: 'MERN Stack Developer',
       company: 'Primates', 
