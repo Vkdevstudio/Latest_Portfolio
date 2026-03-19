@@ -18,7 +18,7 @@ export const PERSON = {
 
 export const DEFAULT_SEO = {
   title: `${PERSON.name} — Full Stack Developer`,
-  description: `Full Stack Developer based in Chennai with end-to-end ownership across React, Next.js, Node.js, and distributed systems. Available for full-time roles in Chennai, Bengaluru, and remote — and freelance projects globally.`,
+  description: `Full Stack Developer, Chennai. End-to-end ownership across React, Next.js, Node.js, and distributed systems. Open for full-time roles and freelance projects globally.`,
   url: BASE_URL,
   twitterHandle: '@vinodkumar', // update when you have one
   keywords: [
@@ -86,23 +86,17 @@ export const DEFAULT_SEO = {
 
 export const PAGE_SEO = {
   home: {
-    // Primary keyword first in title = stronger ranking signal
-    title: `${PERSON.name} — Full Stack Developer Chennai`,
-    description: `Full Stack Developer in Chennai. End-to-end ownership across React, Next.js, Node.js, Mongodb. Open for full-time roles and freelance projects globally.`,
+    title: `Vinod Kumar — Full Stack Developer Chennai`,
+    description: `Full Stack Developer in Chennai. End-to-end ownership across React, Next.js, Node.js, Kafka. Open for full-time roles and freelance projects globally.`,
     url: BASE_URL,
     keywords: [
-      // Name + identity
       'Vinod Kumar', 'Vinod Kumar Developer', 'Vinod Kumar Full Stack Developer',
       'Vinod Kumar Chennai', 'Vinod Kumar Portfolio',
-
-      // Primary role + location (highest intent)
       'Full Stack Developer Chennai',
       'Full Stack Developer Bengaluru',
       'Full Stack Developer India',
       'MERN Stack Developer Chennai',
       'MERN Stack Developer India',
-
-      // Stack-specific
       'React Developer Chennai',
       'Next.js Developer Chennai',
       'Node.js Developer Chennai',
@@ -112,15 +106,11 @@ export const PAGE_SEO = {
       'React Developer India',
       'Next.js Developer India',
       'Node.js Developer India',
-
-      // Differentiator
       'End-to-end Full Stack Developer',
       'Full Stack Developer end-to-end ownership',
       'Full Stack Developer microservices',
       'Event-driven systems developer',
       'Distributed systems developer India',
-
-      // Hire intent — full-time
       'Hire Full Stack Developer Chennai',
       'Hire Full Stack Developer Bengaluru',
       'Hire Full Stack Developer India',
@@ -129,8 +119,6 @@ export const PAGE_SEO = {
       'Full Stack Developer jobs Chennai',
       'Full Stack Developer jobs Bengaluru',
       'Remote Full Stack Developer India',
-
-      // Hire intent — freelance
       'Freelance Full Stack Developer India',
       'Freelance React Developer India',
       'Freelance Next.js Developer India',
@@ -139,8 +127,6 @@ export const PAGE_SEO = {
       'Freelance Developer agencies India',
       'Hire Freelance Developer Chennai',
       'Contract Full Stack Developer India',
-
-      // Domain
       'Healthcare SaaS Developer India',
       'SaaS Developer India',
       'MVP Developer India',
@@ -149,19 +135,15 @@ export const PAGE_SEO = {
   },
 
   work: {
-    // Lead with outcome-focused title
-    title: `Full Stack Developer Portfolio — Case Studies | ${PERSON.name}`,
-    description: `Real production case studies by Vinod Kumar — healthcare SaaS (5 hospitals, 100+ daily users), event-driven microservices (Kafka, 10+ services), multilingual CRM platforms (5 languages, RTL), and multi-tenant MVPs shipped in 1.5 months. Architecture decisions, real metrics, measurable outcomes.`,
+    title: `Work & Case Studies — Vinod Kumar`,
+    description: `Real production case studies — healthcare SaaS, Kafka microservices, multilingual CRM, and multi-tenant MVPs. Real metrics, measurable outcomes.`,
     url: `${BASE_URL}/work`,
     keywords: [
-      // Portfolio intent
       'Full Stack Developer Portfolio India',
       'Full Stack Developer Portfolio Chennai',
       'React Next.js Portfolio India',
       'Node.js Developer Portfolio',
       'MERN Stack Portfolio India',
-
-      // Project types
       'Healthcare SaaS Developer Portfolio',
       'Microservices Developer Portfolio',
       'Kafka Event-driven Portfolio',
@@ -170,28 +152,20 @@ export const PAGE_SEO = {
       'RTL Developer Portfolio',
       'MVP Developer Portfolio India',
       'Dashboard Developer Portfolio',
-
-      // Case study intent (recruiter/founder searches)
       'Full Stack Case Studies India',
       'Node.js Case Studies',
       'React Case Studies Developer',
       'Next.js Production Projects',
       'Full Stack Production Projects India',
       'Real-world Full Stack Projects India',
-
-      // Architecture signals
       'Microservices Architecture Portfolio',
       'Event-driven Architecture Developer',
       'Kafka Microservices Developer India',
       'Distributed Systems Portfolio',
-
-      // Audience signals
       'Full Stack Developer Portfolio for CTOs',
       'Full Stack Developer Portfolio for Founders',
       'Hire Experienced Full Stack Developer India',
       'Senior Full Stack Developer Portfolio India',
-
-      // Domain
       'Healthcare Platform Developer India',
       'SaaS Developer Portfolio India',
       'CRM Integration Developer India',
@@ -200,44 +174,33 @@ export const PAGE_SEO = {
   },
 
   about: {
-    title: `About Vinod Kumar — Full Stack Developer Chennai | 2+ Years Production Experience`,
-    description: `Vinod Kumar is a Full Stack Developer based in Chennai with 2+ years building production systems end-to-end — solo and in teams. Specialized in React, Next.js, Node.js, TypeScript, MongoDB, and Apache Kafka. Built healthcare SaaS, event-driven microservices, and multilingual platforms for startups, agencies, and enterprise clients. Available for full-time roles and freelance projects.`,
+    title: `About Vinod Kumar — Full Stack Developer`,
+    description: `Full Stack Developer, Chennai. 2+ years shipping production SaaS and microservices end-to-end. Open for full-time roles and freelance projects.`,
     url: `${BASE_URL}/about`,
     keywords: [
-      // Identity
       'Vinod Kumar Full Stack Developer',
       'Vinod Kumar Chennai Developer',
       'Vinod Kumar About',
       'Who is Vinod Kumar Developer',
-
-      // Role + location
       'Full Stack Developer Chennai',
       'Full Stack Developer India',
       'Full Stack Developer 2 years experience',
       'Junior Senior Full Stack Developer India',
       'MERN Stack Developer Chennai',
-
-      // Stack
       'React Next.js Node.js Developer India',
       'TypeScript Full Stack Developer India',
       'MongoDB Developer Chennai',
       'Kafka Developer India',
       'AWS Developer India',
-
-      // Experience type
       'End-to-end Full Stack Developer',
       'Solo Full Stack Developer India',
       'Production Full Stack Developer India',
       'Full Stack Developer solo team India',
-
-      // Background
       'Full Stack Developer Tensys Chennai',
       'Full Stack Developer Primates Chennai',
       'Healthcare Full Stack Developer India',
       'SaaS Full Stack Developer India',
       'Microservices Full Stack Developer India',
-
-      // Hire intent
       'Hire Experienced Full Stack Developer India',
       'Hire React Next.js Developer Chennai',
       'Hire Node.js Developer India',
@@ -247,45 +210,34 @@ export const PAGE_SEO = {
   },
 
   howiwork: {
-    title: `How I Work — Engineering Process | ${PERSON.name} Full Stack Developer`,
-    description: `How Vinod Kumar approaches full-stack engineering — taking end-to-end ownership from architecture decisions to production deployment. Covers problem-solving process, tech decision-making, collaboration with startups, agencies, and SMBs, and how to go from idea to live system. Built for CTOs, founders, and team leads evaluating fit.`,
+    title: `How I Work — Vinod Kumar Full Stack Developer`,
+    description: `End-to-end engineering approach — architecture to deployment. Built for CTOs, founders, and team leads evaluating fit for startups and agencies.`,
     url: `${BASE_URL}/howiwork`,
     keywords: [
-      // Process intent
       'Full Stack Developer Engineering Process',
       'Full Stack Developer Work Process India',
       'How Full Stack Developer works',
       'Full Stack Developer approach India',
       'Software Engineer workflow India',
-
-      // Audience-specific
       'Full Stack Developer for Startups India',
       'Full Stack Developer for Agencies India',
       'Full Stack Developer for SMBs India',
       'Full Stack Developer for CTOs India',
       'Full Stack Developer for Founders India',
-
-      // Architecture
       'Full Stack Architecture Decision Making',
       'End-to-end Software Development Process',
       'Production-ready Development Process',
       'Software Architecture Approach India',
       'Full Stack Developer System Design',
-
-      // Collaboration
       'Collaborative Full Stack Developer India',
       'Full Stack Developer Team Lead India',
       'Full Stack Developer independent worker',
       'Full Stack Developer ownership mindset',
-
-      // Trust signals
       'Reliable Full Stack Developer India',
       'Full Stack Developer production mindset',
       'Full Stack Developer shipping culture',
       'Fast Full Stack Developer India',
       'Quality Full Stack Developer India',
-
-      // Hire intent
       'Why hire Vinod Kumar Developer',
       'Full Stack Developer working style India',
       'Hire Full Stack Developer process India',
@@ -293,17 +245,14 @@ export const PAGE_SEO = {
   },
 
   resume: {
-    title: `Resume — Vinod Kumar | Full Stack Developer Chennai | React, Next.js, Node.js, Kafka`,
-    description: `Resume of Vinod Kumar — Full Stack Developer based in Chennai. 2+ years of production experience across React, Next.js, Node.js, TypeScript, MongoDB, and Apache Kafka. Built healthcare SaaS, microservices, and multi-tenant platforms. Open to full-time roles in Chennai, Bengaluru, remote — and freelance engagements.`,
+    title: `Resume — Vinod Kumar | Full Stack Developer`,
+    description: `Full Stack Developer Chennai. React, Next.js, Node.js, TypeScript, MongoDB, Kafka. 2+ years experience. Open to full-time and freelance roles.`,
     url: `${BASE_URL}/resume`,
     keywords: [
-      // Resume-specific high intent
       'Vinod Kumar Resume',
       'Vinod Kumar CV',
       'Vinod Kumar Full Stack Developer Resume',
       'Vinod Kumar Developer Profile',
-
-      // Resume search patterns
       'Full Stack Developer Resume Chennai',
       'Full Stack Developer Resume India',
       'Full Stack Developer CV India',
@@ -314,13 +263,9 @@ export const PAGE_SEO = {
       'TypeScript Developer Resume India',
       'MongoDB Developer Resume India',
       'Kafka Developer Resume India',
-
-      // Experience level
       'Full Stack Developer 2 years experience Resume',
       'Junior Full Stack Developer Resume India',
       'Full Stack Developer fresher experienced India',
-
-      // Hire intent (highest conversion page)
       'Hire Full Stack Developer Chennai',
       'Hire Full Stack Developer Bengaluru',
       'Hire Full Stack Developer India',
@@ -331,8 +276,6 @@ export const PAGE_SEO = {
       'Hire Node.js Developer Chennai',
       'Hire TypeScript Developer India',
       'Hire Kafka Developer India',
-
-      // Freelance
       'Freelance Full Stack Developer Resume',
       'Freelance Developer available India',
       'Contract Developer Resume India',
@@ -340,12 +283,10 @@ export const PAGE_SEO = {
   },
 
   contact: {
-    // Most conversion-critical page — title should be action-oriented
-    title: `Hire Vinod Kumar — Full Stack Developer | Chennai, Bengaluru, Remote & Freelance`,
-    description: `Get in touch with Vinod Kumar — Full Stack Developer open to full-time roles in Chennai and Bengaluru, remote positions, and freelance projects globally. Works with startups, agencies, SMBs, and international clients. Specializes in React, Next.js, Node.js, TypeScript, MongoDB, and Kafka. Response within 24 hours.`,
+    title: `Hire Vinod Kumar — Full Stack Developer`,
+    description: `Open for full-time roles in Chennai, Bengaluru, remote. Available for freelance projects globally with startups, agencies, and SMBs.`,
     url: `${BASE_URL}/contact`,
     keywords: [
-      // Highest-intent hire keywords
       'Hire Full Stack Developer Chennai',
       'Hire Full Stack Developer Bengaluru',
       'Hire Full Stack Developer India',
@@ -353,8 +294,6 @@ export const PAGE_SEO = {
       'Full Stack Developer for hire Chennai',
       'Full Stack Developer for hire India',
       'Full Stack Developer available now India',
-
-      // Stack-specific hire
       'Hire React Developer Chennai',
       'Hire Next.js Developer India',
       'Hire Node.js Developer India',
@@ -362,8 +301,6 @@ export const PAGE_SEO = {
       'Hire MongoDB Developer India',
       'Hire Kafka Developer India',
       'Hire MERN Stack Developer India',
-
-      // Freelance hire
       'Hire Freelance Full Stack Developer India',
       'Hire Freelance React Developer India',
       'Hire Freelance Node.js Developer India',
@@ -373,16 +310,12 @@ export const PAGE_SEO = {
       'Freelance Developer agencies India',
       'Freelance Developer SMBs India',
       'Freelance Developer international clients',
-
-      // Client type
       'Full Stack Developer for Startups India',
       'Full Stack Developer for Agencies India',
       'Full Stack Developer for SMBs India',
       'Full Stack Developer for international clients',
       'Full Stack Developer for CTOs',
       'Full Stack Developer for Founders',
-
-      // Contact intent
       'Contact Full Stack Developer India',
       'Full Stack Developer contact Chennai',
       'Reach Full Stack Developer India',
