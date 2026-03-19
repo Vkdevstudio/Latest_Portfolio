@@ -6,8 +6,9 @@ export const runtime = 'edge';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-export default async function Image({ params }: { params: { slug: string } }) {
-  const project = projects.find((p) => p.slug === params.slug);
+export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
 
   if (!project) {
     return new ImageResponse(
@@ -18,12 +19,10 @@ export default async function Image({ params }: { params: { slug: string } }) {
     );
   }
 
-  // Resolve thumbnail — local paths need absolute URL
   const thumbnail = project.thumbnail.startsWith('http')
     ? project.thumbnail
     : `${BASE_URL}${project.thumbnail}`;
 
-  // Status color
   const statusColor: Record<string, string> = {
     live: '#10b981',
     beta: '#f59e0b',
@@ -45,23 +44,18 @@ export default async function Image({ params }: { params: { slug: string } }) {
           overflow: 'hidden',
         }}
       >
-        {/* Background thumbnail — blurred overlay */}
         <img
           src={thumbnail}
-          title="Bg"
-          alt='Bg'
+          alt="Bg"
           style={{
             position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
+            top: 0, left: 0,
+            width: '100%', height: '100%',
             objectFit: 'cover',
             opacity: 0.08,
           }}
         />
 
-        {/* Dark overlay */}
         <div
           style={{
             position: 'absolute',
@@ -71,7 +65,6 @@ export default async function Image({ params }: { params: { slug: string } }) {
           }}
         />
 
-        {/* Content */}
         <div
           style={{
             position: 'relative',
@@ -79,10 +72,10 @@ export default async function Image({ params }: { params: { slug: string } }) {
             flexDirection: 'column',
             justifyContent: 'space-between',
             height: '100%',
-            padding: '60px 80px',
+            padding: '60px 80px 0px 80px',
           }}
         >
-          {/* Top — author + status */}
+          {/* Top — site + status */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span style={{ fontSize: '16px', color: '#525252', letterSpacing: '2px', textTransform: 'uppercase' }}>
               vinod-dev.vercel.app
@@ -109,21 +102,13 @@ export default async function Image({ params }: { params: { slug: string } }) {
             >
               {project.name}
             </span>
-            <span
-              style={{
-                fontSize: '20px',
-                color: '#737373',
-                lineHeight: 1.5,
-                maxWidth: '800px',
-              }}
-            >
+            <span style={{ fontSize: '20px', color: '#737373', lineHeight: 1.5, maxWidth: '800px' }}>
               {project.shortDescription}
             </span>
           </div>
 
           {/* Bottom — tags + author */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-            {/* Tags */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', paddingBottom: '72px' }}>
             <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
               {project.grid.tags.slice(0, 4).map((tag) => (
                 <span
@@ -143,12 +128,10 @@ export default async function Image({ params }: { params: { slug: string } }) {
               ))}
             </div>
 
-            {/* Author */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <img
                 src="https://vinod-dev.vercel.app/profile.jpg"
-                title='Author'
-                alt='Author'
+                alt="Author"
                 style={{
                   width: '36px',
                   height: '36px',
@@ -162,6 +145,25 @@ export default async function Image({ params }: { params: { slug: string } }) {
               </span>
             </div>
           </div>
+        </div>
+
+        {/* CTA strip */}
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: '52px',
+            background: '#10b981',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <span style={{ fontSize: '16px', fontWeight: 900, color: '#000000', letterSpacing: '4px', textTransform: 'uppercase' }}>
+            View Portfolio → vinod-dev.vercel.app
+          </span>
         </div>
       </div>
     ),
