@@ -1006,7 +1006,7 @@ export const projects: Project[] = [
           'Analytics for component usage',
         ],
         links: {
-          demo: 'https://pg-accommodation.vercel.app',
+          demo: '',
         },
       },
       
