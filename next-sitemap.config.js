@@ -37,9 +37,9 @@ module.exports = {
         disallow: ['/api/', '/_next/'],
       },
     ],
-    additionalSitemaps: [
-      'https://vinod-dev.vercel.app/sitemap.xml',
-    ],
+    // additionalSitemaps: [
+    //   'https://vinod-dev.vercel.app/sitemap.xml',
+    // ],
   },
 
   transform: async (config, path) => {
