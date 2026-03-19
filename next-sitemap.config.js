@@ -50,6 +50,7 @@ module.exports = {
       '/howiwork': 0.8,
       '/resume': 0.7,
       '/contact': 0.7,
+      '/contact/success': 0.3,
     };
 
     return {

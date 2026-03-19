@@ -324,6 +324,17 @@ export const PAGE_SEO = {
       'Vinod Kumar hire',
     ],
   },
+  success: {
+  title: `Message Sent — Vinod Kumar | Full Stack Developer`,
+  description: `Thanks for reaching out. Vinod Kumar will respond within 24 hours. Meanwhile explore his work and case studies.`,
+  url: `${BASE_URL}/contact/success`,
+  keywords: [
+    'Vinod Kumar contact success',
+    'Vinod Kumar response',
+    'Full Stack Developer Chennai contact',
+    'Hire Full Stack Developer India',
+  ],
+},
 };
 
 
@@ -799,6 +810,15 @@ export const BREADCRUMBS = {
       { '@type': 'ListItem', position: 2, name: 'Contact', item: `${BASE_URL}/contact` },
     ],
   },
+  success: {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+    { '@type': 'ListItem', position: 2, name: 'Contact', item: `${BASE_URL}/contact` },
+    { '@type': 'ListItem', position: 3, name: 'Message Sent', item: `${BASE_URL}/contact/success` },
+  ],
+},
 };
 
 export function buildProjectBreadcrumb(projectName: string, slug: string) {
