@@ -87,8 +87,8 @@ export const DEFAULT_SEO = {
 export const PAGE_SEO = {
   home: {
     // Primary keyword first in title = stronger ranking signal
-    title: `Full Stack Developer Chennai — ${PERSON.name} | React, Next.js, Node.js`,
-    description: `Full Stack Developer based in Chennai with 2+ years shipping production SaaS, microservices, and healthcare platforms end-to-end. React, Next.js, Node.js, TypeScript, MongoDB, Kafka. Open to full-time roles in Chennai, Bengaluru, remote — and freelance projects globally.`,
+    title: `${PERSON.name} — Full Stack Developer Chennai`,
+    description: `Full Stack Developer in Chennai. End-to-end ownership across React, Next.js, Node.js, Mongodb. Open for full-time roles and freelance projects globally.`,
     url: BASE_URL,
     keywords: [
       // Name + identity
