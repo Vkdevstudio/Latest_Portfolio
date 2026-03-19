@@ -1,5 +1,7 @@
 import { BREADCRUMBS, buildMetadata, CONTACT_PAGE_JSON_LD, PAGE_SEO } from '@/lib/seo';
-import ContactPage from './Contact'; 
+import dynamic from 'next/dynamic';
+const ContactPage = dynamic(() => import('./Contact'));
+
 
 export const metadata = buildMetadata(PAGE_SEO.contact);
 

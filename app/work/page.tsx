@@ -1,4 +1,6 @@
-import WorkPage from './WorkClient'
+import dynamic from 'next/dynamic';
+const WorkPage = dynamic(() => import('./WorkClient'));
+
 import { BREADCRUMBS, buildMetadata, PAGE_SEO } from '@/lib/seo';
 
 export const metadata = buildMetadata(PAGE_SEO.work);

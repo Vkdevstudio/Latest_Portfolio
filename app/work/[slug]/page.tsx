@@ -1,7 +1,10 @@
 import { projects } from '@/lib/projects';
 import { buildProjectBreadcrumb, buildProjectJsonLd, buildProjectMetadata } from '@/lib/seo';
 import { notFound } from 'next/navigation';
-import CaseStudyPage from './SingleWork';
+
+import dynamic from 'next/dynamic';
+const CaseStudyPage = dynamic(() => import('./SingleWork'));
+
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));

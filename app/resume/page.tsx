@@ -1,5 +1,6 @@
 import { BREADCRUMBS, buildMetadata, PAGE_SEO } from '@/lib/seo';
-import ResumePage from './Resume'; 
+import dynamic from 'next/dynamic';
+const ResumePage = dynamic(() => import('./Resume'));
 
 export const metadata = buildMetadata(PAGE_SEO.resume);
 
