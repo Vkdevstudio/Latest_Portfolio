@@ -87,7 +87,7 @@ export const DEFAULT_SEO = {
 export const PAGE_SEO = {
   home: {
     title: `Vinod Kumar — Full Stack Developer Chennai`,
-    description: `Full Stack Developer in Chennai. End-to-end ownership across React, Next.js, Node.js, Kafka. Open for full-time roles and freelance projects globally.`,
+    description: `Full Stack Developer in Chennai. End-to-end ownership across React, Next.js, Node.js and other modern frameworks. Open for full-time roles and freelance projects globally.`,
     url: BASE_URL,
     keywords: [
       'Vinod Kumar', 'Vinod Kumar Developer', 'Vinod Kumar Full Stack Developer',
