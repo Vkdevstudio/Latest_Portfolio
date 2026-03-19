@@ -72,7 +72,7 @@ const ExperienceLog = ({ exp, index }: { exp: any; index: number }) => (
       {exp.summary}
     </p>
 
-    <ul className="space-y-3 mb-6">
+    <ul className="space-y-3 mb-6" aria-label={`Achievements at ${exp.company}`}>
       {exp.achievements.map((achievement: string, i: number) => (
         <li key={i} className="flex items-start gap-3 group/item">
           <ChevronRight className="w-3 h-3 mt-1 text-emerald-500/30 group-hover/item:text-emerald-500 transition-colors" />
@@ -105,7 +105,7 @@ export default function ResumePage() {
       </div>      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-32">
         
         {/* System Header */}
-        <header className="mb-16">
+        <header role="banner" className="mb-16">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-8 border-b border-white/5">
             <div>
               <motion.div 
@@ -116,14 +116,11 @@ export default function ResumePage() {
                 <Terminal className="w-5 h-5 text-emerald-500" />
                 <span className="text-[10px] font-mono text-emerald-500 uppercase tracking-[0.5em] font-bold">Who I Am</span>
               </motion.div>
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-7xl md:text-8xl font-black tracking-tighter uppercase leading-[0.8]"
-              >
-                VINOD <span className="text-emerald-500">KUMAR</span>
-              </motion.h1>
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
+  <h1 className="text-7xl md:text-8xl font-black tracking-tighter uppercase leading-[0.8]">
+    VINOD <span className="text-emerald-500">KUMAR</span>
+  </h1>
+</motion.div>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -187,7 +184,8 @@ export default function ResumePage() {
                   <span className="text-[10px] font-mono text-neutral-600 group-hover/link:text-emerald-500 transition-colors">{resumeData.email}</span>
                 </a>
                 <div className="grid grid-cols-1 gap-3">
-                  <a href={`https://linkedin.com/in/${resumeData.linkedin}`} target="_blank" className="flex items-center justify-between p-3 bg-white/[0.03] rounded-lg border border-white/5 hover:border-emerald-500/50 transition-all group/link">
+                  <a   aria-label="Vinod Kumar LinkedIn Profile"
+ href={`https://linkedin.com/in/${resumeData.linkedin}`} target="_blank" className="flex items-center justify-between p-3 bg-white/[0.03] rounded-lg border border-white/5 hover:border-emerald-500/50 transition-all group/link">
                     <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest">LinkedIn</span>
                     <ExternalLink className="w-3 h-3 text-neutral-600 group-hover/link:text-emerald-500 transition-colors" />
                   </a>
@@ -204,6 +202,7 @@ export default function ResumePage() {
               <div className="text-center py-4">
                 <p className="text-[10px] text-neutral-500 mb-6 font-mono uppercase tracking-widest">Download my latest resume (PDF)</p>
                 <a 
+                  aria-label="Download Vinod Kumar Full Stack Developer Resume PDF"
                   href={'./Vinod_Kumar_Full_Stack.pdf'} 
                   className="inline-flex items-center gap-4 px-8 py-4 bg-emerald-500 text-black font-black uppercase tracking-[0.2em] text-[11px] rounded-full hover:bg-emerald-400 transition-all shadow-[0_0_30px_rgba(16,185,129,0.2)]"
                 >
@@ -218,7 +217,7 @@ export default function ResumePage() {
 
           <div className="lg:col-span-7 space-y-16">
             
-            <section>
+            <section aria-label="Career History">
               <div className="flex items-center gap-4 mb-12">
                 <div className="p-2 bg-emerald-500/10 rounded-lg">
                   <Briefcase className="w-4 h-4 text-emerald-500" />
@@ -234,7 +233,7 @@ export default function ResumePage() {
             </section>
 
             
-            <section>
+            <section aria-label="Skills">
               <div className="flex items-center gap-4 mb-12">
                 <div className="p-2 bg-emerald-500/10 rounded-lg">
                   <Layers className="w-4 h-4 text-emerald-500" />
@@ -256,7 +255,13 @@ export default function ResumePage() {
                             <span className="text-sm font-bold text-neutral-300 group-hover/skill:text-white transition-colors">{skill.name}</span>
                             <span className="text-[9px] font-mono text-neutral-600 uppercase tracking-widest">{skill.yearsOfExperience}Y EXP</span>
                           </div>
-                          <div className="flex gap-1">
+                          <div className="flex gap-1"
+                          role="meter"
+  aria-label={`${skill.name} proficiency: ${skill.proficiency} out of 5`}
+  aria-valuenow={skill.proficiency}
+  aria-valuemin={0}
+  aria-valuemax={5}
+  >
                             {[...Array(5)].map((_, i) => (
                               <div 
                                 key={i} 
@@ -278,7 +283,7 @@ export default function ResumePage() {
 
           
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <section>
+              <section aria-label="Education">
                 <div className="flex items-center gap-4 mb-8">
                   <div className="p-2 bg-emerald-500/10 rounded-lg">
                     <GraduationCap className="w-4 h-4 text-emerald-500" />
