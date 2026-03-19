@@ -76,6 +76,7 @@ export default function FeaturedProject({ data }: { data: Project }) {
               src={data?.media?.mainImage}
               alt={data?.title}
               fill
+              title={data?.title}
               className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
@@ -101,6 +102,7 @@ export default function FeaturedProject({ data }: { data: Project }) {
                     src={data?.media?.secondaryImage?.[selectedImageIdx]}
                     alt={moduleLabels[selectedImageIdx]}
                     fill
+                    title={moduleLabels[selectedImageIdx]}
                     className="object-cover"
                   />
                 </motion.div>
@@ -124,7 +126,7 @@ export default function FeaturedProject({ data }: { data: Project }) {
                         : 'border-white/5 hover:border-white/20 opacity-40 hover:opacity-100'
                     }`}
                   >
-                    <Image src={image} alt="thumb" fill className="object-cover" />
+                    <Image src={image} alt="thumb" title='thumb' fill className="object-cover" />
                   </button>
                 ))}
               </div>

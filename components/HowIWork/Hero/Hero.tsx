@@ -55,6 +55,7 @@ export default function HowIWorkHero() {
             src="https://picsum.photos/seed/abstract-system/1920/1080?blur=2" 
             alt="Abstract System Architecture" 
             fill
+            title='Abstract System Architecture'
             className="object-cover grayscale opacity-30 group-hover:scale-105 transition-transform duration-1000"
             referrerPolicy="no-referrer"
           />

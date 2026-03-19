@@ -1,17 +1,23 @@
-'use client';
 
 import Navigation from '@/components/Common/Nav/Nav';
 import HowIWorkHero from '@/components/HowIWork/Hero/Hero';
-import SystemsThinking from '@/components/HowIWork/SystemsThinking/SystemsThinking';
 import RealWorldExample from '@/components/HowIWork/RealWorldExample/RealWorldExample';
 import TechnicalApproach from '@/components/HowIWork/TechnicalApproach/TechnicalApproach';
 import ClientValue from '@/components/HowIWork/ClientValue/ClientValue';
 import ProofSection from '@/components/HowIWork/ProofSection/ProofSection';
 import HowIWorkCTA from '@/components/HowIWork/CTA/CTA';
 
+import { BREADCRUMBS, buildMetadata, HOWIWORK_FAQ_JSON_LD, PAGE_SEO } from '@/lib/seo';
+
+export const metadata = buildMetadata(PAGE_SEO.howiwork);
+
+
 export default function HowIWorkPage() {
   return (
-    <main className="relative min-h-screen w-full bg-black text-white selection:bg-emerald-500/30 overflow-hidden font-sans">
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMBS.howiwork) }} />
+<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(HOWIWORK_FAQ_JSON_LD) }} />
+<main className="relative min-h-screen w-full bg-black text-white selection:bg-emerald-500/30 overflow-hidden font-sans">
       <Navigation />
 
       {/* Background Grid - Portfolio Standard */}
@@ -36,5 +42,7 @@ export default function HowIWorkPage() {
       {/* Subtle Grain Overlay */}
       <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.02] bg-black" />
     </main>
+    </>
+    
   );
 }

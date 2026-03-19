@@ -63,6 +63,7 @@ export default function AboutHero() {
               src="/profile.jpg"
               alt="Vinod Kumar"
               fill
+              title='Vinod Kumar'
               className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100"
               referrerPolicy="no-referrer"
             />

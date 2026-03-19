@@ -22,6 +22,7 @@ export default function CTA() {
             src="/cta_home.jpg"
             alt="Vinod Kumar"
             fill
+            title='Vinod Kumar'
             className="object-cover hover:scale-105 transition-transform duration-700"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />

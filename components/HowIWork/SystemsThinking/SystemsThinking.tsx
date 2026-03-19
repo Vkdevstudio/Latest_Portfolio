@@ -72,6 +72,7 @@ export default function SystemsThinking() {
               src="https://picsum.photos/seed/system-diagram/800/1000?blur=1" 
               alt="Conceptual System Diagram" 
               fill
+              title='Conceptual System Diagram'
               className="object-cover grayscale opacity-40 group-hover:scale-105 transition-transform duration-1000"
               referrerPolicy="no-referrer"
             />

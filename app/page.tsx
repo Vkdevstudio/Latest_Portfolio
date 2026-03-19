@@ -9,10 +9,14 @@ import Impact from '@/components/Home/Impact/Impact'
 import Learning from '@/components/Home/Learning/Learning'
 import TechnicalDepth from '@/components/Home/TechnicalDepth/TechnicalDepth'
 import { project } from '@/lib/featureset'
-import React from 'react'
+
+import { buildMetadata, PAGE_SEO } from '@/lib/seo';
+
+export const metadata = buildMetadata(PAGE_SEO.home);
 
 const page = () => {
   return (
+    <>
     <main className="relative">
       <Navigation />
       <Hero />
@@ -31,6 +35,8 @@ const page = () => {
 
 </footer>
     </main>
+    </>
+    
   )
 }
 

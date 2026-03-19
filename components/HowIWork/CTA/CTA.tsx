@@ -14,6 +14,7 @@ export default function HowIWorkCTA() {
           src="https://picsum.photos/seed/abstract-cta/1920/1080?blur=10" 
           alt="Abstract Background" 
           fill
+          title='Abstract Background'
           className="object-cover grayscale"
           referrerPolicy="no-referrer"
         />

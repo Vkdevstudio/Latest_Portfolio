@@ -43,7 +43,6 @@ module.exports = {
   },
 
   transform: async (config, path) => {
-    // Give higher priority to key pages
     const priorities = {
       '/': 1.0,
       '/work': 0.9,

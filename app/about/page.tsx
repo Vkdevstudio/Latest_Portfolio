@@ -8,10 +8,15 @@ import TechnicalFoundation from "@/components/About/TechicalFoundation/TechicalF
 import WhyICode from "@/components/About/WhyICode/WhyICode";
 import Navigation from "@/components/Common/Nav/Nav";
 
+import { BREADCRUMBS, buildMetadata, PAGE_SEO } from '@/lib/seo';
+export const metadata = buildMetadata(PAGE_SEO.about);
+
 
 export default function AboutPage() {
   return (
-    <main className="relative bg-black min-h-screen text-white">
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMBS.about) }} />
+<main className="relative bg-black min-h-screen text-white">
       <Navigation />
       <AboutHero />
       <OriginStory />
@@ -29,5 +34,7 @@ export default function AboutPage() {
 
 </footer>
     </main>
+    </>
+    
   );
 }

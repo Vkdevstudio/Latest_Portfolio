@@ -69,6 +69,7 @@ export default function TechnicalApproach() {
               src="https://picsum.photos/seed/pipeline-abstract/1200/800?blur=1" 
               alt="Process Pipeline Visual" 
               fill
+              title='Process Pipeline Visual'
               className="object-cover grayscale opacity-30 group-hover:scale-105 transition-transform duration-1000"
               referrerPolicy="no-referrer"
             />

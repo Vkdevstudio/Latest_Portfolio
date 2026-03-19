@@ -32,6 +32,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             <Image 
               src={project.thumbnail}
               alt={project.name}
+              title={project.name}
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-110"
               referrerPolicy="no-referrer"

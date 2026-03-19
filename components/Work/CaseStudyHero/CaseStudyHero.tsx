@@ -76,6 +76,7 @@ export default function CaseStudyHero({ project }: CaseStudyHeroProps) {
             <Image 
               src={project.thumbnail}
               alt={project.name}
+              title={project.name}
               fill
               className="object-cover"
               priority

@@ -34,6 +34,7 @@ export default function RealWorldExample() {
               src="https://picsum.photos/seed/dashboard-real/1200/800?blur=1" 
               alt="Medtech Dashboard Visual" 
               fill
+              title='Medtech Dashboard Visual'
               className="object-cover grayscale opacity-50 group-hover:scale-105 transition-transform duration-1000"
               referrerPolicy="no-referrer"
             />

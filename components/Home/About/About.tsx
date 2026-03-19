@@ -29,22 +29,21 @@ const milestones = [
 ];
 
 export default function About() {
-  const [particles] = useState(() => {
+const [particles] = useState(() => {
   const total = 20;
-
   return Array.from({ length: total }).map((_, i) => {
-    const angle = (i / total) * Math.PI * 2; // circular distribution
-    const radius = 35 + (i % 5) * 5; // slight variation (deterministic)
-
+    const angle = (i / total) * Math.PI * 2;
+    const radius = 35 + (i % 5) * 5;
     return {
       id: i,
-      left: 50 + Math.cos(angle) * radius,
-      top: 50 + Math.sin(angle) * radius,
-      duration: 3 + (i % 3), 
+      left: Math.round((50 + Math.cos(angle) * radius) * 100) / 100,
+      top: Math.round((50 + Math.sin(angle) * radius) * 100) / 100,
+      duration: 3 + (i % 3),
       delay: i * 0.1,
     };
   });
-})
+});
+
   return (
     <section id="about" className="max-w-7xl mx-auto px-6 py-32 grid grid-cols-1 lg:grid-cols-[1fr_450px] gap-20">
       <div className="text-left">
@@ -97,6 +96,7 @@ export default function About() {
             src="/profile.jpg"
             alt="Vinod Kumar"
             fill
+            title='Vinod Kumar'
             className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
             referrerPolicy="no-referrer"
           />
