@@ -992,7 +992,7 @@ export function buildProjectMetadata({
   const projectKeywords = PROJECT_SEO_KEYWORDS[slug] ?? [];
 
   return buildMetadata({
-    title: `${name} — Case Study | ${PERSON.name}`,
+    title: `${name} — Case Study by Vinod Kumar, Full Stack Developer`,
     description,
     url: `${BASE_URL}/work/${slug}`,
     keywords: [
