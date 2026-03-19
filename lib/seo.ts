@@ -591,6 +591,7 @@ export const PERSON_JSON_LD = {
       url: `${BASE_URL}/work/clapos`,
       dateCreated: '2025-11-01',
       applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web',
       about: { '@type': 'SoftwareApplication', name: 'Film Production Management System' },
       keywords: ['Kafka', 'Microservices', 'Next.js', 'Node.js', 'MongoDB', 'AWS EKS', 'Event-driven Architecture'],
       inLanguage: 'en',
@@ -605,6 +606,7 @@ export const PERSON_JSON_LD = {
       dateCreated: '2025-11-01',
       datePublished: '2025-11-07',
       applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web',
       about: { '@type': 'SoftwareApplication', name: 'Multilingual CRM Landing Page' },
       keywords: ['Next.js', 'i18n', 'RTL CSS', 'Zoho CRM', 'TypeScript', 'Multilingual', 'UAE'],
       inLanguage: 'en',
@@ -619,6 +621,7 @@ export const PERSON_JSON_LD = {
       dateCreated: '2025-11-01',
       datePublished: '2025-11-01',
       applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web',
       about: { '@type': 'SoftwareApplication', name: 'Multi-tenant Business Directory Platform' },
       keywords: ['Multi-tenant', 'React', 'Node.js', 'MongoDB', 'MVP', 'JWT', 'SaaS'],
       inLanguage: 'en',
@@ -632,6 +635,7 @@ export const PERSON_JSON_LD = {
       url: `${BASE_URL}/work/wyka`,
       dateCreated: '2025-12-01',
       applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web',
       about: { '@type': 'SoftwareApplication', name: 'Marketing Automation and Design Integration Platform' },
       keywords: ['Canva API', 'OAuth', 'WebSockets', 'Next.js', 'Real-time', 'Passport.js'],
       inLanguage: 'en',
@@ -646,6 +650,7 @@ export const PERSON_JSON_LD = {
       dateCreated: '2024-09-01',
       datePublished: '2024-09-01',
       applicationCategory: 'HealthApplication',
+      operatingSystem: 'Web',
       about: { '@type': 'SoftwareApplication', name: 'Healthcare Appointment and Patient Management SaaS' },
       keywords: ['Healthcare SaaS', 'Next.js', 'Performance Optimization', 'MongoDB', 'AWS', 'SEO', 'React PDF'],
       inLanguage: 'en',
@@ -660,6 +665,7 @@ export const PERSON_JSON_LD = {
       dateCreated: '2024-09-01',
       datePublished: '2025-01-01',
       applicationCategory: 'HealthApplication',
+      operatingSystem: 'Web',
       about: { '@type': 'SoftwareApplication', name: 'Multi-specialty Healthcare Appointment Dashboard' },
       keywords: ['Healthcare Dashboard', 'Next.js', 'Image Compression', 'Server-side Pagination', 'MongoDB', 'Redis'],
       inLanguage: 'en',
@@ -674,6 +680,7 @@ export const PERSON_JSON_LD = {
       dateCreated: '2024-09-01',
       datePublished: '2024-10-01',
       applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web',
       about: { '@type': 'SoftwareApplication', name: 'Property and Tenant Management Platform' },
       keywords: ['React', 'Next.js', 'Component Architecture', 'Mobile-first', 'JWT', 'TypeScript', 'React PDF'],
       inLanguage: 'en',
@@ -688,6 +695,7 @@ export const PERSON_JSON_LD = {
       dateCreated: '2023-11-01',
       datePublished: '2024-06-01',
       applicationCategory: 'HealthApplication',
+      operatingSystem: 'Web',
       about: { '@type': 'SoftwareApplication', name: 'Healthcare Website Template System with Patient Portal' },
       keywords: ['React', 'Node.js', 'MongoDB', 'JWT', 'RBAC', 'Healthcare', 'AWS EC2', 'Docker'],
       inLanguage: 'en',
@@ -702,6 +710,7 @@ export const PERSON_JSON_LD = {
       dateCreated: '2023-11-01',
       datePublished: '2024-08-01',
       applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web',
       about: { '@type': 'SoftwareApplication', name: 'QR-based Field Sales Lead Capture and Management System' },
       keywords: ['QR Code', 'React', 'Node.js', 'MongoDB', 'Lead Management', 'Insurance', 'MVP'],
       inLanguage: 'en',
@@ -724,9 +733,7 @@ export const WEBSITE_JSON_LD = {
   author: { '@id': `${BASE_URL}/#person` },
 };
 
-// ============================================================
-// PROFILE PAGE JSON-LD — Schema.org v17, homepage only
-// ============================================================
+
 export const PROFILE_PAGE_JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'ProfilePage',
@@ -935,6 +942,7 @@ export function buildProjectJsonLd(project: {
     applicationCategory: project.grid.tags.includes('Healthcare') || project.grid.tags.includes('Healthcare SaaS')
       ? 'HealthApplication'
       : 'BusinessApplication',
+      operatingSystem: 'Web',
     keywords: project.grid.tags,
     author: { '@id': `${BASE_URL}/#person` },
     creator: { '@id': `${BASE_URL}/#person` },
