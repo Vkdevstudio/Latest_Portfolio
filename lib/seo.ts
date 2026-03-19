@@ -445,14 +445,9 @@ export const PERSON_JSON_LD = {
     '@type': 'Occupation',
     name: 'Full Stack Developer',
     occupationalCategory: '15-1254.00',
-    occupationLocation: [
-      { '@type': 'Country', name: 'India' },
-      {
-        '@type': 'Place',
-        name: 'Remote',
-        additionalType: 'https://schema.org/VirtualLocation',
-      },
-    ],
+  occupationLocation: [
+  { '@type': 'Country', name: 'India' },
+],
     estimatedSalary: {
       '@type': 'MonetaryAmountDistribution',
       name: 'Full Stack Developer salary India 2025',
