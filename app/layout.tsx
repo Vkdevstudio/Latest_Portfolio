@@ -14,6 +14,9 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: 'Vinod Kumar | Portfolio',
+  verification:{
+    google:process.env.GOOGLE_SITE_VERIFICATION
+  },
   description: 'Architecting systems that scale 100x. Tech lead and database optimization expert.',
 };
 
