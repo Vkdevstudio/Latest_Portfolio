@@ -2,22 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
 
 export default function Hero() {
   const router = useRouter();
-  const videoRef = useRef<HTMLVideoElement>(null);
-const [isDesktop] = useState(() => {
-  if (typeof window === 'undefined') return false;
-  return window.innerWidth >= 768;
-});
-
-useEffect(() => {
-  if (isDesktop && videoRef.current) {
-    videoRef.current.load();
-  }
-}, [isDesktop]);
-
 
   const Nav = (link: string) => router.push(`/${link}`);
 
@@ -28,27 +15,7 @@ useEffect(() => {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 py-48 overflow-hidden">
 
-      {/* Background — video desktop only, static on mobile */}
-      <div className="absolute inset-0 z-0 opacity-30">
-        {isDesktop ? (
-          <video
-            ref={videoRef}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="none"
-            className="w-full h-full object-cover grayscale contrast-125"
-          >
-            <source src="/home_0.mp4" type="video/mp4" />
-          </video>
-        ) : (
-          <div className="w-full h-full bg-black" />
-        )}
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
-      </div>
-
-      {/* Orbs — CSS only, no framer-motion, reduces JS bundle */}
+      {/* Orbs */}
       <div className="absolute inset-0 z-[1] pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/20 rounded-full blur-[80px] animate-pulse" />
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
@@ -69,16 +36,17 @@ useEffect(() => {
         </motion.div>
 
         {/* H1 */}
-        <motion.h1
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="text-6xl md:text-9xl font-black tracking-tighter leading-[0.85]"
         >
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 bg-[length:200%_auto] animate-gradient">
-            I build fast reliable apps. You focus on your product.
-          </span>
-        </motion.h1>
+          <h1 className="text-6xl md:text-9xl font-black tracking-tighter leading-[0.85]">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 bg-[length:200%_auto] animate-gradient">
+              I build fast reliable apps. You focus on your product.
+            </span>
+          </h1>
+        </motion.div>
 
         {/* H2 */}
         <motion.div

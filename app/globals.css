@@ -16,3 +16,27 @@
     100% { background-position: 0% 50%; }
   }
 }
+
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #10b981;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #34d399;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #10b981 #000000;
+}

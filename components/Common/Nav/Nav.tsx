@@ -33,7 +33,6 @@ const pathname = usePathname();
     { name: 'Work', href: '/work' },
     { name: 'How I Work', href: '/howiwork' },
     { name: 'About', href: '/about' },
-    { name: 'Resume', href: '/resume' },
     { name: 'Contact', href: '/contact' },
   ];
 
