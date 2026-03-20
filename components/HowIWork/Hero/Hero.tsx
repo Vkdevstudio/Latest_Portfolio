@@ -16,7 +16,7 @@ export default function HowIWorkHero() {
           >
             <span className="w-8 h-[1px] bg-emerald-500" />
             <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-[0.4em] font-bold">
-              Systems Thinking // 2026
+              Performance Architecture // 2026
             </span>
           </motion.div>
 
@@ -26,9 +26,9 @@ export default function HowIWorkHero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.85] mb-12"
           >
-            I DON&apos;T BUILD FEATURES. <br />
+            I FIX PRODUCTS. <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
-              I BUILD PRODUCTS THAT SCALE.
+            THAT ARE SLOW TO SCALE.
             </span>
           </motion.h1>
 
@@ -38,8 +38,8 @@ export default function HowIWorkHero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-neutral-400 font-serif italic leading-relaxed max-w-3xl"
           >
-            Code is a tool. Products are the solution. I focus on the entire stack: 
-            from intuitive frontends to robust backends, ensuring performance and reliability at every layer.
+             When your dashboard takes 5 seconds to load, you&apos;re losing customers. 
+  I redesign systems for 10x performance without starting from scratch.
           </motion.p>
         </div>
 
@@ -75,9 +75,9 @@ export default function HowIWorkHero() {
           <div className="absolute bottom-12 left-12 z-20">
             <div className="flex items-center gap-4 mb-4">
               <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-              <p className="text-[10px] font-mono text-emerald-500 uppercase tracking-[0.3em] font-bold">Reliability First</p>
+              <p className="text-[10px] font-mono text-emerald-500 uppercase tracking-[0.3em] font-bold">Performance First</p>
             </div>
-            <p className="text-3xl md:text-4xl font-black text-white tracking-tight">BUILT FOR REAL-WORLD CONSTRAINTS.</p>
+            <p className="text-3xl md:text-4xl font-black text-white tracking-tight">87% FASTER. MEASURABLE RESULTS.</p>
           </div>
         </motion.div>
       </div>
