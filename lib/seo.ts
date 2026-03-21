@@ -805,8 +805,8 @@ export const PROFILE_PAGE_JSON_LD = {
   name: 'Vinod Kumar — Full Stack Developer Portfolio',
   url: BASE_URL,
   inLanguage: 'en-IN',
-  dateCreated: '2025-01-01',
-  dateModified: new Date().toISOString().split('T')[0],
+   dateCreated: '2025-01-01T00:00:00+05:30',   
+  dateModified: new Date().toISOString(),      
   mainEntity: { '@id': `${BASE_URL}/#person` },
   author: { '@id': `${BASE_URL}/#person` },
 };
